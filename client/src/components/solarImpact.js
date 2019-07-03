@@ -9,7 +9,7 @@ class SolarImpact extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:9000/api/test').then(
+        fetch('http://localhost:9000/api/solar').then(
             results => {
                 return results.json();
             }
@@ -20,7 +20,7 @@ class SolarImpact extends Component {
 
                 data.forEach(element => {
                     console.log(element);
-                    
+                    arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
 
                 this.setState({ chartData: arrayData });
@@ -37,15 +37,7 @@ class SolarImpact extends Component {
                         height={'500px'}
                         chartType="AreaChart"
                         loader={<div>Loading data</div>}
-                        data={[
-                            ['Days', 'Solar panel', 'No solar panels'],
-                            ['2', 1000, 400],
-                            ['5', 1170, 460],
-                            ['6', 660, 1120],
-                            ['8', 1030, 540],
-                            ['11', 1000, 500],
-                            ['19', 110, 650],
-                        ]}
+                        data={this.state.chartData}
                         options={{
                             title: 'Relation between solar panels and decrease in energy consumption',
                             hAxis: { title: 'Day', titleTextStyle: { color: '#333' } },
