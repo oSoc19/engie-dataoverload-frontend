@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class SolarImpact extends Component {
   render() {
     return (
-        <div>
+        <div className="container content">
           <h2>Solar impact</h2>
+          <hr/>
         </div>
     );
   }
