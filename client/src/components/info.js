@@ -5,7 +5,12 @@ class Info extends Component {
     constructor() {
         super();
         this.state = {
-            funFacts: [["fas fa-fire ", "fact1", "676"], ["fas fa-plug", "fact2", "6336"], ["fas fa-tint", "fact3", "476"]]
+            funFacts: 
+                [
+                    ["fas fa-fire ", "fact1", "676"], 
+                    ["fas fa-plug", "fact2", "6336"], 
+                    ["fas fa-tint", "fact3", "476"]
+                ]
         }
     }
 

@@ -16,7 +16,7 @@ class App extends Component {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
+              <ul className="navbar-nav">
                 <li><Link to={'/'} className="nav-link"> Home </Link></li>
                 <li><Link to={'/info'} className="nav-link">Info</Link></li>
                 <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
