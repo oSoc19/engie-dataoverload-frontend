@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+const precision = 0.001;
+
 class Info extends Component {
 
     constructor() {
@@ -23,7 +25,7 @@ class Info extends Component {
                     
                     let icon = fact.icon;
                     let name = fact.name;
-                    let value = Math.round(fact.value * 1000) / 1000;
+                    let value = Math.round(fact.value/precision)*precision;
                     let unit = fact.unit;
 
                     return (
