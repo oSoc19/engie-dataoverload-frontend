@@ -5,7 +5,8 @@ class Info extends Component {
     constructor() {
         super();
         this.state = {
-            funFacts: []
+            funFacts: [],
+            colors: ["#009fe3","#015daa","#5c2583","#62b32e","#bccf03"]
         }
     }
 
@@ -20,13 +21,18 @@ class Info extends Component {
                 let list = data.map((fact) => {
                     console.log(fact);
                     
+                    let icon = fact.icon;
+                    let name = fact.name;
+                    let value = Math.round(fact.value * 1000) / 1000;
+                    let unit = fact.unit;
+
                     return (
-                        <div key={fact.name} className="col-md-4">
+                        <div key={name} className="col-md-4">
                             <div className="card">
                                 <div className="card-body text-center">
-                                    <i className={fact.icon + " fa-5x"}></i>
-                                    <h5 className="card-title">{fact.name}</h5>
-                                    <p className="card-text">{fact.value}</p>
+                                    <i className={icon + " fa-5x"} style={{color: this.state.colors[Math.floor(Math.random()*this.state.colors.length)]}}></i>
+                                    <h5 className="card-title">{name}</h5>
+                                    <p className="card-text">{value + " " + unit}</p>
                                 </div>
                             </div>
                         </div>
