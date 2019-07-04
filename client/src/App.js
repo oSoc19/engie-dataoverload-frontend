@@ -9,18 +9,24 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">Insight the Boxx</a>
 
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav">
-                <li><Link to={'/'} className="nav-link"> Home </Link></li>
-                <li><Link to={'/info'} className="nav-link">Info</Link></li>
-                <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
-              </ul>
+
+
+
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
+              <a className="navbar-brand" href="/">Insight the Boxx</a>
+
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ml-auto">
+                  <li><Link to={'/'} className="nav-link"> Home </Link></li>
+                  <li><Link to={'/info'} className="nav-link">Fun Facts</Link></li>
+                  <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
+                </ul>
+              </div>
             </div>
           </nav>
           <Switch>

@@ -2,6 +2,12 @@
   margin-top: 20px;
 }
 
+/*navigation*/
+.navbar{
+  padding: 20px;
+}
+
+
 /* Home */
 .about-text{
   font-size: 1.1rem;
@@ -28,7 +34,7 @@
 }
 
 .filter .btn-primary:hover{
-  border: 1px solid blue;
+  border: 1px solid #009fe3;
 }
 
 .time-filters{

@@ -30,7 +30,7 @@ class SolarImpact extends Component {
     render() {
         return (
             <div className="container content">
-                <h2>Solar impact</h2>
+                <h2 className="text-center">Solar impact</h2>
                 <hr />
 
                 <div className="time-filters row text-center">

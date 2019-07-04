@@ -46,7 +46,7 @@ class Info extends Component {
     render() {
         return (
             <div className="container content">
-                <h2>Info</h2>
+                <h2 className="text-center">Fun Facts</h2>
                 <hr />
                 <div className="row">
                     {this.state.funFacts}
