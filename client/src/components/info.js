@@ -29,7 +29,7 @@ class Info extends Component {
                     let unit = fact.unit;
 
                     return (
-                        <div key={name} className="col-md-4">
+                        <div key={name} className="col-md-4 center">
                             <div className="card">
                                 <div className="card-body text-center">
                                     <i className={icon + " fa-5x"} style={{color: this.state.colors[Math.floor(Math.random()*this.state.colors.length)]}}></i>
