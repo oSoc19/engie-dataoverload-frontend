@@ -5,7 +5,7 @@ class SolarImpact extends Component {
 
     constructor() {
         super();
-        this.state = {chartData: []};
+        this.state = { chartData: [] };
     }
 
     componentDidMount() {
@@ -32,6 +32,19 @@ class SolarImpact extends Component {
             <div className="container content">
                 <h2>Solar impact</h2>
                 <hr />
+
+                <div className="time-filters row text-center">
+                    <div className="filter col-md-4">
+                        <a className="btn btn-primary">Daily</a>
+                    </div>
+                    <div className="filter col-md-4">
+                        <a className="btn btn-primary">Weekly</a>
+                    </div>
+                    <div className="filter col-md-4">
+                        <a className="btn btn-primary">Monthly</a>
+                    </div>
+                </div>
+
                 <div>
                     <Chart
                         height={'500px'}
