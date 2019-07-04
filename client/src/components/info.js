@@ -5,31 +5,42 @@ class Info extends Component {
     constructor() {
         super();
         this.state = {
-            funFacts: 
-                [
-                    ["fas fa-fire ", "fact1", "676"], 
-                    ["fas fa-plug", "fact2", "6336"], 
-                    ["fas fa-tint", "fact3", "476"]
-                ]
+            funFacts: [],
+            colors: ["#009fe3","#015daa","#5c2583","#62b32e","#bccf03"]
         }
     }
 
     componentDidMount() {
-        let list = this.state.funFacts.map((fact) => {
-            return (
-                <div key={fact[1]} className="col-md-4">
-                    <div className="card">
-                        <div className="card-body text-center">
-                            <i className={fact[0] + " fa-5x"}></i>
-                            <h5 className="card-title">{fact[1]}</h5>
-                            <p className="card-text">{fact[2]}</p>
-                        </div>
-                    </div>
-                </div>
-            );
-        });
+        fetch('http://localhost:9000/api/allaverages').then(
+            results => {
+                return results.json();
+            }
+        ).then(
+            data => {
+                console.log(data);
+                let list = data.map((fact) => {
+                    console.log(fact);
+                    
+                    let icon = fact.icon;
+                    let name = fact.name;
+                    let value = Math.round(fact.value * 1000) / 1000;
+                    let unit = fact.unit;
 
-        this.setState({ funFacts: list });
+                    return (
+                        <div key={name} className="col-md-4">
+                            <div className="card">
+                                <div className="card-body text-center">
+                                    <i className={icon + " fa-5x"} style={{color: this.state.colors[Math.floor(Math.random()*this.state.colors.length)]}}></i>
+                                    <h5 className="card-title">{name}</h5>
+                                    <p className="card-text">{value + " " + unit}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                });
+
+                this.setState({ funFacts: list }); 
+            });
     }
 
     render() {
