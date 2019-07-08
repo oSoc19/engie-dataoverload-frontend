@@ -15,7 +15,12 @@ class SolarImpact extends Component {
             }
         ).then(
             data => {
+<<<<<<< HEAD
                 var arrayData = [['Days', 'Solar panel', 'No solar panels']];
+=======
+                console.log(data);
+                var arrayData = [['Days', 'Solar panels', 'No solar panels']];
+>>>>>>> b3588df1f96b31647fe6f04808fb0e6553f81b83
 
                 data.forEach(element => {
                     arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
@@ -28,7 +33,7 @@ class SolarImpact extends Component {
     render() {
         return (
             <div className="container content">
-                <h2 className="text-center">Solar impact</h2>
+                <h2 className="text-center">Solar panels impact</h2>
                 <hr />
 
                 <div className="time-filters row text-center">
@@ -50,9 +55,9 @@ class SolarImpact extends Component {
                         loader={<div>Loading data</div>}
                         data={this.state.chartData}
                         options={{
-                            title: 'Relation between solar panels and decrease in energy consumption',
-                            hAxis: { title: 'Day', titleTextStyle: { color: '#333' } },
-                            vAxis: { title: 'Averge energy consuption [kWh]', titleTextStyle: { color: '#333' }, minValue: 0, maxValue: 2},
+                            title: 'Energy consumption of users with and without solar panels',
+                            hAxis: { title: 'Date', titleTextStyle: { color: '#333' } },
+                            vAxis: { title: 'Averge energy consuption [kWh]', titleTextStyle: { color: '#333' }, minValue: 0 },
                             // For the legend to fit, we make the chart area smaller
                             chartArea: { width: '70%', height: '70%' },
                             // lineWidth: 25
