@@ -46,7 +46,7 @@ class SolarImpact extends Component {
                 <div>
                     <Chart
                         height={'500px'}
-                        chartType="AreaChart"
+                        chartType="ColumnChart"
                         loader={<div>Loading data</div>}
                         data={this.state.chartData}
                         options={{
