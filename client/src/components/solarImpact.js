@@ -15,13 +15,8 @@ class SolarImpact extends Component {
             }
         ).then(
             data => {
-<<<<<<< HEAD
                 var arrayData = [['Days', 'Solar panel', 'No solar panels']];
-=======
-                console.log(data);
-                var arrayData = [['Days', 'Solar panels', 'No solar panels']];
->>>>>>> b3588df1f96b31647fe6f04808fb0e6553f81b83
-
+                
                 data.forEach(element => {
                     arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
