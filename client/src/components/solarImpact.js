@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import Chart from 'react-google-charts';
+import SolarAPI from '../api/solarAPI';
 
 class SolarImpact extends Component {
 
     constructor() {
         super();
         this.state = { chartData: [] };
+        this.api = new SolarAPI();
+
+        this.handleFilter = this.handleFilter.bind(this);
     }
 
     componentDidMount() {
-        fetch('http://localhost:9000/api/solar').then(
-            results => {
-                return results.json();
-            }
-        ).then(
+        this.api.getFilter("daily").then(
             data => {
                 var arrayData = [['Days', 'Solar panel', 'No solar panels']];
-                
+
                 data.forEach(element => {
                     arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
 
                 this.setState({ chartData: arrayData });
-            });
+            }
+        );
+    }
+
+    handleFilter(e) {
+        e.preventDefault();
+        this.api.getFilter(e.target.id);
     }
 
     render() {
@@ -33,13 +39,13 @@ class SolarImpact extends Component {
 
                 <div className="time-filters row text-center">
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary">Daily</a>
+                        <a className="btn btn-primary" id="daily" onClick={this.handleFilter}>Daily</a>
                     </div>
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary">Weekly</a>
+                        <a className="btn btn-primary" id="weekly" onClick={this.handleFilter}>Weekly</a>
                     </div>
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary">Monthly</a>
+                        <a className="btn btn-primary" id="monthly" onClick={this.handleFilter}>Monthly</a>
                     </div>
                 </div>
 
@@ -49,7 +55,13 @@ class SolarImpact extends Component {
                         chartType="ColumnChart"
                         loader={<div>Loading data</div>}
                         data={this.state.chartData}
+
                         options={{
+                            animation: {
+                                duration: 1000,
+                                easing: 'out',
+                                startup: true,
+                            },
                             title: 'Energy consumption of users with and without solar panels',
                             hAxis: { title: 'Date', titleTextStyle: { color: '#333' } },
                             vAxis: { title: 'Averge energy consuption [kWh]', titleTextStyle: { color: '#333' }, minValue: 0 },
