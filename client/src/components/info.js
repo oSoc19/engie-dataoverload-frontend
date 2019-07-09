@@ -9,7 +9,6 @@ class Info extends Component {
         super();
         this.state = {
             funFacts: [],
-            colors: ["#009fe3","#015daa","#5c2583","#62b32e","#bccf03"]
         }
         this.api = new FunFactsAPI();
     }
@@ -30,7 +29,7 @@ class Info extends Component {
                         <div key={name} className="col-md-4 center">
                             <div className="card">
                                 <div className="card-body text-center">
-                                    <i className={icon + " fa-5x"} style={{color: this.state.colors[Math.floor(Math.random()*this.state.colors.length)]}}></i>
+                                    <i className={icon + " fa-5x"} style={{color: "#009fe3"}}></i>
                                     <h5 className="card-title">{name}</h5>
                                     <p className="card-text">{value + " " + unit}</p>
                                 </div>
