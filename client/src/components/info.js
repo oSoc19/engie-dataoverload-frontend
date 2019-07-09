@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FunFactsAPI from '../api/funFactsAPI';
 
 const precision = 0.001;
 
@@ -10,14 +11,11 @@ class Info extends Component {
             funFacts: [],
             colors: ["#009fe3","#015daa","#5c2583","#62b32e","#bccf03"]
         }
+        this.api = new FunFactsAPI();
     }
 
     componentDidMount() {
-        fetch('http://localhost:9000/api/allaverages').then(
-            results => {
-                return results.json();
-            }
-        ).then(
+        this.api.getFunFacts().then(
             data => {
                 console.log(data);
                 let list = data.map((fact) => {
