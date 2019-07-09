@@ -44,3 +44,8 @@
 .loader{
   padding: 50px;
 }
+
+.map{
+  z-index: -1;
+  margin: 170px 100px 100px 100px;
+}

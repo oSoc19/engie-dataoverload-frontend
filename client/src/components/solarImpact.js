@@ -19,9 +19,10 @@ class SolarImpact extends Component {
                 var arrayData = [['Days', 'Solar panel', 'No solar panels']];
 
                 data.forEach(element => {
-                    arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
-
+                console.log(arrayData);
+                
                 this.setState({ chartData: arrayData });
             }
         );
@@ -29,7 +30,19 @@ class SolarImpact extends Component {
 
     handleFilter(e) {
         e.preventDefault();
-        this.api.getFilter(e.target.id);
+        this.api.getFilter(e.target.id).then(
+            data => {
+                var arrayData = [['Days', 'Solar panel', 'No solar panels']];
+
+                data.forEach(element => {
+                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                });
+
+                console.log(arrayData);
+
+                this.setState({ chartData: arrayData });
+            }
+        );
     }
 
     render() {
