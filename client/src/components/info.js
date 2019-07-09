@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FunFactsAPI from '../api/funFactsAPI';
 
-const precision = 0.001;
+const precision = 1e3;
 
 class Info extends Component {
 
@@ -22,7 +22,7 @@ class Info extends Component {
                     
                     let icon = fact.icon;
                     let name = fact.name;
-                    let value = Math.round(fact.value/precision)*precision;
+                    let value = Math.round(fact.value*precision)/precision;
                     let unit = fact.unit;
 
                     return (
