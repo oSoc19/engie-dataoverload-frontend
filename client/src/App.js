@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './components/home';
 import Info from './components/info';
 import SolarImpact from './components/solarImpact';
+import Comparator from './components/comparator';
 import About from './components/about';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
                   <li><Link to={'/about'} className="nav-link">About</Link></li>
                   <li><Link to={'/info'} className="nav-link">Fun Facts</Link></li>
                   <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
+                  <li><Link to={'/comparator'} className="nav-link">Comparator</Link></li>
                 </ul>
               </div>
             </div>
@@ -31,12 +33,10 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/info' component={Info} />
             <Route path='/solar' component={SolarImpact} />
+            <Route path='/comparator' component={Comparator} />
             <Route path='/about' component={About} />
           </Switch>
         </div>
-
-
-
       </Router>
 
 
