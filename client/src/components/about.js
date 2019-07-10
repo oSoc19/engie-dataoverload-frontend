@@ -16,7 +16,7 @@ class About extends Component {
                         </p>
                     </div>
                     <div className="col-md-6 offset-md-3">
-                        <img src="image.png" className="img-fluid" />
+                        <img src="group_photo_barchart.png" className="img-fluid" alt="group funny barchart"/>
                     </div>
                 </div>
             </div>
