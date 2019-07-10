@@ -40,3 +40,12 @@
 .time-filters{
   margin-top: 30px;
 }
+
+.loader{
+  padding: 50px;
+}
+
+.map{
+  z-index: -1;
+  margin: 170px 100px 100px 100px;
+}

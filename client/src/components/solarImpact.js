@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chart from 'react-google-charts';
 import SolarAPI from '../api/solarAPI';
+import { ClipLoader } from 'react-spinners';
 
 class SolarImpact extends Component {
 
@@ -18,9 +19,10 @@ class SolarImpact extends Component {
                 var arrayData = [['Days', 'Solar panel', 'No solar panels']];
 
                 data.forEach(element => {
-                    arrayData.push([element.date, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
-
+                console.log(arrayData);
+                
                 this.setState({ chartData: arrayData });
             }
         );
@@ -28,7 +30,19 @@ class SolarImpact extends Component {
 
     handleFilter(e) {
         e.preventDefault();
-        this.api.getFilter(e.target.id);
+        this.api.getFilter(e.target.id).then(
+            data => {
+                var arrayData = [['Days', 'Solar panel', 'No solar panels']];
+
+                data.forEach(element => {
+                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                });
+
+                console.log(arrayData);
+
+                this.setState({ chartData: arrayData });
+            }
+        );
     }
 
     render() {
@@ -53,7 +67,14 @@ class SolarImpact extends Component {
                     <Chart
                         height={'500px'}
                         chartType="ColumnChart"
-                        loader={<div>Loading data</div>}
+                        loader={<div className="text-center loader">
+                            <ClipLoader
+                                sizeUnit={"px"}
+                                size={80}
+                                color={'#009fe3'}
+                                loading={this.state.loading}
+                            />
+                        </div>}
                         data={this.state.chartData}
 
                         options={{
@@ -70,6 +91,8 @@ class SolarImpact extends Component {
                             // lineWidth: 25
                         }}
                     />
+
+
                 </div>
             </div>
         );

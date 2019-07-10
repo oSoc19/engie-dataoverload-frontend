@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FunFactsAPI from '../api/funFactsAPI';
+import { ClipLoader } from 'react-spinners';
+
 
 const precision = 1e3;
 
@@ -9,17 +11,16 @@ class Info extends Component {
         super();
         this.state = {
             funFacts: [],
+            loading: false
         }
         this.api = new FunFactsAPI();
     }
 
     componentDidMount() {
+        this.setState({ loading: true });
         this.api.getFunFacts().then(
             data => {
-                console.log(data);
                 let list = data.map((fact) => {
-                    console.log(fact);
-                    
                     let icon = fact.icon;
                     let name = fact.name;
                     let value = Math.round(fact.value*precision)/precision;
@@ -29,7 +30,7 @@ class Info extends Component {
                         <div key={name} className="col-md-4 center">
                             <div className="card">
                                 <div className="card-body text-center">
-                                    <i className={icon + " fa-5x"} style={{color: "#009fe3"}}></i>
+                                    <i className={icon + " fa-5x"} style={{ color: "#009fe3" }}></i>
                                     <h5 className="card-title">{name}</h5>
                                     <p className="card-text">{value + " " + unit}</p>
                                 </div>
@@ -38,7 +39,7 @@ class Info extends Component {
                     );
                 });
 
-                this.setState({ funFacts: list }); 
+                this.setState({ funFacts: list, loading: false });
             });
     }
 
@@ -49,6 +50,15 @@ class Info extends Component {
                 <hr />
                 <div className="row">
                     {this.state.funFacts}
+                </div>
+
+                <div className="text-center loader">
+                    <ClipLoader
+                        sizeUnit={"px"}
+                        size={80}
+                        color={'#009fe3'}
+                        loading={this.state.loading}
+                    />
                 </div>
             </div>
         );

@@ -20,9 +20,9 @@ class App extends Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
                   <li><Link to={'/'} className="nav-link"> Home </Link></li>
+                  <li><Link to={'/about'} className="nav-link">About</Link></li>
                   <li><Link to={'/info'} className="nav-link">Fun Facts</Link></li>
                   <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
-                  <li><Link to={'/about'} className="nav-link">About</Link></li>
                 </ul>
               </div>
             </div>

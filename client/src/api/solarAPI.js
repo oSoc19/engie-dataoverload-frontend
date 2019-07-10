@@ -8,9 +8,9 @@ class SolarAPI extends API{
     }
 
     getFilter(filter){
-        console.log(this.baseurl+"/"+filter);
+        console.log(this.endpoint+"/"+filter);
 
-        return fetch(this.baseurl+"/"+filter).then(
+        return fetch(this.endpoint+"/"+filter).then(
             results => {
                 return results.json();
             }
