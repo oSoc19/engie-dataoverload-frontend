@@ -54,8 +54,12 @@ class ComparatorController{
     
       //Variables declaration
       let results;
-      let averageWebCons = 40; //in m³, per year, per person
-      results += averageWebCons*familySize;
+      let avgToiletCons = 0.03 // in m³ for one day
+      let avgShowerCons = 0.065 //in m³ for one shower
+      let avgBathCons = 0.130 //in m³ for one bath
+      let dishWasherCons = 220*0.012 //220 washings (12L) per year
+      let gardenWateringCons = 0;
+      let poolCons = 
 
     
       results.push({hello : "test"});
