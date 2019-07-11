@@ -11,7 +11,7 @@
 /* Home */
 .about-text{
   font-size: 1.1rem;
-  text-align: center;
+  text-align: left;
   padding: 20px;
 }
 
@@ -48,4 +48,20 @@
 .map{
   z-index: -1;
   margin: 170px 100px 100px 100px;
+}
+
+/*
+.PrivateValueLabel-thumb-45.PrivateValueLabel-open-46 .PrivateValueLabel-offset-47{
+    transform: scale(1.3) translateY(-10px)!important;
+}
+
+.PrivateValueLabel-circle-48 {
+    justify-content: center;
+    background-color: green!important;
+    font-size: 12px!important;
+}
+*/
+
+#results-row {
+  margin-top:70px;
 }
