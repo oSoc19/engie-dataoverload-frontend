@@ -6,13 +6,20 @@ class Comparator extends Component {
   constructor() {
     super();
     this.state = {
-      results: 0
+      electricity: 0,
+      water: 0,
+      gas: 0
+      
     }
     this.api = new ComparatorController();
   }
 
   componentDidMount() {
-    this.setState({results: this.api.getResults()});
+    this.setState({
+      electricity: this.api.getElecConsEstimation(),
+      water: this.api.getWaterConsEstimation(),
+      gas: this.api.getGasConsEstimation()
+    });
   
   }
 
@@ -21,9 +28,15 @@ class Comparator extends Component {
         <div className="container content">
         <h2 className="text-center">Comparator</h2>
         <hr />
-        <div className="row">
-        {this.state.results}
+        <div className="row-elec">
+          Your average electricity consumption: {this.state.electricity}
         </div>
+        <div>
+          Your average water consumption: {this.state.water}
+          </div>
+        <div>
+          Your average gas consumption: {this.state.gas}
+          </div> 
         </div>
       );
     }
