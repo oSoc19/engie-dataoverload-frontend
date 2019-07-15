@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import FunFactsAPI from '../api/funFactsAPI';
-import { ClipLoader } from 'react-spinners';
 import QuizBasicInfo from './QuizBasicInfo';
 import QuizElectricity from './QuizElectricity';
 
@@ -16,12 +14,6 @@ class Quiz extends Component {
 
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
-    }
-
-    componentDidMount() {        
-        //this.setState({quizNr: ++this.state.quizNr})
-        //link next button to next quiz page
-
     }
 
     handleNext(e) {

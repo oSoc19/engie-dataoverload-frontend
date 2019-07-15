@@ -1,29 +1,58 @@
 import React, { Component } from 'react';
-import FunFactsAPI from '../api/funFactsAPI';
-import { ClipLoader } from 'react-spinners';
-
 class QuizBasicInfo extends Component {
+
+    
 
     constructor() {
         super();
         this.state = {
-
+            quizValues: {
+                familySize: "",
+                nbRooms: "",
+                zipCode: "",
+                prefRoomTemp: "",
+                houseInsulation: "", //1 is poor, 2 is average, 3 is good
+                nbFridge: "",
+                nbCoffeeMaker: "",
+                nbMicroWaveOven: "",
+                nbElectricOven: "",
+                nbTv: "",
+                nbGamingConsole: "",
+                nbLaptops: "",
+                nbDeskPC: "",
+                nbWashingMachine: "",
+                nbTumbleDryer: "",
+                nbVacuumCleaner: "",
+                nbElectricToothbrush: "",
+                nbHairDryer: "",
+                nbKettle: "",
+                nbShowersPerWeek: "",
+                nbBathsPerWeek: "",
+                dishWasher: "",
+                gardenWatering: "",
+                pool: "",
+                naturalGasConnection: "",
+                nbCookingPerWeek: "",
+                typeCooking: "" //gas, electric, induction
+            }
         }
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount() {        
-        /*let objTest = {
-            peopleInHouse: 3,
-            roomsInHouse: 4,
-            zipCode: 1790,
-            preferredRoomTemp: 21
+    componentDidMount(){
+        let storageData = localStorage.getItem('quizData');
+
+        if(storageData != null){
+            console.log(JSON.parse(storageData));
+            this.setState({quizValues:JSON.parse(storageData)});
         }
-        localStorage.setItem('formData', JSON.stringify(objTest));
-        */
+        
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value.toUpperCase()});
+        this.setState({quizData: this.state.quizValues[event.target.id] = event.target.value})
+        console.log(this.state.quizValues);
+        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
     }
 
     render() {
@@ -36,24 +65,52 @@ class QuizBasicInfo extends Component {
                         <form>
                             <div className="form-group">
                                 <label htmlFor="peopleInHouse">How many people live in your house?</label>
-                                <input type="number" className="form-control" id="peopleInHouse" placeholder="3" />
+                                
+                                <input 
+                                    type="number"
+                                    id="familySize" 
+                                    className="form-control" 
+                                    placeholder="3" 
+                                    onChange={this.handleChange} 
+                                    value={this.state.quizValues.familySize}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
-                                <input type="number" className="form-control" id="roomsInHouse" placeholder="4" />
+                                <input 
+                                    type="number" 
+                                    id="nbRooms" 
+                                    className="form-control" 
+                                    placeholder="4" 
+                                    onChange={this.handleChange}
+                                    value={this.state.quizValues.nbRooms}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="zipCode">What is your zip code?</label>
-                                <input type="number" className="form-control" id="zipCode" placeholder="1000" />
+                                <input 
+                                    type="number" 
+                                    className="form-control" 
+                                    id="zipCode" 
+                                    placeholder="1000" 
+                                    onChange={this.handleChange}
+                                    value={this.state.quizValues.zipCode}
+                                />
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="preferredRoomTemp">what is your preferred room temperature?</label>
-                                <input type="number" className="form-control" id="preferredRoomTemp" placeholder="21 °C" />
+                                <label htmlFor="preferredRoomTemp">What is your preferred room temperature? (°C)</label>
+                                <input 
+                                    type="number" 
+                                    id="prefRoomTemp" 
+                                    className="form-control" 
+                                    placeholder="21 °C" 
+                                    onChange={this.handleChange}
+                                    value={this.state.quizValues.prefRoomTemp}
+                                />
                             </div>
-
 
                         </form>
                     </div>
