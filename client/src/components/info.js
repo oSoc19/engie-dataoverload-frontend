@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import FunFactsAPI from '../api/funFactsAPI';
 import { ClipLoader } from 'react-spinners';
-
-
-const precision = 1e3;
+import round from '../util';
 
 class Info extends Component {
 
@@ -23,7 +21,8 @@ class Info extends Component {
                 let list = data.map((fact) => {
                     let icon = fact.icon;
                     let name = fact.name;
-                    let value = Math.round(fact.value*precision)/precision;
+                    let precision = fact.precision;
+                    let value = round(fact.value, precision);
                     let unit = fact.unit;
 
                     return (
