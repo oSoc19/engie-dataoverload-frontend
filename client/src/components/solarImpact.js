@@ -3,6 +3,43 @@ import Chart from 'react-google-charts';
 import SolarAPI from '../api/solarAPI';
 import { ClipLoader } from 'react-spinners';
 
+let days_nb2str = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+}
+
+let month_nb2str = {
+    1: "Jan",
+    2: "Feb",
+    3: "Mar",
+    4: "Apr",
+    5: "May",
+    6: "Jun",
+    7: "Jul",
+    8: "Aug",
+    9: "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
+}
+
+let getAxisLabel = function(filter_type, elem_value) {
+    console.log("hhe");
+    console.log(filter_type);
+    if (filter_type === "daily") {
+        return days_nb2str[elem_value];
+    } else if (filter_type === "monthly") {
+        return month_nb2str[elem_value];
+    } else {
+        return elem_value;
+    }
+}
+
 class SolarImpact extends Component {
 
     constructor() {
@@ -16,12 +53,11 @@ class SolarImpact extends Component {
     componentDidMount() {
         this.api.getFilter("daily").then(
             data => {
-                var arrayData = [['Days', 'Solar panel', 'No solar panels']];
+                var arrayData = [['Days', 'Solar panels', 'No solar panels']];
 
                 data.forEach(element => {
-                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                    arrayData.push([days_nb2str[element.datepart], parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
-                console.log(arrayData);
                 
                 this.setState({ chartData: arrayData });
             }
@@ -30,15 +66,17 @@ class SolarImpact extends Component {
 
     handleFilter(e) {
         e.preventDefault();
+        var current_filter = e.target.id;
         this.api.getFilter(e.target.id).then(
             data => {
-                var arrayData = [['Days', 'Solar panel', 'No solar panels']];
+                var elem_label;
+
+                var arrayData = [[current_filter, 'Solar panel', 'No solar panels']];
 
                 data.forEach(element => {
-                    arrayData.push([element.datepart, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
+                    elem_label = getAxisLabel(current_filter, element.datepart);
+                    arrayData.push([elem_label, parseFloat(element.avg_cons_solar), parseFloat(element.avg_cons_nonsolar)]);
                 });
-
-                console.log(arrayData);
 
                 this.setState({ chartData: arrayData });
             }
@@ -84,8 +122,14 @@ class SolarImpact extends Component {
                                 startup: true,
                             },
                             title: 'Energy consumption of users with and without solar panels',
-                            hAxis: { title: 'Date', titleTextStyle: { color: '#333' } },
-                            vAxis: { title: 'Averge energy consuption [kWh]', titleTextStyle: { color: '#333' }, minValue: 0 },
+                            hAxis: { 
+                                title: 'Date', 
+                                titleTextStyle: { color: '#333' } 
+                            },
+                            vAxis: { 
+                                title: 'Averge energy consuption [kWh]', 
+                                titleTextStyle: { color: '#333' }, minValue: 0 
+                            },
                             // For the legend to fit, we make the chart area smaller
                             chartArea: { width: '70%', height: '70%' },
                             // lineWidth: 25
