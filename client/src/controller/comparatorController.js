@@ -5,53 +5,35 @@ class ComparatorController {
     super();
   }
 
-  getValues(values) {
+  getValues(values, type) {
 
     //Reading values from the quiz
     //values.get("family_size");
 
-    var parameters = {
-      familySize: 1,
-      nbRooms: 2,
-      prefRoomTemp: 21,
-      houseInsulation: 2,
-      nbFridge: 1,
-      nbCoffeeMaker: 2,
-      nbMicroWaveOven: 1,
-      nbElectricOven: 1,
-      nbTv: 2,
-      nbGamingConsole: 2,
-      nbLaptops: 1,
-      nbDeskPC: 2,
-      nbWashingMachine: 1,
-      nbTumbleDrier: 1,
-      nbVacuumCleaner: 2,
-      nbElectricToothbrush: 1,
-      nbHairDryer: 1,
-      nbKettle: 1,
-      nbShowersPerWeek: 21,
-      nbBathsPerWeek: 2,
-      dishWasher: true,
-      gardenWatering: true,
-      pool: false,
-      naturalGasConnection: true,
-      nbCookingPerWeek: 5,
-      typeCooking: "gas",
+    let toReturn;
+
+    if(type.localeCompare("water")){
+      toReturn = this.getWaterConsEstimation(values);
+    }
+    else if(type.localeCompare("gas")){
+      toReturn = this.getGasConsEstimation(values);
+    }
+    else if(type.localeCompare("electricity")){
+      toReturn = this.getElecConsEstimation(values);
     }
 
+    // //Arrays declaration
+    // let results = [];
+    // let waterData = this.getWaterConsEstimation(parameters);
+    // let gasData = this.getGasConsEstimation(parameters);
+    // let elecData = this.getElecConsEstimation(parameters);
 
-    //Arrays declaration
-    let results = [];
-    let waterData = this.getWaterConsEstimation(parameters);
-    let gasData = this.getGasConsEstimation(parameters);
-    let elecData = this.getElecConsEstimation(parameters);
+    // //Concatenate all arrays into one
+    // results.concat(waterData);
+    // results.concat(gasData);
+    // results.concat(elecData);
 
-    //Concatenate all arrays into one
-    results.concat(waterData);
-    results.concat(gasData);
-    results.concat(elecData);
-
-    return 21;
+    return toReturn;
   };
 
   getWaterConsEstimation(param) {
@@ -84,23 +66,59 @@ class ComparatorController {
 
     //Variables declaration
     let results;
-    
+    let bigGasConsumer = 34890/10.95; //kWh divided by 10.95 to get m³
+    let avgGasConsumer = 29075/10.95;
+    let smallGasConsumer = 23260/10.95;
+    let noGasConsumer = 4652/10.95;
 
-    if (naturalGasConnection) {
-
+    if (param.naturalGasConnection) {
+      if (typeCooking.localeCompare("gas")){
+        if (param.nbCookingPerWeek > 4){
+          results += bigGasConsumer; 
+        } else {
+          results += avgGasConsumer;
+        }
+      } else {
+        results += smallGasConsumer;
+      }
+    } else {
+      results += noGasConsumer;
     }
-    //nbCookingPerWeek
-    //typeCooking
-    results.push({ hello: "test" });
 
-    return 1360;
+    return results;
   };
 
   getElecConsEstimation(param) {
-    let results = [];
-    results.push({ hello: "test" });
 
-    return 4000;
+    let results;
+    let insulationLevel = param.houseInsulation/2; //1
+    let avgConsPerRoom = (param.nbRooms*400*12)/insulationLevel; //400 kWh per room in average per month
+    let roomTempCons;
+    if (param.prefRoomTemp < 24){
+      roomTempCons = 400*12; // 400 kWh per month
+    } else {
+      roomTempCons = 800*12 // 800 kWh per month
+    }
+    let fridgeCons = param.nbFridge*350; //kWh per year
+    let coffeeMakerCons = param.nbCoffeeMaker*30;
+    let microWaveOvenCons = param.nbMicroWaveOven*60;
+    let electricOvenCons = param.nbElectricOven*150;
+    let tvCons = param.nbTv*90;
+    let gamingConsoleCons = param.nbGamingConsole*84;
+    let laptopsCons = param.nbLaptops*140;
+    let desktopCons = param.nbDeskPC*300;
+    let washingMachineCons = param.nbWashingMachine*220;
+    let tumbleDryerCons = param.nbTumblerDryer*300;
+    let vacuumCleanerCons = param.nbVacuumCleaner*80;
+    let electricToothbrushCons = param.nbElectricToothbrush*0.3;
+    let hairDryerCons = param.nbHairDryer*11;
+    let kettleCons = param.nbKettle*30;
+
+    let results = avgConsPerRoom + roomTempCons + fridgeCons + coffeeMakerCons +microWaveOvenCons + electricOvenCons
+                + tvCons + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons +
+                electricOvenCons + electricToothbrushCons + hairDryerCons + kettleCons;
+
+    return results;
   };
 }
 
