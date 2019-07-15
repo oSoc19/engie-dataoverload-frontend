@@ -61,6 +61,10 @@ class Comparator extends Component {
     this.api = new QuizAPI();
   }
 
+  componentWillMount() {
+    elec_marks[3].value = this.controller.getWaterResults();
+  }
+
   componentDidMount() {
     // this.setState({
     //   electricity: this.controller.getElecConsEstimation(),
@@ -68,10 +72,10 @@ class Comparator extends Component {
     //   gas: this.controller.getGasConsEstimation()
     // });
     this.api.getSolarProdLocation(this.state.zip_code).then(
-            data => {               
-                this.setState({ solar_prod_location: data[0].avg });
-            }
-        );
+        data => {               
+            this.setState({ solar_prod_location: data[0].avg });
+        }
+    );
   }
 
   // a = getSolarProdZip();
@@ -135,8 +139,9 @@ class Comparator extends Component {
           </div>
 
           <div class="row" id="results-row">
+            <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100"/>
             <div class="col">
-              You could produce {round(this.state.solar_prod_location, 4)} kWh per day with solar panels (based on your zip code {this.state.zip_code}) !  
+              You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !  
             </div>
           </div>
         </div>

@@ -4,8 +4,8 @@ class ComparatorController{
     constructor(){
     }
 
-    getResults(){
-      return 42;
+    getWaterResults(){
+      return 3737;
     };
 }
 
