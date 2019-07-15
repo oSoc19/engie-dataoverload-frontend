@@ -38,7 +38,7 @@ class QuizBasicInfo extends Component {
                 <div className="row text-center">
                     <div className="col-md-12">
                         <form>
-                            <div className="form-group">
+                            <div className="form-group w-50">
                                 <label htmlFor="peopleInHouse">How many people live in your house?</label>
                                 <input 
                                     type="number"
@@ -50,7 +50,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group w-50">
                                 <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
                                 <input 
                                     type="number" 
@@ -62,7 +62,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group w-50">
                                 <label htmlFor="zipCode">What is your zip code?</label>
                                 <input 
                                     type="number" 
@@ -74,7 +74,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group w-50">
                                 <label htmlFor="preferredRoomTemp">What is your preferred room temperature? (°C)</label>
                                 <input 
                                     type="number" 
@@ -84,6 +84,22 @@ class QuizBasicInfo extends Component {
                                     onChange={this.handleChange}
                                     value={this.state.quizValues.prefRoomTemp}
                                 />
+                            </div>
+
+                            <div className="form-group w-50">
+                                <label htmlFor="preferredRoomTemp">How well is your house insulated?</label>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_low" value="insulation_low"/>
+                                  <label class="form-check-label" for="insulation_low">Poorly</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_avg" value="insulation_avg"/>
+                                  <label class="form-check-label" for="insulation_avg">Average</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_well" value="insulation_well"/>
+                                  <label class="form-check-label" for="insulation_well">Well</label>
+                                </div>
                             </div>
                         </form>
                     </div>
