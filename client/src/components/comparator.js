@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ComparatorController from '../controller/comparatorController';
+import QuizAPI from '../api/quizAPI';
+import round from '../util';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -51,15 +53,28 @@ class Comparator extends Component {
   constructor() {
     super();
     this.state = {
-      results: 0
+      results: 0,
+      solar_prod_location: 10,
+      zip_code: 6543,
     }
-    this.api = new ComparatorController();
+    this.controller = new ComparatorController();
+    this.api = new QuizAPI();
   }
 
   componentDidMount() {
-    this.setState({results: this.api.getResults()});
-  
+    // this.setState({
+    //   electricity: this.controller.getElecConsEstimation(),
+    //   water: this.controller.getWaterConsEstimation(),
+    //   gas: this.controller.getGasConsEstimation()
+    // });
+    this.api.getSolarProdLocation(this.state.zip_code).then(
+            data => {               
+                this.setState({ solar_prod_location: data[0].avg });
+            }
+        );
   }
+
+  // a = getSolarProdZip();
 
     render() {
       return (    
@@ -116,6 +131,12 @@ class Comparator extends Component {
                 min={gas_marks[min_index].value}
                 max={gas_marks[max_index].value}
               />
+            </div>
+          </div>
+
+          <div class="row" id="results-row">
+            <div class="col">
+              You could produce {round(this.state.solar_prod_location, 4)} kWh per day with solar panels (based on your zip code {this.state.zip_code}) !  
             </div>
           </div>
         </div>
