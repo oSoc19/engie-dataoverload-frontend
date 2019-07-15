@@ -1,40 +1,15 @@
 import React, { Component } from 'react';
+import QuizModel from '../model/QuizModel';
 class QuizBasicInfo extends Component {
 
     
 
     constructor() {
         super();
+
+        let model = new QuizModel();
         this.state = {
-            quizValues: {
-                familySize: "",
-                nbRooms: "",
-                zipCode: "",
-                prefRoomTemp: "",
-                houseInsulation: "", //1 is poor, 2 is average, 3 is good
-                nbFridge: "",
-                nbCoffeeMaker: "",
-                nbMicroWaveOven: "",
-                nbElectricOven: "",
-                nbTv: "",
-                nbGamingConsole: "",
-                nbLaptops: "",
-                nbDeskPC: "",
-                nbWashingMachine: "",
-                nbTumbleDryer: "",
-                nbVacuumCleaner: "",
-                nbElectricToothbrush: "",
-                nbHairDryer: "",
-                nbKettle: "",
-                nbShowersPerWeek: "",
-                nbBathsPerWeek: "",
-                dishWasher: "",
-                gardenWatering: "",
-                pool: "",
-                naturalGasConnection: "",
-                nbCookingPerWeek: "",
-                typeCooking: "" //gas, electric, induction
-            }
+            quizValues: model.values
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -65,7 +40,6 @@ class QuizBasicInfo extends Component {
                         <form>
                             <div className="form-group">
                                 <label htmlFor="peopleInHouse">How many people live in your house?</label>
-                                
                                 <input 
                                     type="number"
                                     id="familySize" 
@@ -111,7 +85,6 @@ class QuizBasicInfo extends Component {
                                     value={this.state.quizValues.prefRoomTemp}
                                 />
                             </div>
-
                         </form>
                     </div>
                 </div>
