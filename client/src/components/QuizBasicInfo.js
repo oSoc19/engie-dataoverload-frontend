@@ -36,9 +36,9 @@ class QuizBasicInfo extends Component {
                 <h2 className="text-center">Let's begin with some basic information</h2>
                 <hr />
                 <div className="row text-center">
-                    <div className="col-md-12">
+                    <div className="col-md-6 offset-md-3">
                         <form>
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="peopleInHouse">How many people live in your house?</label>
                                 <input 
                                     type="number"
@@ -50,7 +50,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
                                 <input 
                                     type="number" 
@@ -62,7 +62,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="zipCode">What is your zip code?</label>
                                 <input 
                                     type="number" 
@@ -74,7 +74,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="preferredRoomTemp">What is your preferred room temperature? (°C)</label>
                                 <input 
                                     type="number" 
@@ -86,7 +86,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="preferredRoomTemp">How well is your house insulated?</label>
                                 <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_low" value="insulation_low"/>

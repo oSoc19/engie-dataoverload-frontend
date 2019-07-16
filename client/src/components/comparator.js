@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ComparatorController from '../controller/comparatorController';
 import QuizAPI from '../api/quizAPI';
 import round from '../util';
+import ConsModel from '../model/ConsModel';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -52,101 +53,107 @@ class Comparator extends Component {
 
   constructor() {
     super();
+    let model = new ConsModel();
+    let storageData = localStorage.getItem('consData');
+
+
     this.state = {
       results: 0,
       solar_prod_location: 10,
       zip_code: 6543,
+      consValues: JSON.parse(storageData)
     }
+
+    console.log("test2", this.state.consValues);
+
     this.controller = new ComparatorController();
     this.api = new QuizAPI();
   }
 
-  componentWillMount() {
-    elec_marks[3].value = this.controller.getWaterResults();
-  }
-
   componentDidMount() {
-    // this.setState({
-    //   electricity: this.controller.getElecConsEstimation(),
-    //   water: this.controller.getWaterConsEstimation(),
-    //   gas: this.controller.getGasConsEstimation()
-    // });
+    
     this.api.getSolarProdLocation(this.state.zip_code).then(
         data => {               
             this.setState({ solar_prod_location: data[0].avg });
         }
     );
+
+    let storageData = localStorage.getItem('consData');
+
+    if(storageData != null){
+        this.setState({consValues:JSON.parse(storageData)});
+
+        elec_marks[3].value = this.state.consValues.elecConsYearly;
+        water_marks[3].value = this.state.consValues.waterConsYearly;
+        gas_marks[3].value = this.state.consValues.gasConsYearly;
+    }   
   }
 
-  // a = getSolarProdZip();
-
-    render() {
-      return (    
-        <div className="container content">
-        <h2 className="text-center">Yearly consumption results</h2>
-          <div class="row" id="results-row">
-            <div class="col">
-              <Typography id="range-slider" gutterBottom>
-                Electricity
-              </Typography>
-              <Slider
-                defaultValue={elec_marks[init_index].value}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-always"
-                step={100}
-                marks={elec_marks}
-                valueLabelDisplay="on"
-                min={elec_marks[min_index].value}
-                max={elec_marks[max_index].value}
-              />
-            </div>
-          </div>
-
-          <div class="row" id="results-row">
-            <div class="col">
-              <Typography id="discrete-slider-always" gutterBottom>
-                Water
-              </Typography>
-              <Slider
-                defaultValue={water_marks[init_index].value}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-always"
-                step={100}
-                marks={water_marks}
-                valueLabelDisplay="on"
-                min={water_marks[min_index].value}
-                max={water_marks[max_index].value}
-              />
-            </div>
-          </div>
-
-          <div class="row" id="results-row">
-            <div class="col">
-              <Typography id="discrete-slider-always" gutterBottom>
-                Gas
-              </Typography>
-              <Slider
-                defaultValue={gas_marks[init_index].value}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-always"
-                step={10}
-                marks={gas_marks}
-                valueLabelDisplay="on"
-                min={gas_marks[min_index].value}
-                max={gas_marks[max_index].value}
-              />
-            </div>
-          </div>
-
-          <div class="row" id="results-row">
-            <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100"/>
-            <div class="col">
-              You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !  
-            </div>
+  render() {
+    return (    
+      <div className="container content">
+      <h2 className="text-center">Yearly consumption results</h2>
+      <hr />
+        <div class="row" id="results-row">
+          <div class="col">
+            <Typography id="range-slider" gutterBottom>
+              Electricity
+            </Typography>
+            <Slider
+              defaultValue={elec_marks[init_index].value}
+              getAriaValueText={valuetext}
+              aria-labelledby="discrete-slider-always"
+              step={100}
+              marks={elec_marks}
+              valueLabelDisplay="on"
+              min={elec_marks[min_index].value}
+              max={elec_marks[max_index].value}
+            />
           </div>
         </div>
-      );
-    }
+        <div class="row" id="results-row">
+          <div class="col">
+            <Typography id="discrete-slider-always" gutterBottom>
+              Water
+            </Typography>
+            <Slider
+              defaultValue={water_marks[init_index].value}
+              getAriaValueText={valuetext}
+              aria-labelledby="discrete-slider-always"
+              step={100}
+              marks={water_marks}
+              valueLabelDisplay="on"
+              min={water_marks[min_index].value}
+              max={water_marks[max_index].value}
+            />
+          </div>
+        </div>
+        <div class="row" id="results-row">
+          <div class="col">
+            <Typography id="discrete-slider-always" gutterBottom>
+              Gas
+            </Typography>
+            <Slider
+              defaultValue={gas_marks[init_index].value}
+              getAriaValueText={valuetext}
+              aria-labelledby="discrete-slider-always"
+              step={10}
+              marks={gas_marks}
+              valueLabelDisplay="on"
+              min={gas_marks[min_index].value}
+              max={gas_marks[max_index].value}
+            />
+          </div>
+        </div>
+        <div class="row" id="results-row">
+          <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100"/>
+          <div class="col">
+            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !  
+          </div>
+        </div>
+      </div>
+    );
   }
+}
 
   export default Comparator;
