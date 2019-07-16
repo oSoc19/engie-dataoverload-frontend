@@ -128,4 +128,12 @@ input::-webkit-inner-spin-button {
 input:disabled{
     background-color:white;
 }
+
+.elec_devices{
+  padding: 31px;
+}
+
+.device_name{
+  margin-left: 11px;
+}
          

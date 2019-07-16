@@ -31,8 +31,8 @@ class QuizElectricity extends Component {
       <div className="container content">
       <h2 className="text-center">Devices consuming electricy</h2>
       <hr />
-    <div className="col-md-6">
-        <div class="qty mt-5">
+    <div className="row elec_devices" >
+        <div class="qty col-md-6">
             <span class="minus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>-</span>
             <input 
                 type="number" 
@@ -44,10 +44,27 @@ class QuizElectricity extends Component {
                 //value={this.state.quizValues.familySize}
             />
             <span class="plus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>+</span>
-            Dishwashers
+            <span class="device_name">Dishwashers</span>
+        </div>
+
+        <div class="qty col-md-6">
+            <span class="minus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" 
+                class="count" 
+                name="computer" 
+                value={this.state.nb_dishwasher}
+                min="1"
+                max="10"
+                //value={this.state.quizValues.familySize}
+            />
+            <span class="plus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>+</span>
+            <span class="device_name">TV screens</span>
         </div>
 
       </div>
+
+
       </div>
     );
   }

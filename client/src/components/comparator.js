@@ -15,7 +15,7 @@ let init_index = 3;
 const elec_marks = [
   {value: 2000, label: '2000 kWh',},
   {value: 5000, label: '5000 kWh',},
-  {value: 3000, label: 'AVG: 4436.59 kWh',},
+  {value: 4436, label: 'AVG: 4436.59 kWh',},
   {value: 3700, label: 'YOU',},
 ];
 

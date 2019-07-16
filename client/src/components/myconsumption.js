@@ -78,7 +78,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="form-control" 
                                 id="waterConsYearly" 
-                                placeholder={95}
+                                placeholder={123}
                                 onChange={this.handleChange} 
                                 value={this.state.waterConsYearly}
                                 />
@@ -100,7 +100,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="form-control" 
                                 id="gasConsYearly"
-                                placeholder={1450}
+                                placeholder={750}
                                 onChange={this.handleChange} 
                                 value={this.state.gasConsYearly}
                                 />
