@@ -28,6 +28,7 @@ class App extends Component {
                   <li><Link to={'/myconsumption'} className="nav-link">My Consumption</Link></li>
                   <li><Link to={'/info'} className="nav-link">Fun Facts</Link></li>
                   <li><Link to={'/solar'} className="nav-link">Solar Impact</Link></li>
+                  <li><Link to={'/comparator'} className="nav-link">Comparator</Link></li>
                 </ul>
               </div>
             </div>

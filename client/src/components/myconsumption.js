@@ -20,20 +20,17 @@ class MyConsumption extends Component {
         let storageData = localStorage.getItem('consData');
 
         if(storageData != null){
-            console.log(JSON.parse(storageData));
             this.setState({consValues:JSON.parse(storageData)});
         }
     }
 
     handleChange(event) {
-        console.log(parseInt(event.target.value));
         this.setState({consData: this.state.consValues[event.target.id] = parseInt(event.target.value)})
-        console.log(this.state.consValues);
         localStorage.setItem('consData', JSON.stringify(this.state.consValues));
     }
 
     goToResults() {
-        localStorage.setItem('consData', JSON.stringify(this.state.consValues));
+        console.log(this.state.consValues);
         let path = `comparator`;
         this.props.history.push(path);
     }
@@ -55,7 +52,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="form-control" 
                                 id="elecConsYearly" 
-                                placeholder={3000}
+                                placeholder="3000"
                                 onChange={this.handleChange} 
                                 value={this.state.elecConsYearly}
                                 min="100"

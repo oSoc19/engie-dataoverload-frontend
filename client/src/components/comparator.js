@@ -70,8 +70,7 @@ class Comparator extends Component {
     this.api = new QuizAPI();
   }
 
-  componentDidMount() {
-    
+  componentWillMount() {
     this.api.getSolarProdLocation(this.state.zip_code).then(
         data => {               
             this.setState({ solar_prod_location: data[0].avg });
