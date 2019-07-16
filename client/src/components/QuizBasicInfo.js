@@ -87,7 +87,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group w-50">
-                                <label htmlFor="preferredRoomTemp">How well is your house insulated?</label>
+                                <label htmlFor="houseInsulation">How well is your house insulated?</label>
                                 <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_low" value="insulation_low"/>
                                   <label class="form-check-label" for="insulation_low">Poorly</label>
