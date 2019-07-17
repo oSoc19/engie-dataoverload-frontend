@@ -93,11 +93,11 @@ class QuizBasicInfo extends Component {
                                   <label className="form-check-label" htmlFor="insulation_low">Poorly</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="radio" name="inlineRadioOptionss" id="insulation_avg" value="insulation_avg"/>
+                                  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_avg" value="insulation_avg"/>
                                   <label className="form-check-label" htmlFor="insulation_avg">Average</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="radio" name="inlineRadioOptionss" id="insulation_well" value="insulation_well"/>
+                                  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_well" value="insulation_well"/>
                                   <label className="form-check-label" htmlFor="insulation_well">Well</label>
                                 </div>
                             </div>
