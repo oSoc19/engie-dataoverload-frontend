@@ -21,7 +21,7 @@ class QuizModel {
         nbKettle: "",
         nbShowersPerWeek: "",
         nbBathsPerWeek: "",
-        dishWasher: "",
+        nbDishWasher: "",
         gardenWatering: "",
         pool: "",
         naturalGasConnection: "",

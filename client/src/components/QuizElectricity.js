@@ -5,25 +5,38 @@ class QuizElectricity extends Component {
   constructor() {
     super();
     this.state = {
-        nb_dishwasher: 1,
-        //quizValues: model.values
+        nbDishwasher: 1,
+        nbFridge: 1,
+        nbCoffeeMaker: 1,
+        nbMicroWaveOven: 1,
+        nbElectricOven: 1,
+        nbTv: 1,
+        nbGamingConsole: 1,
+        nbLaptops: 1,
+        nbDeskPC: 1,
+        nbWashingMachine: 1,
+        nbTumbleDryer: 1,
+        nbVacuumCleaner: 1,
+        nbHairDryer: 1,
     }
 
     this.handlePlusMinus = this.handlePlusMinus.bind(this);
   }
 
-  handlePlusMinus(e) {
-    var tmp = 1;
-    if (e.target.className === 'minus bg-dark') {
-        tmp = -1;
+  handlePlusMinus(event) {
+    event.preventDefault();
+    var incr = 1;
+    if (event.target.className === 'minus bg-dark') {
+        incr = -1;
     }
-    if (e.target.id === 'dishwasher') {
-        tmp = Math.min(10, Math.max(0, tmp + this.state.nb_dishwasher));
-        this.setState({ nb_dishwasher: tmp });
-    }
-    // e.preventDefault();
-    // var test = e.target.id;
-    // this.setState({ nb_dishwashers: this.state.nb_dishwashers})
+    var id = event.target.id;
+    console.log(id);
+    console.log(this.state[id]);
+    var tmp = Math.min(10, Math.max(0, incr + parseInt(this.state[id])));
+    console.log(tmp);
+    console.log("pre ", this.state);
+    this.setState({ [id]: tmp });
+    console.log("post ", this.state);
   }
     
   render() {
@@ -32,34 +45,34 @@ class QuizElectricity extends Component {
       <h2 className="text-center">Devices consuming electricy</h2>
       <hr />
     <div className="row elec_devices" >
-        <div class="qty col-md-6">
-            <span class="minus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>-</span>
+        <div className="qty col-md-6">
+            <span className="minus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>-</span>
             <input 
                 type="number" 
-                class="count" 
+                className="count" 
                 name="qty" 
-                value={this.state.nb_dishwasher}
+                value={this.state.nbDishwasher}
                 min="1"
                 max="10"
                 //value={this.state.quizValues.familySize}
             />
-            <span class="plus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>+</span>
-            <span class="device_name">Dishwashers</span>
+            <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
+            <span className="device_name">Dishwashers</span>
         </div>
 
-        <div class="qty col-md-6">
-            <span class="minus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>-</span>
+        <div className="qty col-md-6">
+            <span className="minus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>-</span>
             <input 
                 type="number" 
-                class="count" 
+                className="count" 
                 name="computer" 
-                value={this.state.nb_dishwasher}
+                value={this.state.nbFridge}
                 min="1"
                 max="10"
                 //value={this.state.quizValues.familySize}
             />
-            <span class="plus bg-dark" id="dishwasher" onClick={this.handlePlusMinus}>+</span>
-            <span class="device_name">TV screens</span>
+            <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
+            <span className="device_name">TV screens</span>
         </div>
 
       </div>

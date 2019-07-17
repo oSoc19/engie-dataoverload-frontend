@@ -4,7 +4,7 @@ import QuizElectricity from './QuizElectricity';
 
 class Quiz extends Component {
 
-    components = [QuizBasicInfo, QuizElectricity];
+    components = [QuizElectricity, QuizBasicInfo];
 
     constructor() {
         super();
