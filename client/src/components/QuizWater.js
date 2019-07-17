@@ -36,19 +36,19 @@ class QuizWater extends Component {
                     <div className="col-md-6 offset-md-3">
                         <form>
                             <div className="form-group">
-                                <label htmlFor="showersPerWeek">On average, how many showers does every person take per week?</label>
+                                <label htmlFor="showersPerWeek">How many showers per person in one week?</label>
                                 <input 
                                     type="number"
                                     id="nbShowersPerWeek" 
                                     className="form-control" 
-                                    placeholder="21" 
+                                    placeholder="7" 
                                     onChange={this.handleChange} 
                                     value={this.state.quizValues.nbShowersPerWeek}
                                 />
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="bathsPerWeek">And how many baths per week?</label>
+                                <label htmlFor="bathsPerWeek">And how many baths in one week?</label>
                                 <input 
                                     type="number" 
                                     id="nbBathsPerWeek" 
