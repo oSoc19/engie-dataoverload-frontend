@@ -41,16 +41,13 @@ class QuizElectricity extends Component {
             let count = parseInt(elecModel.display[i].count);
             model.values[id] = count;
         }
+
         this.state = {
             quizValues: model.values,
             displayValues: elecModel.display,
             renderList: []
         }
-        // for (var i = 0; i < this.state.displayValues.length; i++) {
-        //     let id = this.state.displayValues[i].id;
-        //     let count = parseInt(this.state.displayValues[i].count);
-        //     this.setState({quizValues: this.state.quizValues[id] = count});
-        // }
+
         console.log(this.state.quizValues);   
         this.handlePlusMinus = this.handlePlusMinus.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -69,13 +66,12 @@ class QuizElectricity extends Component {
         nb_devices = Math.min(MAX_NB_DEVICES, Math.max(MIN_NB_DEVICES, incr + nb_devices));
         console.log("-->", nb_devices);
 
-        let quizValuesCopy = JSON.parse(JSON.stringify(this.state.quizValues));
-        console.log(id);
-        console.log(quizValuesCopy[id]);
+
+        var quizValuesCopy = { ...this.state.quizValues};
         quizValuesCopy[id] = nb_devices;
 
         console.log("copy: ", quizValuesCopy);
-        this.setState({ quizValues: quizValuesCopy });
+        this.setState({ quizValue: quizValuesCopy });
         console.log("after ", this.state.quizValues);
     }
 
@@ -96,19 +92,12 @@ class QuizElectricity extends Component {
         let list = this.state.displayValues.map( (element) => {
             let id = element.id;
             let name = element.name;  
-            console.log("render: ", this.state.quizValues);
-            console.log("render2: ", this.state.quizValues[id]);
-            console.log("element", element);
             return (
                 <div className="qty col-md-4" key={id}>
                     <span className="minus bg-dark" id={id} onClick={this.handlePlusMinus}>-</span>
-                    <input 
-                        type="number" 
-                        className="count" 
-                        min="1"
-                        max="10"
-                        value={this.state.quizValues[id]}
-                    />
+                    <span className="device_count">
+                        {this.state.quizValues[id]}
+                    </span>
                     <span className="plus bg-dark" id={id} onClick={this.handlePlusMinus}>+</span>
                     <span className="device_name">{name}</span>
                 </div>

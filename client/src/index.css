@@ -136,4 +136,9 @@ input:disabled{
 .device_name{
   margin-left: 11px;
 }
+
+.device_count{
+  padding: 7px;
+  font-size: 1.03em;
+}
          
