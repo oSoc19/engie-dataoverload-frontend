@@ -106,7 +106,6 @@ class ComparatorController {
       + tvCons + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons
       + electricOvenCons + electricToothbrushCons + hairDryerCons + kettleCons;
 
-    console.log("(controller)elec :" + results);
     return Math.round(results);
   };
 }

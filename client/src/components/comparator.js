@@ -103,20 +103,34 @@ class Comparator extends Component {
 
   componentWillMount() {
     this.api.getSolarProdLocation(this.state.zip_code).then(
-        data => {               
+        data => {
+            console.log(data);               
             this.setState({ solar_prod_location: data[0].avg });
+            console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
         }
     );
 
     let storageData = localStorage.getItem('consData');
     
-    //If the user inputs his values directly
+    //If the user inputs his values directly using a clone to set the state
     if(storageData != null){
         this.setState({consValues:JSON.parse(storageData)});
 
-        this.state.elec_marks[3].value = this.state.consValues.elecConsYearly;
-        this.state.water_marks[3].value = this.state.consValues.waterConsYearly;
-        this.state.gas_marks[3].value = this.state.consValues.gasConsYearly;
+        let elec_marks_clone = [...this.state.elec_marks];
+        elec_marks_clone[3].value = this.state.consValues.elecConsYearly;
+        this.setState({elec_marks: elec_marks_clone});
+        defaultElec = this.state.elec_marks[3].value;
+        
+        let water_marks_clone = [...this.state.water_marks];
+        water_marks_clone[3].value = this.state.consValues.waterConsYearly;
+        this.setState({water_marks : water_marks_clone});
+        defaultWater = this.state.water_marks[3].value;
+
+        let gas_marks_clone = [...this.state.gas_marks];
+        gas_marks_clone[3].value = this.state.consValues.gasConsYearly;
+        this.setState({gas_marks : gas_marks_clone});
+        defaultGas = this.state.gas_marks[3].value;
+
     } else { //If the values come from the quizz and the local storage is null
       defaultElec = this.controller.getValues(values, "electricity");
       defaultWater = this.controller.getValues(values, "water");
@@ -126,17 +140,17 @@ class Comparator extends Component {
     //Updates the value of the slider (using a clone)
     this.funfacts.getFunFacts().then(
       data => {
-        let elec_marks_clone = [...this.state.elec_marks]
+        let elec_marks_clone = [...this.state.elec_marks];
         elec_marks_clone[2].value = data[0].value;
         elec_marks_clone[2].label = "AVG: " + round(data[0].value, 0) + "kWh";
         elec_marks_clone[3].value = defaultElec;
 
-        let water_marks_clone = [...this.state.water_marks]
+        let water_marks_clone = [...this.state.water_marks];
         water_marks_clone[2].value = data[2].value;
         water_marks_clone[2].label = "AVG: " + round(data[2].value, 0) + "m³";
         water_marks_clone[3].value = defaultWater;
 
-        let gas_marks_clone = [...this.state.gas_marks]
+        let gas_marks_clone = [...this.state.gas_marks];
         gas_marks_clone[2].value = data[1].value;
         gas_marks_clone[2].label = "AVG: " + round(data[1].value, 0) + "m³";
         gas_marks_clone[3].value = defaultGas;
@@ -180,7 +194,7 @@ class Comparator extends Component {
               defaultValue={defaultWater}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-always"
-              step={100}
+              step={10}
               marks={this.state.water_marks}
               valueLabelDisplay="on"
               min={this.state.water_marks[min_index].value}
