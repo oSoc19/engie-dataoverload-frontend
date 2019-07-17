@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import QuizBasicInfo from './QuizBasicInfo';
 import QuizElectricity from './QuizElectricity';
 import QuizWater from './QuizWater';
@@ -6,7 +8,7 @@ import QuizGas from './QuizGas';
 
 class Quiz extends Component {
 
-    components = [QuizBasicInfo, QuizElectricity, QuizWater, QuizGas];
+    components = [QuizGas, QuizBasicInfo, QuizElectricity, QuizWater];
 
     constructor() {
         super();
@@ -16,6 +18,7 @@ class Quiz extends Component {
 
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
+        this.goToResults = this.goToResults.bind(this);
     }
 
     handleNext(e) {
@@ -31,8 +34,15 @@ class Quiz extends Component {
 
         if(newNr === this.components.length){
             console.log("last next");
+            this.goToResults();
         }
-    }        
+    }
+
+    goToResults() {
+        console.log(this.state.consValues);
+        let path = `comparator`;
+        this.props.history.push(path);
+    }    
 
     handlePrevious(e) {
         e.preventDefault();

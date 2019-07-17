@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
 import ConsModel from '../model/ConsModel';
 
 
