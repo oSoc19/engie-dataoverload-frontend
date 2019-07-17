@@ -1,4 +1,4 @@
-class QuizModel {
+export default class QuizModel {
     values = {
         familySize: "",
         nbRooms: "",
@@ -17,8 +17,6 @@ class QuizModel {
         nbTumbleDryer: "",
         nbVacuumCleaner: "",
         nbElectricToothbrush: "",
-        nbHairDryer: "",
-        nbKettle: "",
         nbShowersPerWeek: "",
         nbBathsPerWeek: "",
         nbDishWasher: "",
@@ -29,4 +27,3 @@ class QuizModel {
         typeCooking: "" //gas, electric, induction
     }
 }
-export default QuizModel;

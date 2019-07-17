@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import QuizBasicInfo from './QuizBasicInfo';
 import QuizElectricity from './QuizElectricity';
+import QuizWater from './QuizWater';
+import QuizGas from './QuizGas';
 
 class Quiz extends Component {
 
-    components = [QuizElectricity, QuizBasicInfo];
+    components = [QuizBasicInfo, QuizElectricity, QuizWater, QuizGas];
 
     constructor() {
         super();
