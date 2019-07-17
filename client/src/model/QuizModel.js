@@ -19,10 +19,10 @@ export default class QuizModel {
         nbElectricToothbrush: "",
         nbShowersPerWeek: "",
         nbBathsPerWeek: "",
-        nbDishWasher: "",
-        gardenWatering: "",
-        pool: "",
-        naturalGasConnection: "",
+        dishWasher: "", //true or false
+        gardenWatering: "", //true or false
+        pool: "", //true or false
+        naturalGasConnection: "", //true or false
         nbCookingPerWeek: "",
         typeCooking: "" //gas, electric, induction
     }
