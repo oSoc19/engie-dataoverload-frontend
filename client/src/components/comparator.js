@@ -14,6 +14,36 @@ let max_index = 1;
 
 let defaultElec, defaultWater, defaultGas;
 
+//Define object with zero and false values (default)
+let dataObject = {
+  familySize: 0,
+  nbRooms: 0,
+  prefRoomTemp: 0,
+  houseInsulation: 0, //1 is poor, 2 is average, 3 is good
+  nbFridge: 0,
+  nbCoffeeMaker: 0,
+  nbMicroWaveOven: 0,
+  nbElectricOven: 0,
+  nbTv: 0,
+  nbGamingConsole: 0,
+  nbLaptops: 0,
+  nbDeskPC: 0,
+  nbWashingMachine: 0,
+  nbTumbleDryer: 0,
+  nbVacuumCleaner: 0,
+  nbElectricToothbrush: 0,
+  nbHairDryer: 0,
+  nbKettle: 0,
+  nbShowersPerWeek: 0,
+  nbBathsPerWeek: 0,
+  dishWasher: false,
+  gardenWatering: false,
+  pool: false,
+  naturalGasConnection: false,
+  nbCookingPerWeek: 0,
+  typeCooking: "gas" //gas, electric, induction
+}
+
 function valuetext(value) {
   return `${value}kWh`;
 }
@@ -26,40 +56,35 @@ function gasValuetext(value) {
   return `${value}` + `m`.sup();
 }
 
-// function valueLabelFormat(value) {
-//   return marks.findIndex(mark => mark.value === value) + 1;
-// }
-
-
 //THIS "VALUES" VARIABLE IS JUST FOR TEST AND SHOULD BE DELETED AFTERWARDS
-var values = {
-  familySize: 3,
-  nbRooms: 5,
-  prefRoomTemp: 21,
-  houseInsulation: 2, //1 is poor, 2 is average, 3 is good
-  nbFridge: 1,
-  nbCoffeeMaker: 0,
-  nbMicroWaveOven: 1,
-  nbElectricOven: 1,
-  nbTv: 1,
-  nbGamingConsole: 0,
-  nbLaptops: 1,
-  nbDeskPC: 1,
-  nbWashingMachine: 1,
-  nbTumbleDryer: 1,
-  nbVacuumCleaner: 1,
-  nbElectricToothbrush: 0,
-  nbHairDryer: 0,
-  nbKettle: 0,
-  nbShowersPerWeek: 21,
-  nbBathsPerWeek: 0,
-  dishWasher: true,
-  gardenWatering: false,
-  pool: false,
-  naturalGasConnection: true,
-  nbCookingPerWeek: 2,
-  typeCooking: "gas" //gas, electric, induction
-}
+// var values = {
+//   familySize: 3,
+//   nbRooms: 5,
+//   prefRoomTemp: 21,
+//   houseInsulation: 2, //1 is poor, 2 is average, 3 is good
+//   nbFridge: 1,
+//   nbCoffeeMaker: 0,
+//   nbMicroWaveOven: 1,
+//   nbElectricOven: 1,
+//   nbTv: 1,
+//   nbGamingConsole: 0,
+//   nbLaptops: 1,
+//   nbDeskPC: 1,
+//   nbWashingMachine: 1,
+//   nbTumbleDryer: 1,
+//   nbVacuumCleaner: 1,
+//   nbElectricToothbrush: 0,
+//   nbHairDryer: 0,
+//   nbKettle: 0,
+//   nbShowersPerWeek: 21,
+//   nbBathsPerWeek: 0,
+//   dishWasher: true,
+//   gardenWatering: false,
+//   pool: false,
+//   naturalGasConnection: true,
+//   nbCookingPerWeek: 2,
+//   typeCooking: "gas" //gas, electric, induction
+// }
 
 class Comparator extends Component {
 
@@ -70,27 +95,28 @@ class Comparator extends Component {
 
 
     this.state = {
-      results: 0,
+      results: 0,
       solar_prod_location: 10,
       zip_code: 6543,
       consValues: JSON.parse(storageData),
-      elec_marks : [
-        {value: 2000, label: '2000 kWh',},
-        {value: 10000, label: '10000 kWh',},
-        {value: 0, label: '',},
-        {value: 0, label: 'YOU',},
+      dataObject,
+      elec_marks: [
+        { value: 2000, label: '2000 kWh', },
+        { value: 10000, label: '10000 kWh', },
+        { value: 0, label: '', },
+        { value: 0, label: 'YOU', },
       ],
-       water_marks : [
-        {value: 0, label: '0 m³',},
-        {value: 250, label: '250 m³',},
-        {value: 0, label: '',},
-        {value: 0, label: 'YOU',},
+      water_marks: [
+        { value: 0, label: '0 m³', },
+        { value: 250, label: '250 m³', },
+        { value: 0, label: '', },
+        { value: 0, label: 'YOU', },
       ],
-      gas_marks : [
-        {value: 500, label: '500 m³',},
-        {value: 2500, label: '2500 m³',},
-        {value: 0, label: '',},
-        {value: 0, label: 'YOU',},
+      gas_marks: [
+        { value: 500, label: '500 m³', },
+        { value: 2500, label: '2500 m³', },
+        { value: 0, label: '', },
+        { value: 0, label: 'YOU', },
       ]
     }
 
@@ -103,40 +129,52 @@ class Comparator extends Component {
 
   componentWillMount() {
     this.api.getSolarProdLocation(this.state.zip_code).then(
-        data => {
-            console.log(data);               
-            this.setState({ solar_prod_location: data[0].avg });
-            console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
-        }
+      data => {
+        console.log(data);
+        this.setState({ solar_prod_location: data[0].avg });
+        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
+      }
     );
 
     let storageData = localStorage.getItem('consData');
-    
-    //If the user inputs his values directly using a clone to set the state
-    if(storageData != null){
-        this.setState({consValues:JSON.parse(storageData)});
 
-        let elec_marks_clone = [...this.state.elec_marks];
-        elec_marks_clone[3].value = this.state.consValues.elecConsYearly;
-        this.setState({elec_marks: elec_marks_clone});
-        defaultElec = this.state.elec_marks[3].value;
-        
-        let water_marks_clone = [...this.state.water_marks];
-        water_marks_clone[3].value = this.state.consValues.waterConsYearly;
-        this.setState({water_marks : water_marks_clone});
-        defaultWater = this.state.water_marks[3].value;
+    //If the user inputs his values directly (use of a clone to set the state)
+    if (storageData != null) {
+      this.setState({ consValues: JSON.parse(storageData) });
+      console.log("donnée" + storageData);
+      console.log("données parsées : " + this.state.consValues);
 
-        let gas_marks_clone = [...this.state.gas_marks];
-        gas_marks_clone[3].value = this.state.consValues.gasConsYearly;
-        this.setState({gas_marks : gas_marks_clone});
-        defaultGas = this.state.gas_marks[3].value;
+      if (this.state.consValues.quiz){ //If values come from the quiz (quiz is true)
+        this.state.consValues.elecConsYearly = this.controller.getValues(this.state.consValues, "electricity");
+        this.state.consValues.waterConsYearly = this.controller.getValues(this.state.consValues, "water");
+        this.state.consValues.gasConsYearly = this.controller.getValues(this.state.consValues, "gas");
+        this.state.consValues.quiz = false; //Put it to false for refresh
+      }
 
-    } else { //If the values come from the quizz and the local storage is null
-      defaultElec = this.controller.getValues(values, "electricity");
-      defaultWater = this.controller.getValues(values, "water");
-      defaultGas = this.controller.getValues(values, "gas");
+      //Then store them again in the local storage
+      localStorage.setItem('consData', JSON.stringify(this.state.consValues));
+
+      let elec_marks_clone = [...this.state.elec_marks];
+      elec_marks_clone[3].value = this.state.consValues.elecConsYearly;
+      this.setState({ elec_marks: elec_marks_clone });
+      defaultElec = this.state.elec_marks[3].value;
+
+      let water_marks_clone = [...this.state.water_marks];
+      water_marks_clone[3].value = this.state.consValues.waterConsYearly;
+      this.setState({ water_marks: water_marks_clone });
+      defaultWater = this.state.water_marks[3].value;
+
+      let gas_marks_clone = [...this.state.gas_marks];
+      gas_marks_clone[3].value = this.state.consValues.gasConsYearly;
+      this.setState({ gas_marks: gas_marks_clone });
+      defaultGas = this.state.gas_marks[3].value;
     }
-    
+    // else { //If the local storage is null, JUST FOR TESTS
+    //   defaultElec = this.controller.getValues(values, "electricity");
+    //   defaultWater = this.controller.getValues(values, "water");
+    //   defaultGas = this.controller.getValues(values, "gas");
+    // }
+
     //Updates the value of the slider (using a clone)
     this.funfacts.getFunFacts().then(
       data => {
@@ -164,10 +202,10 @@ class Comparator extends Component {
   }
 
   render() {
-    return (    
+    return (
       <div className="container content">
-      <h2 className="text-center">Yearly consumption results</h2>
-      <hr />
+        <h2 className="text-center">Yearly consumption results</h2>
+        <hr />
         <div class="row" id="results-row">
           <div class="col">
             <Typography id="range-slider" gutterBottom>
@@ -220,9 +258,9 @@ class Comparator extends Component {
           </div>
         </div>
         <div class="row" id="results-row">
-          <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100"/>
+          <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
           <div class="col">
-            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !  
+            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !
           </div>
         </div>
       </div>
@@ -230,4 +268,4 @@ class Comparator extends Component {
   }
 }
 
-  export default Comparator;
+export default Comparator;
