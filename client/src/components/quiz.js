@@ -4,7 +4,7 @@ import QuizElectricity from './QuizElectricity';
 
 class Quiz extends Component {
 
-    components = [QuizBasicInfo, QuizElectricity];
+    components = [QuizElectricity, QuizBasicInfo];
 
     constructor() {
         super();
@@ -27,7 +27,7 @@ class Quiz extends Component {
             this.setState({quizNr: newNr})
         }
 
-        if(newNr == this.components.length){
+        if(newNr === this.components.length){
             console.log("last next");
         }
     }        
