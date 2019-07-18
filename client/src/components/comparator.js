@@ -178,6 +178,7 @@ class Comparator extends Component {
               Water
             </Typography>
             <Slider
+              disabled
               defaultValue={defaultWater}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-always"
@@ -195,6 +196,7 @@ class Comparator extends Component {
               Gas
             </Typography>
             <Slider
+              disabled
               defaultValue={defaultGas}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-always"

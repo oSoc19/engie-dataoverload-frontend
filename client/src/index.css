@@ -71,6 +71,10 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
 }
 
 /* Quiz buttons layout */
+.qty{
+  padding: 10px;
+}
+
 .qty .count {
     color: #000;
     display: inline-block;
@@ -138,7 +142,7 @@ input:disabled{
 }
 
 .device_name{
-  margin-left: 11px;
+  margin: 5px;
 }
        
 /*white box for quiz */
@@ -229,3 +233,7 @@ input:disabled{
   color: white!important;
 }
 
+/*slider layout*/
+.MuiSlider-root.Mui-disabled{
+  color: #8AB83E!important;
+}
