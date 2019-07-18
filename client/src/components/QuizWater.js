@@ -17,7 +17,6 @@ class QuizWater extends Component {
         let storageData = localStorage.getItem('basicData');
 
         if(storageData != null){
-            console.log(JSON.parse(storageData));
             this.setState({quizValues:JSON.parse(storageData)});
         }
         
@@ -25,7 +24,6 @@ class QuizWater extends Component {
 
     handleChange(event) {
         this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
-        console.log(this.state.quizValues);
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
 
@@ -37,8 +35,6 @@ class QuizWater extends Component {
         } else {
             value = "true";
         }
-
-        console.log("valeur enregistrée :" + value);
         
         this.setState({basicData: this.state.quizValues[event.target.id] = value})
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
@@ -52,8 +48,6 @@ class QuizWater extends Component {
         } else {
             value = "true";
         }
-
-        console.log("valeur enregistrée :" + value);
         
         this.setState({basicData: this.state.quizValues[event.target.id] = value})
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));

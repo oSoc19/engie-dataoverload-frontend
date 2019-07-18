@@ -21,6 +21,7 @@ class Quiz extends Component {
         this.goToResults = this.goToResults.bind(this);
         localStorage.removeItem('elecData');
         localStorage.removeItem('basicData');
+        localStorage.removeItem('consData');
     }
 
     handleNext(e) {
@@ -30,18 +31,15 @@ class Quiz extends Component {
         ++newNr;
                 
         if(newNr < this.components.length){
-            console.log(newNr);
             this.setState({quizNr: newNr})
         }
 
         if(newNr === this.components.length){
-            console.log("last next");
             this.goToResults();
         }
     }
 
     goToResults() {
-        console.log(this.state.consValues);
         let path = `comparator`;
         this.props.history.push(path);
     }    

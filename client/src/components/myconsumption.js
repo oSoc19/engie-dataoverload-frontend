@@ -29,7 +29,6 @@ class MyConsumption extends Component {
     }
 
     goToResults() {
-        console.log(this.state.consValues);
         let path = `comparator`;
         this.props.history.push(path);
     }

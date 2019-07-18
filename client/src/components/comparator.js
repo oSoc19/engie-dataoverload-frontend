@@ -5,7 +5,6 @@ import FunFactsAPI from '../api/funFactsAPI';
 import round from '../util';
 import ConsModel from '../model/ConsModel';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
@@ -14,76 +13,23 @@ let max_index = 1;
 
 let defaultElec, defaultWater, defaultGas;
 
-//Define object with zero (default)
-let dataObject = {
-  familySize: 0,
-  nbRooms: 0,
-  prefRoomTemp: 0,
-  houseInsulation: 0, //1 is poor, 2 is average, 3 is good
-  nbFridge: 0,
-  nbCoffeeMaker: 0,
-  nbMicroWaveOven: 0,
-  nbElectricOven: 0,
-  nbTv: 0,
-  nbGamingConsole: 0,
-  nbLaptops: 0,
-  nbDeskPC: 0,
-  nbWashingMachine: 0,
-  nbTumbleDryer: 0,
-  nbVacuumCleaner: 0,
-  nbElectricToothbrush: 0,
-  nbHairDryer: 0,
-  nbKettle: 0,
-  nbShowersPerWeek: 0,
-  nbBathsPerWeek: 0,
-  dishWasher: false,
-  gardenWatering: false,
-  pool: false,
-  naturalGasConnection: false,
-  nbCookingPerWeek: 0,
-  typeCooking: "gas" //gas, electric, induction
+function extend(obj, src) {
+  for (var key in src) {
+      if (src.hasOwnProperty(key)) obj[key] = src[key];
+  }
+  return obj;
 }
 
 function valuetext(value) {
   return `${value}kWh`;
 }
 
-function waterValuetext(value) {
-  return `${value}` + `m`.sup();
-}
+// function waterValuetext(value) {
+//   return `${value}` + `m`.sup();
+// }
 
-function gasValuetext(value) {
-  return `${value}` + `m`.sup();
-}
-
-//THIS "VALUES" VARIABLE IS JUST FOR TEST AND SHOULD BE DELETED AFTERWARDS
-// var values = {
-//   familySize: 3,
-//   nbRooms: 5,
-//   prefRoomTemp: 21,
-//   houseInsulation: 2, //1 is poor, 2 is average, 3 is good
-//   nbFridge: 1,
-//   nbCoffeeMaker: 0,
-//   nbMicroWaveOven: 1,
-//   nbElectricOven: 1,
-//   nbTv: 1,
-//   nbGamingConsole: 0,
-//   nbLaptops: 1,
-//   nbDeskPC: 1,
-//   nbWashingMachine: 1,
-//   nbTumbleDryer: 1,
-//   nbVacuumCleaner: 1,
-//   nbElectricToothbrush: 0,
-//   nbHairDryer: 0,
-//   nbKettle: 0,
-//   nbShowersPerWeek: 21,
-//   nbBathsPerWeek: 0,
-//   dishWasher: true,
-//   gardenWatering: false,
-//   pool: false,
-//   naturalGasConnection: true,
-//   nbCookingPerWeek: 2,
-//   typeCooking: "gas" //gas, electric, induction
+// function gasValuetext(value) {
+//   return `${value}` + `m`.sup();
 // }
 
 class Comparator extends Component {
@@ -91,17 +37,17 @@ class Comparator extends Component {
   constructor() {
     super();
     let model = new ConsModel();
-    let storageData = localStorage.getItem('consData');
-    let testData = localStorage.getItem('quizData');
-
+    let basicData = localStorage.getItem('basicData');
+    //let consData = localStorage.getItem('consData');
+    let elecData = localStorage.getItem('elecData');
 
     this.state = {
       results: 0,
       solar_prod_location: 10,
       zip_code: 6543,
-      consValues: JSON.parse(storageData),
-      testD: JSON.parse(testData),
-      dataObject,
+      consValues: {},
+      basicValues: JSON.parse(basicData),
+      elecValues: JSON.parse(elecData),
       elec_marks: [
         { value: 2000, label: '2000 kWh', },
         { value: 10000, label: '10000 kWh', },
@@ -122,10 +68,6 @@ class Comparator extends Component {
       ]
     }
 
-    console.log("SALUT");
-    console.log("test2", this.state.consValues);
-    console.log("test données : " + this.state.testD);
-
     this.controller = new ComparatorController();
     this.api = new QuizAPI();
     this.funfacts = new FunFactsAPI();
@@ -134,50 +76,52 @@ class Comparator extends Component {
   componentWillMount() {
     this.api.getSolarProdLocation(this.state.zip_code).then(
       data => {
-        console.log(data);
         this.setState({ solar_prod_location: data[0].avg });
         console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
       }
     );
 
-    let storageData = localStorage.getItem('consData');
+    let basicData = localStorage.getItem('basicData');
+    let consData = localStorage.getItem('consData');
+    let elecData = localStorage.getItem('elecData');
 
     //If the user inputs his values directly (use of a clone to set the state)
-    if (storageData != null) {
-      this.setState({ consValues: JSON.parse(storageData) });
-      console.log("donnée" + storageData);
-      console.log("données parsées : " + this.state.consValues);
+    if (consData == null) {
+      //localStorage.setItem('consData', new ConsModel().values);
+      this.setState({ basicValues: JSON.parse(basicData) });
+      this.setState({ elecValues: JSON.parse(elecData) });
+      let basicElecValues = extend(this.state.basicValues, this.state.elecValues);
 
-      if (this.state.consValues.quiz){ //If values come from the quiz (quiz is true)
-        this.state.consValues.elecConsYearly = this.controller.getValues(this.state.consValues, "electricity");
-        this.state.consValues.waterConsYearly = this.controller.getValues(this.state.consValues, "water");
-        this.state.consValues.gasConsYearly = this.controller.getValues(this.state.consValues, "gas");
-        this.state.consValues.quiz = false; //Put it to false for refresh
-      }
+      this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
+      this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
+      this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
 
-      //Then store them again in the local storage
       localStorage.setItem('consData', JSON.stringify(this.state.consValues));
 
-      let elec_marks_clone = [...this.state.elec_marks];
-      elec_marks_clone[3].value = this.state.consValues.elecConsYearly;
-      this.setState({ elec_marks: elec_marks_clone });
-      defaultElec = this.state.elec_marks[3].value;
-
-      let water_marks_clone = [...this.state.water_marks];
-      water_marks_clone[3].value = this.state.consValues.waterConsYearly;
-      this.setState({ water_marks: water_marks_clone });
-      defaultWater = this.state.water_marks[3].value;
-
-      let gas_marks_clone = [...this.state.gas_marks];
-      gas_marks_clone[3].value = this.state.consValues.gasConsYearly;
-      this.setState({ gas_marks: gas_marks_clone });
-      defaultGas = this.state.gas_marks[3].value;
+    } else {
+      let consData = localStorage.getItem('consData');
+      let consValues = JSON.parse(consData);
+      
+      this.state.consValues.elecConsYearly = consValues.elecConsYearly;
+      this.state.consValues.waterConsYearly = consValues.waterConsYearly;
+      this.state.consValues.gasConsYearly = consValues.gasConsYearly;
     }
-    // else { //If the local storage is null, JUST FOR TESTS
-    //   defaultElec = this.controller.getValues(values, "electricity");
-    //   defaultWater = this.controller.getValues(values, "water");
-    //   defaultGas = this.controller.getValues(values, "gas");
-    // }
+    
+    //Put the value in the state (using a clone)
+    let elec_marks_clone = [...this.state.elec_marks];
+    elec_marks_clone[3].value = this.state.consValues.elecConsYearly;
+    this.setState({ elec_marks: elec_marks_clone });
+    defaultElec = this.state.elec_marks[3].value;
+
+    let water_marks_clone = [...this.state.water_marks];
+    water_marks_clone[3].value = this.state.consValues.waterConsYearly;
+    this.setState({ water_marks: water_marks_clone });
+    defaultWater = this.state.water_marks[3].value;
+
+    let gas_marks_clone = [...this.state.gas_marks];
+    gas_marks_clone[3].value = this.state.consValues.gasConsYearly;
+    this.setState({ gas_marks: gas_marks_clone });
+    defaultGas = this.state.gas_marks[3].value;
 
     //Updates the value of the slider (using a clone)
     this.funfacts.getFunFacts().then(

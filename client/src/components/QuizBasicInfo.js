@@ -18,7 +18,6 @@ class QuizBasicInfo extends Component {
         let storageData = localStorage.getItem('basicData');
 
         if(storageData != null){
-            console.log(JSON.parse(storageData));
             this.setState({quizValues:JSON.parse(storageData)});
         }
         
@@ -26,7 +25,6 @@ class QuizBasicInfo extends Component {
 
     handleChange(event) {
         this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
-        console.log(this.state.quizValues);
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
 
@@ -75,7 +73,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="preferredRoomTemp">What is your preferred room temperature? (°C)</label>
+                                <label htmlFor="preferredRoomTemp">What is your preferred house temperature? (°C)</label>
                                 <input 
                                     type="number" 
                                     id="prefRoomTemp" 

@@ -1,4 +1,4 @@
-export default class ElectricDevices {
+export default class QuizModel {
     values = {
         nbFridge: "",
         nbDishwasher: "",
@@ -11,6 +11,6 @@ export default class ElectricDevices {
         nbDeskPC: "",
         nbWashingMachine: "",
         nbTumbleDryer: "",
-        nbVacuumCleaner: "",
+        nbVacuumCleaner: ""
     }
 }

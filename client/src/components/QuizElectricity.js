@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ElectricDevices from '../model/ElectricDevices';
+import ElecDeviceModel from '../model/ElecDeviceModel';
 
 class QuizElectricity extends Component {
 
   constructor() {
     super();
-    let model = new ElectricDevices();
+    let model = new ElecDeviceModel();
     this.state = {
         nbDishwasher: 1,
         nbFridge: 1,
@@ -35,13 +35,13 @@ class QuizElectricity extends Component {
     var tmp = Math.min(10, Math.max(0, incr + parseInt(this.state[id])));
 
     this.setState({ [id]: tmp });
-    console.log("state: ", this.state);
 
     localStorage.setItem('elecData', JSON.stringify(this.state));
-    console.log(localStorage.getItem('elecData'));
   }
 
   handleChange(event) {
+        this.setState({ [event.target.id]: event.target.value });
+        localStorage.setItem('elecData', JSON.stringify(this.state));
   }
 
   componentDidMount() {
@@ -67,7 +67,6 @@ class QuizElectricity extends Component {
                 value={this.state.nbDishwasher}
                 min="1"
                 max="10"
-                onChange={this.handleChange}
             />
             <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Dishwashers</span>
@@ -82,7 +81,6 @@ class QuizElectricity extends Component {
                 value={this.state.nbFridge}
                 min="1"
                 max="10"
-                onChange={this.handleChange}
             />
             <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Fridges</span>

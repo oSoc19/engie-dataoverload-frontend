@@ -31,23 +31,20 @@ class ComparatorController {
     let avgToiletCons = 0.003 * 5 * 365; // 0.03 in m³ per day, average is 6 times a day
     let avgShowerCons = 0.065; //in m³ for one shower
     let avgBathCons = 0.130; //in m³ for one bath
-    let dishWasherCons = 220 * 0.012; //220 washings (0.012 m³ per washing) per year
+    //let dishWasherCons = 220 * 0.012; //220 washings (0.012 m³ per washing) per year
     let gardenWateringCons = 261 * 0.015; //261 m² (average garden surface belgium), 15 liters per m² (cons per year)
     let poolCons = 15; //m³ per year for a standard (8*4*1.5 pool)
 
     results += avgToiletCons * param.familySize + (avgShowerCons * param.nbShowersPerWeek * 52) + (avgBathCons * param.nbBathsPerWeek * 52);
 
-    if (param.dishWasher) {
-      results += dishWasherCons;
-    }
-    if (param.gardenWatering) {
+    if (param.gardenWatering === "true") {
       results += gardenWateringCons
     }
-    if (param.pool) {
+    if (param.pool === "true") {
       results += poolCons;
     }
 
-    return Math.round(results,0);
+    return Math.round(results, 0);
   };
 
   getGasConsEstimation(param) {
@@ -59,8 +56,8 @@ class ComparatorController {
     let smallGasConsumer = 5000 / 10.95;
     let noGasConsumer = 4265 / 10.95;
 
-    if (param.naturalGasConnection) {
-      if (param.typeCooking === "gas") {
+    if (param.naturalGasConnection == 1) {
+      if (param.typeCooking === "Gas") {
         if (param.nbCookingPerWeek > 4) {
           results += bigGasConsumer;
         } else {
@@ -73,7 +70,7 @@ class ComparatorController {
       results += noGasConsumer;
     }
 
-    return Math.round(results,0);
+    return Math.round(results, 0);
   };
 
   getElecConsEstimation(param) {
@@ -88,6 +85,7 @@ class ComparatorController {
       roomTempCons = 300 // 800 kWh per month
     }
     let fridgeCons = param.nbFridge * 350; //kWh per year
+    let dishwasherCons = param.nbDishwasher * 300;
     let coffeeMakerCons = param.nbCoffeeMaker * 30;
     let microWaveOvenCons = param.nbMicroWaveOven * 60;
     let electricOvenCons = param.nbElectricOven * 150;
@@ -102,8 +100,8 @@ class ComparatorController {
     let hairDryerCons = param.nbHairDryer * 11;
     let kettleCons = param.nbKettle * 30;
 
-    results = avgConsPerRoom + roomTempCons + fridgeCons + coffeeMakerCons + microWaveOvenCons + electricOvenCons
-      + tvCons + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons
+    results = avgConsPerRoom + roomTempCons + fridgeCons + dishwasherCons + coffeeMakerCons + microWaveOvenCons + electricOvenCons + tvCons
+      + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons
       + electricOvenCons + electricToothbrushCons + hairDryerCons + kettleCons;
 
     return Math.round(results);
