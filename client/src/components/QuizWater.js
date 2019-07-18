@@ -25,12 +25,14 @@ class QuizWater extends Component {
     handleChange(event) {
         event.preventDefault();
         this.setState({quizData: this.state.quizValues[event.target.id] = event.target.value})
+        console.log(this.state);
         localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
     }
 
     handleCheckBox(event) {
         event.preventDefault();
         this.setState({quizData: this.state.quizValues[event.target.id] = event.target.checked})
+        console.log(this.state);
         localStorage.setItem('quizData', JSON.stringify(this.state.quizValues))
     }
 
