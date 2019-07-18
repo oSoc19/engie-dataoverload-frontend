@@ -29,7 +29,7 @@ class QuizWater extends Component {
 
     render() {
         return (
-            <div className="container content">
+            <div className="container">
                 <h2 className="text-center">Some questions about your water habits</h2>
                 <hr />
                 <div className="row text-center">
