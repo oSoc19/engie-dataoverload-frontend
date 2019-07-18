@@ -4,7 +4,11 @@
 
 /*navigation*/
 .navbar{
+  background-color: white!important;
   padding: 20px;
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
+-moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
+box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
 }
 
 
@@ -136,4 +140,92 @@ input:disabled{
 .device_name{
   margin-left: 11px;
 }
-         
+       
+/*white box for quiz */
+.white-box{
+  padding: 25px;
+  background-color: white;
+  top: 100;
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
+}
+
+.quiz-scrollable{
+  overflow: scroll!important;
+  height: 60vh;
+}
+
+.quiz-buttons{
+  background-color: white;
+}
+
+.quiz-btn{
+  cursor: pointer;
+  font-size: 40px!important;
+}
+
+.quiz-btn:hover{
+  color:#8AB83E!important;
+}
+
+.top-whitespace{
+  padding: 20px;
+}
+
+/*Landing page - Home*/
+.main-background{
+  background: url(/background.svg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 88vh!important;
+}
+
+.home-div{
+  padding-top: 12%;
+}
+
+.home-div h1{
+  /*text-transform: uppercase;*/
+  font-weight: bold;
+  color:#616161;
+}
+
+.home-div .fas{
+  color:#616161;
+  font-size: 50px;
+  padding: 20px;
+}
+
+.home-div .btn{
+  width: 50%;
+}
+
+.home-div .btn-div{
+  margin-top:60px;
+}
+
+.home-div .btn-primary{
+  background-color: #8AB83E;
+  border: #8AB83E 2px solid;
+  color: white!important;
+}
+
+.home-div .btn-primary:hover{
+  background-color: #69AF23;
+}
+
+.home-div .btn-secondary{
+  background-color: white;
+  border: #8AB83E 2px solid;
+  color: #8AB83E!important;
+}
+
+.home-div .btn-secondary:hover{
+  background-color: #8AB83E;
+  border: #8AB83E 2px solid;
+  color: white!important;
+}
+

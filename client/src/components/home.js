@@ -2,49 +2,32 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWRlbG9vZiIsImEiOiJjamplYjRqbGY0bW5qM2tsZmpocHNiZmxyIn0.nGxW_OofuTFsGJNDUSm50A';
-
-
 class Home extends Component {
 
     constructor() {
         super();
-        this.state = {
-            lng: 4.6,
-            lat: 50.6,
-            zoom: 6.5
-        };
     }
 
     componentDidMount() {
-        const { lng, lat, zoom } = this.state;
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lng, lat],
-            zoom
-        });
-
-        map.on('move', () => {
-            const { lng, lat } = map.getCenter();
-
-            this.setState({
-                lng: lng.toFixed(4),
-                lat: lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-            });
-        });
+        
     }
 
     render() {
-        const { lng, lat, zoom } = this.state;
-
         return (
-            <div className="container content">
-                <h2 className="text-center">Fun Map</h2>
-                <hr />
-                <div className="map-div">
-                    <div ref={el => this.mapContainer = el} className="map absolute top right left bottom" />
+            <div className="main-background">
+                <div className="row home-div">
+                    <div className="col-md-12">
+                        <h1>Do you know how much you consume?</h1>
+                        <i className="fas fa-bolt"></i>
+                        <i className="fas fa-tint"></i>
+                        <i className="fas fa-burn"></i>
+
+                        <div className="row btn-div">
+                            <div className="col-md-6 text-right"><a className="btn btn-primary" href="/quiz">Do the quiz!</a></div>
+                            <div className="col-md-6 text-left"><a className="btn btn-secondary" href="/myconsumption">I know my numbers</a></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         );

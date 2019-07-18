@@ -27,7 +27,7 @@ class QuizGas extends Component {
 
     render() {
       return (
-        <div className="container content">
+        <div className="container">
           <h2 className="text-center">And finally something about gas</h2>
           <hr />
           <div className="row text-center">

@@ -55,16 +55,23 @@ class Quiz extends Component {
         const TagName = this.components[this.state.quizNr];
 
         return (
-            <div className="container content">
-                <TagName />
-                <div className="row text-center">
-                    <div className="col-md-6">
-                        <a className="btn btn-primary" onClick={this.handlePrevious}>Previous</a>
+            <div className="main-background">
+                <div className="top-whitespace"></div>
+
+                <div className="container white-box">
+                    <div className="quiz-scrollable">
+                        <TagName />
                     </div>
-                    <div className="col-md-6">
-                        <a className="btn btn-primary" onClick={this.handleNext}>Next</a>
+                    <div className="row text-center">
+                        <div className="col-md-6">
+                            <a className="quiz-btn" onClick={this.handlePrevious}><i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div className="col-md-6">
+                            <a className="quiz-btn" onClick={this.handleNext}><i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
+                
             </div>
         );
     }
