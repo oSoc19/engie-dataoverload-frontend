@@ -96,13 +96,12 @@ class ComparatorController {
     let washingMachineCons = param.nbWashingMachine * 220;
     let tumbleDryerCons = param.nbTumbleDryer * 300;
     let vacuumCleanerCons = param.nbVacuumCleaner * 80;
-    let electricToothbrushCons = param.nbElectricToothbrush * 0.3;
-    let hairDryerCons = param.nbHairDryer * 11;
-    let kettleCons = param.nbKettle * 30;
+    // let electricToothbrushCons = param.nbElectricToothbrush * 0.3;
+    // let hairDryerCons = param.nbHairDryer * 11;
+    // let kettleCons = param.nbKettle * 30;
 
     results = avgConsPerRoom + roomTempCons + fridgeCons + dishwasherCons + coffeeMakerCons + microWaveOvenCons + electricOvenCons + tvCons
-      + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons
-      + electricOvenCons + electricToothbrushCons + hairDryerCons + kettleCons;
+      + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons;
 
     return Math.round(results);
   };
