@@ -28,7 +28,7 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
 .img-fluid-logo {
     max-width: 70%;
     height: auto;
-    margin-top: -23px;
+    margin-top: 10px;
 }
 
 .card-title{
@@ -38,7 +38,7 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
 .card-people {
     padding: 7px;
     margin-bottom: 20px;
-    background-color: lightyellow;
+    background-color: lightgoldenrodyellow;
 }
 
 .card-title-people{
