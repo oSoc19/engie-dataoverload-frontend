@@ -9,10 +9,12 @@ class QuizWater extends Component {
             quizValues: model.values
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleGarden = this.handleGarden.bind(this);
+        this.handlePool = this.handlePool.bind(this);
     }
 
     componentDidMount(){
-        let storageData = localStorage.getItem('quizData');
+        let storageData = localStorage.getItem('basicData');
 
         if(storageData != null){
             console.log(JSON.parse(storageData));
@@ -22,9 +24,39 @@ class QuizWater extends Component {
     }
 
     handleChange(event) {
-        this.setState({quizData: this.state.quizValues[event.target.id] = event.target.value})
+        this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
         console.log(this.state.quizValues);
-        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
+        localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
+    }
+
+    handleGarden(event){
+        let value = (JSON.parse(localStorage.getItem('basicData'))).gardenWatering;
+        
+        if(value === "true"){
+            value = "false";
+        } else {
+            value = "true";
+        }
+
+        console.log("valeur enregistrée :" + value);
+        
+        this.setState({basicData: this.state.quizValues[event.target.id] = value})
+        localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
+    }
+
+    handlePool(event){
+        let value = (JSON.parse(localStorage.getItem('basicData'))).pool;
+        
+        if(value === "true"){
+            value = "false";
+        } else {
+            value = "true";
+        }
+
+        console.log("valeur enregistrée :" + value);
+        
+        this.setState({basicData: this.state.quizValues[event.target.id] = value})
+        localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
 
     render() {
@@ -62,11 +94,11 @@ class QuizWater extends Component {
                             <div className="form-group">
                                 <label htmlFor="additional-water">Do you have any of the following?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="gardenWatering"/>
+                                  <input className="form-check-input" onChange={this.handleGarden} type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="true"/>
                                   <label className="form-check-label" htmlFor="gardenWatering">Garden that needs watering</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="checkbox" name="inlineCheckboxOptions" id="pool" value="pool"/>
+                                  <input className="form-check-input" onChange={this.handlePool} type="checkbox" name="inlineCheckboxOptions" id="pool" value="true"/>
                                   <label className="form-check-label" htmlFor="pool">Pool</label>
                                 </div>
                             </div>

@@ -14,7 +14,7 @@ let max_index = 1;
 
 let defaultElec, defaultWater, defaultGas;
 
-//Define object with zero and false values (default)
+//Define object with zero (default)
 let dataObject = {
   familySize: 0,
   nbRooms: 0,
@@ -92,6 +92,7 @@ class Comparator extends Component {
     super();
     let model = new ConsModel();
     let storageData = localStorage.getItem('consData');
+    let testData = localStorage.getItem('quizData');
 
 
     this.state = {
@@ -99,6 +100,7 @@ class Comparator extends Component {
       solar_prod_location: 10,
       zip_code: 6543,
       consValues: JSON.parse(storageData),
+      testD: JSON.parse(testData),
       dataObject,
       elec_marks: [
         { value: 2000, label: '2000 kWh', },
@@ -120,7 +122,9 @@ class Comparator extends Component {
       ]
     }
 
+    console.log("SALUT");
     console.log("test2", this.state.consValues);
+    console.log("test données : " + this.state.testD);
 
     this.controller = new ComparatorController();
     this.api = new QuizAPI();

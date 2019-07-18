@@ -5,25 +5,12 @@ export default class QuizModel {
         zipCode: "",
         prefRoomTemp: "",
         houseInsulation: "", //1 is poor, 2 is average, 3 is good
-        nbFridge: "",
-        nbCoffeeMaker: "",
-        nbMicroWaveOven: "",
-        nbElectricOven: "",
-        nbTv: "",
-        nbGamingConsole: "",
-        nbLaptops: "",
-        nbDeskPC: "",
-        nbWashingMachine: "",
-        nbTumbleDryer: "",
-        nbVacuumCleaner: "",
-        nbElectricToothbrush: "",
-        nbShowersPerWeek: "",
-        nbBathsPerWeek: "",
-        nbDishWasher: "",
-        gardenWatering: "",
-        pool: "",
+        gardenWatering: "false",
+        pool: "false",
         naturalGasConnection: "",
         nbCookingPerWeek: "",
-        typeCooking: "" //gas, electric, induction
+        typeCooking: "", //gas, electric, induction
+        nbShowersPerWeek: "",
+        nbBathsPerWeek: ""
     }
 }

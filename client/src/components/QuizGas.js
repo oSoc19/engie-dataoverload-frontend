@@ -12,7 +12,7 @@ class QuizGas extends Component {
     }
 
     componentDidMount() {
-        let storageData = localStorage.getItem('quizData');
+        let storageData = localStorage.getItem('basicData');
 
         if (storageData != null) {
             console.log(JSON.parse(storageData));
@@ -22,9 +22,9 @@ class QuizGas extends Component {
     }
 
     handleChange(event) {
-        this.setState({ quizData: this.state.quizValues[event.target.id] = event.target.value })
+        this.setState({ basicData: this.state.quizValues[event.target.id] = event.target.value })
         console.log(this.state.quizValues);
-        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
+        localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
 
     render() {
