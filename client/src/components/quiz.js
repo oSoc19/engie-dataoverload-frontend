@@ -8,7 +8,7 @@ import QuizGas from './QuizGas';
 
 class Quiz extends Component {
 
-    components = [QuizGas, QuizBasicInfo, QuizElectricity, QuizWater];
+    components = [QuizBasicInfo, QuizElectricity, QuizWater, QuizGas];
 
     constructor() {
         super();
