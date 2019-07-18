@@ -136,4 +136,12 @@ input:disabled{
 .device_name{
   margin-left: 11px;
 }
+
+.results_button{
+  padding: 11px;
+}
+
+.center_placeholder{
+  text-align: center;
+}
          

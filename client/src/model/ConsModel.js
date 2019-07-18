@@ -2,6 +2,7 @@ export default class ConsModel {
      values = {
         elecConsYearly: "",
         waterConsYearly: "",
-        gasConsYearly: ""
+        gasConsYearly: "",
+        zipCode: ""
     }
 }

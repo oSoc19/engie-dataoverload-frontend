@@ -26,6 +26,7 @@ class MyConsumption extends Component {
     handleChange(event) {
         this.setState({consData: this.state.consValues[event.target.id] = parseInt(event.target.value)})
         localStorage.setItem('consData', JSON.stringify(this.state.consValues));
+        console.log(this.state.consValues);
     }
 
     goToResults() {
@@ -49,11 +50,11 @@ class MyConsumption extends Component {
                             <div class="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
-                                className="form-control" 
+                                className="center_placeholder form-control" 
                                 id="elecConsYearly" 
                                 placeholder="3000"
                                 onChange={this.handleChange} 
-                                value={this.state.elecConsYearly}
+                                value={this.state.consValues.elecConsYearly}
                                 min="100"
                                 />
                                 <div class="input-group-append">
@@ -72,11 +73,11 @@ class MyConsumption extends Component {
                             <div class="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
-                                className="form-control" 
+                                className="center_placeholder form-control" 
                                 id="waterConsYearly" 
                                 placeholder={123}
                                 onChange={this.handleChange} 
-                                value={this.state.waterConsYearly}
+                                value={this.state.consValues.waterConsYearly}
                                 />
                                 <div class="input-group-append">
                                     <div class="input-group-text">m³</div>
@@ -94,11 +95,11 @@ class MyConsumption extends Component {
                             <div class="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
-                                className="form-control" 
+                                className="center_placeholder form-control" 
                                 id="gasConsYearly"
                                 placeholder={750}
                                 onChange={this.handleChange} 
-                                value={this.state.gasConsYearly}
+                                value={this.state.consValues.gasConsYearly}
                                 />
                                 <div class="input-group-append">
                                     <div class="input-group-text">m³</div>
@@ -111,7 +112,21 @@ class MyConsumption extends Component {
                 </div>
 
 
-                <div className="row justify-content-center">
+                <div className="results_button row justify-content-center">
+                    <div className="col-3">
+                        <label for="zipCode" className="col-col-form-label">Your Zip Code</label>
+                        <input 
+                            type="number" 
+                            className="center_placeholder form-control" 
+                            id="zipCode" 
+                            placeholder="4321"
+                            onChange={this.handleChange}
+                            value={this.state.consValues.zipCode}
+                        />
+                    </div>
+                </div>
+
+                <div className="results_button row justify-content-center">
                     <div className="col-3">
                         <button 
                         type="button" 
