@@ -212,6 +212,7 @@ class Comparator extends Component {
               Electricity
             </Typography>
             <Slider
+              disabled
               defaultValue={defaultElec}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-always"
