@@ -14,7 +14,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="home-page">
+            <div className="main-background">
                 <div className="row home-div">
                     <div className="col-md-12">
                         <h1>Do you know how much you consume?</h1>

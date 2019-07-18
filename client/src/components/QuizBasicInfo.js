@@ -32,7 +32,7 @@ class QuizBasicInfo extends Component {
 
     render() {
         return (
-            <div className="container content">
+            <div className="container">
                 <h2 className="text-center">Let's begin with some basic information</h2>
                 <hr />
                 <div className="row text-center">

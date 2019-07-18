@@ -54,7 +54,7 @@ class QuizElectricity extends Component {
     
   render() {
     return (
-      <div className="container content">
+      <div className="container">
       <h2 className="text-center">Devices consuming electricy</h2>
       <hr />
         <div className="row elec_devices" >
