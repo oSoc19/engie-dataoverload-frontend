@@ -7,18 +7,18 @@ class QuizElectricity extends Component {
     super();
     let model = new ElecDeviceModel();
     this.state = {
-        nbDishwasher: 1,
-        nbFridge: 1,
-        nbCoffeeMaker: 1,
-        nbMicroWaveOven: 1,
-        nbElectricOven: 1,
-        nbTv: 1,
-        nbGamingConsole: 1,
-        nbLaptops: 1,
-        nbDeskPC: 1,
-        nbWashingMachine: 1,
-        nbTumbleDryer: 1,
-        nbVacuumCleaner: 1,
+        nbDishwasher: 0,
+        nbFridge: 0,
+        nbCoffeeMaker: 0,
+        nbMicroWaveOven: 0,
+        nbElectricOven: 0,
+        nbTv: 0,
+        nbGamingConsole: 0,
+        nbLaptops: 0,
+        nbDeskPC: 0,
+        nbWashingMachine: 0,
+        nbTumbleDryer: 0,
+        nbVacuumCleaner: 0,
     }
     this.handlePlusMinus = this.handlePlusMinus.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,14 @@ class QuizElectricity extends Component {
 
     var tmp = Math.min(10, Math.max(0, incr + parseInt(this.state[id])));
 
+    //localStorage.setItem('item before', this.state[id]);
     this.setState({ [id]: tmp });
+
+    //FOR DEBUGGING TO BE DELETED AFTERWARDS, NOT FIXED YET THO
+    // localStorage.setItem('tmp', tmp);
+    // localStorage.setItem('id', id);
+    
+    // localStorage.setItem('item now', this.state[id]);
 
     localStorage.setItem('elecData', JSON.stringify(this.state));
   }
@@ -55,7 +62,7 @@ class QuizElectricity extends Component {
   render() {
     return (
       <div className="container">
-      <h2 className="text-center">Devices consuming electricy</h2>
+      <h2 className="text-center">Devices consuming electricity</h2>
       <hr />
         <div className="row elec_devices" >
             <div className="qty col-md-6">
@@ -65,7 +72,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="qty" 
                 value={this.state.nbDishwasher}
-                min="1"
+                min="0"
                 max="10"
             />
             <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
@@ -79,7 +86,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="computer" 
                 value={this.state.nbFridge}
-                min="1"
+                min="0"
                 max="10"
             />
             <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
@@ -93,7 +100,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="washingMachine" 
                 value={this.state.nbWashingMachine}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -108,7 +115,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="coffee" 
                 value={this.state.nbCoffeeMaker}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -123,11 +130,11 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="microwave" 
                 value={this.state.nbMicroWaveOven}
-                min="1"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>+</span>
+                min="0"
+                max="10"1
+                onChange={this.handleChange}1
+            />1
+            <span className="plus bg-dark" id="nbMicroWaveOven" o1nClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Microwave Ovens</span>
             </div>
     
@@ -138,7 +145,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="oven" 
                 value={this.state.nbElectricOven}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -153,7 +160,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="tv" 
                 value={this.state.nbTv}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -168,7 +175,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="gaming" 
                 value={this.state.nbGamingConsole}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -183,7 +190,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="deskpc" 
                 value={this.state.nbDeskPC}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -198,7 +205,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="laptops" 
                 value={this.state.nbLaptops}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -213,7 +220,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="tumbledryers" 
                 value={this.state.nbTumbleDryer}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -228,7 +235,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="vacuum" 
                 value={this.state.nbVacuumCleaner}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />

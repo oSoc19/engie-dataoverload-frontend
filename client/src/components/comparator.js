@@ -49,20 +49,20 @@ class Comparator extends Component {
       basicValues: JSON.parse(basicData),
       elecValues: JSON.parse(elecData),
       elec_marks: [
-        { value: 2000, label: '2000 kWh', },
-        { value: 10000, label: '10000 kWh', },
+        { value: 0, label: '0 kWh', },
+        { value: 8874, label: '9000 kWh', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ],
       water_marks: [
         { value: 0, label: '0 m³', },
-        { value: 250, label: '250 m³', },
+        { value: 144, label: '145 m³', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ],
       gas_marks: [
-        { value: 500, label: '500 m³', },
-        { value: 2500, label: '2500 m³', },
+        { value: 0, label: '0 m³', },
+        { value: 2620, label: '2650 m³', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ]
