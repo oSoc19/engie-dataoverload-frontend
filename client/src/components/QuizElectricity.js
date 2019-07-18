@@ -39,9 +39,15 @@ class QuizElectricity extends Component {
 
     localStorage.setItem('quizData', JSON.stringify(this.state));
     console.log(localStorage.getItem('quizData'));
+
+    // this.handleChange(event);
   }
 
   handleChange(event) {
+        console.log("pre: ", this.state);
+        this.setState({ [event.target.id]: event.target.value });
+        localStorage.setItem('quizData', JSON.stringify(this.state));
+        console.log("post: ", this.state);
   }
 
   componentDidMount() {
@@ -67,7 +73,6 @@ class QuizElectricity extends Component {
                 value={this.state.nbDishwasher}
                 min="1"
                 max="10"
-                onChange={this.handleChange}
             />
             <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Dishwashers</span>
@@ -82,7 +87,6 @@ class QuizElectricity extends Component {
                 value={this.state.nbFridge}
                 min="1"
                 max="10"
-                onChange={this.handleChange}
             />
             <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Fridges</span>

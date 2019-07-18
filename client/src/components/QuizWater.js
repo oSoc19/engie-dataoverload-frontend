@@ -9,6 +9,7 @@ class QuizWater extends Component {
             quizValues: model.values
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleCheckBox = this.handleCheckBox.bind(this);
     }
 
     componentDidMount(){
@@ -22,9 +23,15 @@ class QuizWater extends Component {
     }
 
     handleChange(event) {
+        event.preventDefault();
         this.setState({quizData: this.state.quizValues[event.target.id] = event.target.value})
-        console.log(this.state.quizValues);
         localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
+    }
+
+    handleCheckBox(event) {
+        event.preventDefault();
+        this.setState({quizData: this.state.quizValues[event.target.id] = event.target.checked})
+        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues))
     }
 
     render() {
@@ -62,11 +69,25 @@ class QuizWater extends Component {
                             <div className="form-group">
                                 <label htmlFor="additional-water">Do you have any of the following?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="gardenWatering"/>
+                                  <input 
+                                    className="form-check-input" 
+                                    type="checkbox" 
+                                    name="inlineCheckboxOptions" 
+                                    id="gardenWatering"
+                                    onChange={this.handleCheckBox} 
+                                    value={this.state.quizValues.gardenWatering}
+                                  />
                                   <label className="form-check-label" htmlFor="gardenWatering">Garden that needs watering</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" type="checkbox" name="inlineCheckboxOptions" id="pool" value="pool"/>
+                                  <input 
+                                    className="form-check-input" 
+                                    type="checkbox" 
+                                    name="inlineCheckboxOptions" 
+                                    id="pool" 
+                                    onChange={this.handleCheckBox}
+                                    value={this.state.quizValues.pool}
+                                  />
                                   <label className="form-check-label" htmlFor="pool">Pool</label>
                                 </div>
                             </div>
