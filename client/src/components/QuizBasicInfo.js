@@ -12,34 +12,25 @@ class QuizBasicInfo extends Component {
             quizValues: model.values
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleChangeString = this.handleChangeString.bind(this);
     }
 
     componentDidMount(){
-        let storageData = localStorage.getItem('quizData');
+        let storageData = localStorage.getItem('basicData');
 
         if(storageData != null){
-            console.log(JSON.parse(storageData));
             this.setState({quizValues:JSON.parse(storageData)});
         }
         
     }
 
     handleChange(event) {
-        this.setState({ quizData: this.state.quizValues[event.target.id] = parseInt(event.target.value) })
-        console.log(this.state.quizValues);
-        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
-    }
-
-    handleChangeString(event) {
-        this.setState({ quizData: this.state.quizValues[event.target.id] = event.target.value })
-        console.log(this.state.quizValues);
-        localStorage.setItem('quizData', JSON.stringify(this.state.quizValues));
+        this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
+        localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
 
     render() {
         return (
-            <div className="container content">
+            <div className="container">
                 <h2 className="text-center">Let's begin with some basic information</h2>
                 <hr />
                 <div className="row text-center">
@@ -94,38 +85,17 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="preferredRoomTemp">How well is your house insulated?</label>
+                                <label htmlFor="houseInsulation">How well is your house insulated?</label>
                                 <div className="form-check">
-                                  <input 
-                                    className="form-check-input" 
-                                    type="radio" 
-                                    name="blockRadioInsulation" 
-                                    id="houseInsulation" 
-                                    value="Poor"
-                                    onChange={this.handleChangeString}
-                                  />
+                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="1"/>
                                   <label className="form-check-label" htmlFor="insulation_low">Poorly</label>
                                 </div>
                                 <div className="form-check">
-                                  <input 
-                                    className="form-check-input" 
-                                    type="radio" 
-                                    name="blockRadioInsulation" 
-                                    id="houseInsulation"
-                                    value="Average"
-                                    onChange={this.handleChangeString}
-                                  />
+                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="2"/>
                                   <label className="form-check-label" htmlFor="insulation_avg">Average</label>
                                 </div>
                                 <div className="form-check">
-                                  <input 
-                                    className="form-check-input" 
-                                    type="radio" 
-                                    name="blockRadioInsulation" 
-                                    id="houseInsulation" 
-                                    value="Well"
-                                    onChange={this.handleChangeString}
-                                  />
+                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="3"/>
                                   <label className="form-check-label" htmlFor="insulation_well">Well</label>
                                 </div>
                             </div>

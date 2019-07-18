@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import QuizModel from '../model/QuizModel';
+import ElecDeviceModel from '../model/ElecDeviceModel';
 
 class QuizElectricity extends Component {
 
   constructor() {
     super();
-    let model = new QuizModel();
+    let model = new ElecDeviceModel();
     this.state = {
-        nbDishwasher: 1,
-        nbFridge: 1,
-        nbCoffeeMaker: 1,
-        nbMicroWaveOven: 1,
-        nbElectricOven: 1,
-        nbTv: 1,
-        nbGamingConsole: 1,
-        nbLaptops: 1,
-        nbDeskPC: 1,
-        nbWashingMachine: 1,
-        nbTumbleDryer: 1,
-        nbVacuumCleaner: 1,
+        nbDishwasher: 0,
+        nbFridge: 0,
+        nbCoffeeMaker: 0,
+        nbMicroWaveOven: 0,
+        nbElectricOven: 0,
+        nbTv: 0,
+        nbGamingConsole: 0,
+        nbLaptops: 0,
+        nbDeskPC: 0,
+        nbWashingMachine: 0,
+        nbTumbleDryer: 0,
+        nbVacuumCleaner: 0,
     }
     this.handlePlusMinus = this.handlePlusMinus.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,24 +34,25 @@ class QuizElectricity extends Component {
 
     var tmp = Math.min(10, Math.max(0, incr + parseInt(this.state[id])));
 
+    //localStorage.setItem('item before', this.state[id]);
     this.setState({ [id]: tmp });
-    console.log("state: ", this.state);
 
-    localStorage.setItem('quizData', JSON.stringify(this.state));
-    console.log(localStorage.getItem('quizData'));
+    //FOR DEBUGGING TO BE DELETED AFTERWARDS, NOT FIXED YET THO
+    // localStorage.setItem('tmp', tmp);
+    // localStorage.setItem('id', id);
+    
+    // localStorage.setItem('item now', this.state[id]);
 
-    // this.handleChange(event);
+    localStorage.setItem('elecData', JSON.stringify(this.state));
   }
 
   handleChange(event) {
-        console.log("pre: ", this.state);
         this.setState({ [event.target.id]: event.target.value });
-        localStorage.setItem('quizData', JSON.stringify(this.state));
-        console.log("post: ", this.state);
+        localStorage.setItem('elecData', JSON.stringify(this.state));
   }
 
   componentDidMount() {
-    let storageData = localStorage.getItem('quizData');
+    let storageData = localStorage.getItem('elecData');
 
     if(storageData != null){
         this.setState({quizValues:JSON.parse(storageData)});
@@ -60,8 +61,8 @@ class QuizElectricity extends Component {
     
   render() {
     return (
-      <div className="container content">
-      <h2 className="text-center">Devices consuming electricy</h2>
+      <div className="container">
+      <h2 className="text-center">Devices consuming electricity</h2>
       <hr />
         <div className="row elec_devices" >
             <div className="qty col-md-6">
@@ -71,7 +72,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="qty" 
                 value={this.state.nbDishwasher}
-                min="1"
+                min="0"
                 max="10"
             />
             <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
@@ -85,11 +86,26 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="computer" 
                 value={this.state.nbFridge}
-                min="1"
+                min="0"
                 max="10"
             />
             <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Fridges</span>
+            </div>
+
+            <div className="qty col-md-6">
+            <span className="minus bg-dark" id="nbWashingMachine" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" 
+                className="count" 
+                name="washingMachine" 
+                value={this.state.nbWashingMachine}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbWashingMachine" onClick={this.handlePlusMinus}>+</span>
+            <span className="device_name">Washing Machine</span>
             </div>
     
             <div className="qty col-md-6">
@@ -99,7 +115,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="coffee" 
                 value={this.state.nbCoffeeMaker}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -114,11 +130,11 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="microwave" 
                 value={this.state.nbMicroWaveOven}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>+</span>
+            />1
+            <span className="plus bg-dark" id="nbMicroWaveOven" o1nClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Microwave Ovens</span>
             </div>
     
@@ -129,7 +145,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="oven" 
                 value={this.state.nbElectricOven}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -144,7 +160,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="tv" 
                 value={this.state.nbTv}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -159,7 +175,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="gaming" 
                 value={this.state.nbGamingConsole}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -174,7 +190,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="deskpc" 
                 value={this.state.nbDeskPC}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -189,7 +205,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="laptops" 
                 value={this.state.nbLaptops}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -204,7 +220,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="tumbledryers" 
                 value={this.state.nbTumbleDryer}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
@@ -219,7 +235,7 @@ class QuizElectricity extends Component {
                 className="count" 
                 name="vacuum" 
                 value={this.state.nbVacuumCleaner}
-                min="1"
+                min="0"
                 max="10"
                 onChange={this.handleChange}
             />
