@@ -97,7 +97,6 @@ class Comparator extends Component {
     this.state = {
       results: 0,
       solar_prod_location: 10,
-      zip_code: 6543,
       consValues: JSON.parse(storageData),
       dataObject,
       elec_marks: [
@@ -128,14 +127,6 @@ class Comparator extends Component {
   }
 
   componentWillMount() {
-    this.api.getSolarProdLocation(this.state.zip_code).then(
-      data => {
-        console.log(data);
-        this.setState({ solar_prod_location: data[0].avg });
-        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
-      }
-    );
-
     let storageData = localStorage.getItem('consData');
 
     //If the user inputs his values directly (use of a clone to set the state)
@@ -201,6 +192,16 @@ class Comparator extends Component {
     );
   }
 
+  componentDidMount() {
+    this.api.getSolarProdLocation(this.state.consValues.zipCode).then(
+      data => {
+        console.log("solar: ", data);
+        this.setState({ solar_prod_location: data[0].avg });
+        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
+      }
+    );
+  }
+
   render() {
     return (
       <div className="container content">
@@ -260,7 +261,7 @@ class Comparator extends Component {
         <div class="row" id="results-row">
           <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
           <div class="col">
-            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !
+            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code <b>{this.state.consValues.zipCode}</b>) !
           </div>
         </div>
       </div>
