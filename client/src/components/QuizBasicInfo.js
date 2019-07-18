@@ -36,9 +36,9 @@ class QuizBasicInfo extends Component {
                 <h2 className="text-center">Let's begin with some basic information</h2>
                 <hr />
                 <div className="row text-center">
-                    <div className="col-md-12">
+                    <div className="col-md-6 offset-md-3">
                         <form>
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="peopleInHouse">How many people live in your house?</label>
                                 <input 
                                     type="number"
@@ -50,7 +50,7 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
                                 <input 
                                     type="number" 
@@ -62,19 +62,19 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="zipCode">What is your zip code?</label>
                                 <input 
                                     type="number" 
                                     className="form-control" 
                                     id="zipCode" 
-                                    placeholder="1000" 
+                                    placeholder="4000" 
                                     onChange={this.handleChange}
                                     value={this.state.quizValues.zipCode}
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="preferredRoomTemp">What is your preferred room temperature? (°C)</label>
                                 <input 
                                     type="number" 
@@ -86,19 +86,19 @@ class QuizBasicInfo extends Component {
                                 />
                             </div>
 
-                            <div className="form-group w-50">
+                            <div className="form-group">
                                 <label htmlFor="preferredRoomTemp">How well is your house insulated?</label>
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_low" value="insulation_low"/>
-                                  <label class="form-check-label" for="insulation_low">Poorly</label>
+                                <div className="form-check">
+                                  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_low" value="insulation_low"/>
+                                  <label className="form-check-label" htmlFor="insulation_low">Poorly</label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_avg" value="insulation_avg"/>
-                                  <label class="form-check-label" for="insulation_avg">Average</label>
+                                <div className="form-check">
+                                  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_avg" value="insulation_avg"/>
+                                  <label className="form-check-label" htmlFor="insulation_avg">Average</label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_well" value="insulation_well"/>
-                                  <label class="form-check-label" for="insulation_well">Well</label>
+                                <div className="form-check">
+                                  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="insulation_well" value="insulation_well"/>
+                                  <label className="form-check-label" htmlFor="insulation_well">Well</label>
                                 </div>
                             </div>
                         </form>
