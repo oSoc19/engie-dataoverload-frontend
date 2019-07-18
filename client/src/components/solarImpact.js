@@ -121,7 +121,7 @@ class SolarImpact extends Component {
                                 easing: 'out',
                                 startup: true,
                             },
-                            title: 'Energy consumption of users with and without solar panels',
+                            title: 'Comparison of electricity consumption of users with and without solar panels',
                             hAxis: { 
                                 title: 'Date', 
                                 titleTextStyle: { color: '#333' } 
