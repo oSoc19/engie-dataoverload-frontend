@@ -144,6 +144,14 @@ input:disabled{
 .device_name{
   margin: 5px;
 }
+
+.results_button{
+  padding: 11px;
+}
+
+.center_placeholder{
+  text-align: center;
+}
        
 /*white box for quiz */
 .white-box{
@@ -232,8 +240,14 @@ input:disabled{
   border: #8AB83E 2px solid;
   color: white!important;
 }
+<<<<<<< HEAD
 
 /*slider layout*/
 .MuiSlider-root.Mui-disabled{
   color: #8AB83E!important;
 }
+=======
+.about_ref{
+  color: black;
+}
+>>>>>>> b63d25d06dd83d134ebb7ee4680ec0486dafd7c9

@@ -149,6 +149,16 @@ class Comparator extends Component {
     );
   }
 
+  componentDidMount() {
+    this.api.getSolarProdLocation(this.state.consValues.zipCode).then(
+      data => {
+        console.log("solar: ", data);
+        this.setState({ solar_prod_location: data[0].avg });
+        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
+      }
+    );
+  }
+
   render() {
     return (
       <div className="container content">
@@ -211,7 +221,7 @@ class Comparator extends Component {
         <div class="row" id="results-row">
           <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
           <div class="col">
-            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code {this.state.zip_code}) !
+            You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code <b>{this.state.consValues.zipCode}</b>) !
           </div>
         </div>
       </div>
