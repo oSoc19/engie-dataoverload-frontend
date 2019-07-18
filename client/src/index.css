@@ -205,3 +205,7 @@ input:disabled{
   border: #8AB83E 2px solid;
   color: white!important;
 }
+
+.about_ref{
+  color: black;
+}
