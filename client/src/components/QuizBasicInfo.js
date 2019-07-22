@@ -73,7 +73,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="preferredRoomTemp">What is your preferred house temperature? (°C)</label>
+                                <label htmlFor="preferredRoomTemp">What is your preferred house temperature? (°C in winter)</label>
                                 <input 
                                     type="number" 
                                     id="prefRoomTemp" 

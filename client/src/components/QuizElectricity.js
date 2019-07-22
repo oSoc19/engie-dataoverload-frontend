@@ -130,13 +130,8 @@ class QuizElectricity extends Component {
                 max="10"
                 onChange={this.handleChange}
             />
-<<<<<<< HEAD
-            <span className="plus bg-dark" id="nbMicroWaveOven" o1nClick={this.handlePlusMinus}>+</span>
-            <span className="device_name">Microwave Ovens</span>
-=======
             <span className="plus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>+</span>
             <p className="device_name">Microwave Ovens</p>
->>>>>>> 6dc03a107fd770e9f6f5d3b26b5782577a073570
             </div>
     
             <div className="qty col-md-4">
