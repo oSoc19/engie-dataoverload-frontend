@@ -19,9 +19,6 @@ class Quiz extends Component {
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
         this.goToResults = this.goToResults.bind(this);
-        localStorage.removeItem('elecData');
-        localStorage.removeItem('basicData');
-        localStorage.removeItem('consData');
     }
 
     handleNext(e) {
