@@ -12,8 +12,10 @@ class Quiz extends Component {
 
     constructor() {
         super();
+
         this.state = {
-            quizNr: 0
+            quizNr: 0,
+            errorMessage:""
         }
 
         this.handleNext = this.handleNext.bind(this);
@@ -24,7 +26,7 @@ class Quiz extends Component {
 
     handleNext(e) {
         e.preventDefault();
-
+        this.setState({errorMessage:""});
         let newNr = this.state.quizNr;
         ++newNr;
                 
@@ -35,8 +37,6 @@ class Quiz extends Component {
         if(newNr === this.components.length){
             if (this.checkFilled()) {
                 this.goToResults();
-            } else {
-                console.log("ADD all values");
             }
         }
     }
@@ -49,14 +49,13 @@ class Quiz extends Component {
         if (elecStorageData === null) {
             allfilled = false;
         }
-        console.log("ELEC JSON: ", elecjson);
+
         if(elecStorageData != null){
             for (var key in elecjson) {
                 if (elecjson[key] === null || elecjson[key] === "") {
                     allfilled = false;
+                    this.setState({errorMessage:key})
                     console.log(key);
-                    console.log(elecjson[key]);
-                    console.log("[PLEASE ADD VALUE HERE]");
                 }
             }
         }
@@ -65,15 +64,17 @@ class Quiz extends Component {
         let basicjson = JSON.parse(basicStorageData);
         if (basicStorageData === null) {
             allfilled = false;
+            this.setState({errorMessage:"all"})
+            this.setState({quizNr: 0})
+            //please fill lmfjsfdj all
         }
-        console.log("BASIC JSON: ", basicjson);
+
         if(basicStorageData != null){
             for (var key in basicjson) {
                 if (basicjson[key] === null || basicjson[key] === "") {
                     allfilled = false;
-                    console.log(key);
-                    console.log(basicjson[key]);
-                    console.log("[PLEASE ADD VALUE HERE]");
+                    this.setState({errorMessage:key})
+                    this.setState({quizNr: 0})
                 }
             }
         }
@@ -94,12 +95,14 @@ class Quiz extends Component {
     render() {
 
         const TagName = this.components[this.state.quizNr];
+        const alertClasses="alert alert-warning";
 
         return (
             <div className="main-background">
                 <div className="top-whitespace"></div>
 
                 <div className="container white-box">
+                <div className={this.state.errorMessage == "" ? "hidden" : alertClasses} role="alert">Please enter a value for every question</div>
                     <div className="quiz-scrollable">
                         <TagName />
                     </div>

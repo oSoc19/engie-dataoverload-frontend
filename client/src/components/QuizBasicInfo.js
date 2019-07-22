@@ -13,7 +13,7 @@ class QuizBasicInfo extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
     }
-
+    
     componentDidMount(){
         let storageData = localStorage.getItem('basicData');
 
