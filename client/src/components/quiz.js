@@ -18,12 +18,13 @@ class Quiz extends Component {
 
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
+        this.checkFilled = this.checkFilled.bind(this);
         this.goToResults = this.goToResults.bind(this);
     }
 
     handleNext(e) {
         e.preventDefault();
-        
+
         let newNr = this.state.quizNr;
         ++newNr;
                 
@@ -32,8 +33,51 @@ class Quiz extends Component {
         }
 
         if(newNr === this.components.length){
-            this.goToResults();
+            if (this.checkFilled()) {
+                this.goToResults();
+            } else {
+                console.log("ADD all values");
+            }
         }
+    }
+
+    checkFilled() {
+        let allfilled = true;
+
+        let elecStorageData = localStorage.getItem('elecData');
+        let elecjson = JSON.parse(elecStorageData);
+        if (elecStorageData === null) {
+            allfilled = false;
+        }
+        console.log("ELEC JSON: ", elecjson);
+        if(elecStorageData != null){
+            for (var key in elecjson) {
+                if (elecjson[key] === null || elecjson[key] === "") {
+                    allfilled = false;
+                    console.log(key);
+                    console.log(elecjson[key]);
+                    console.log("[PLEASE ADD VALUE HERE]");
+                }
+            }
+        }
+
+        let basicStorageData = localStorage.getItem('basicData');
+        let basicjson = JSON.parse(basicStorageData);
+        if (basicStorageData === null) {
+            allfilled = false;
+        }
+        console.log("BASIC JSON: ", basicjson);
+        if(basicStorageData != null){
+            for (var key in basicjson) {
+                if (basicjson[key] === null || basicjson[key] === "") {
+                    allfilled = false;
+                    console.log(key);
+                    console.log(basicjson[key]);
+                    console.log("[PLEASE ADD VALUE HERE]");
+                }
+            }
+        }
+        return allfilled;
     }
 
     goToResults() {
