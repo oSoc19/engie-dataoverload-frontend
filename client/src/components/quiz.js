@@ -19,6 +19,7 @@ class Quiz extends Component {
         this.handleNext = this.handleNext.bind(this);
         this.handlePrevious = this.handlePrevious.bind(this);
         this.goToResults = this.goToResults.bind(this);
+        localStorage.removeItem('consData');
     }
 
     handleNext(e) {
@@ -61,10 +62,10 @@ class Quiz extends Component {
                     </div>
                     <div className="row text-center">
                         <div className="col-md-6">
-                            <a className="quiz-btn" onClick={this.handlePrevious}><i class="fas fa-arrow-left"></i></a>
+                            <a className="quiz-btn" onClick={this.handlePrevious}><i className="fas fa-arrow-left"></i></a>
                         </div>
                         <div className="col-md-6">
-                            <a className="quiz-btn" onClick={this.handleNext}><i class="fas fa-arrow-right"></i></a>
+                            <a className="quiz-btn" onClick={this.handleNext}><i className="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
