@@ -20,19 +20,22 @@ class QuizBasicInfo extends Component {
         if(storageData != null){
             this.setState({quizValues:JSON.parse(storageData)});
         }
-        
+        window.$('[data-toggle="tooltip"]').tooltip();
+
     }
 
     handleChange(event) {
         this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
+    
+    componentDidUpdate() {
+        window.$('[data-toggle="tooltip"]').tooltip();
+    }
 
     render() {
         return (
             <div className="container">
-                <h2 className="text-center">Let's begin with some basic information</h2>
-                <hr />
                 <div className="row text-center">
                     <div className="col-md-6 offset-md-3">
                         <form>
@@ -49,7 +52,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
+                                <label htmlFor="roomsInHouse">How many rooms are in your house? <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="Including bathroom, kitchen, ..."></i></label>
                                 <input 
                                     type="number" 
                                     id="nbRooms" 

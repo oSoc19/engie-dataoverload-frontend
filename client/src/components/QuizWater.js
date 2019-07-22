@@ -56,13 +56,11 @@ class QuizWater extends Component {
     render() {
         return (
             <div className="container">
-                <h2 className="text-center">Some questions about your water habits</h2>
-                <hr />
                 <div className="row text-center">
                     <div className="col-md-6 offset-md-3">
                         <form>
                             <div className="form-group">
-                                <label htmlFor="showersPerWeek">How many showers per person in one week?</label>
+                                <label htmlFor="showersPerWeek">How many showers are taken a week (per person)?</label>
                                 <input 
                                     type="number"
                                     id="nbShowersPerWeek" 
@@ -74,7 +72,7 @@ class QuizWater extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="bathsPerWeek">And how many baths in one week?</label>
+                                <label htmlFor="bathsPerWeek">And how many baths are taken a week?</label>
                                 <input 
                                     type="number" 
                                     id="nbBathsPerWeek" 

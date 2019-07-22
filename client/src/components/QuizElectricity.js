@@ -25,10 +25,14 @@ class QuizElectricity extends Component {
 
   handlePlusMinus(event) {
     event.preventDefault();
-    
-    var id = event.target.id;
 
-    this.setState({ [id]: ++this.state[id] });
+    if (event.target.className === 'minus bg-dark') {
+        var id = event.target.id;
+        this.setState({ [id]: --this.state[id] });
+    }else{
+        var id = event.target.id;
+        this.setState({ [id]: ++this.state[id] });
+    }
 
     localStorage.setItem('elecData', JSON.stringify(this.state));
   }
@@ -58,8 +62,6 @@ class QuizElectricity extends Component {
   render() {
     return (
       <div className="container">
-      <h2 className="text-center">Devices consuming electricity</h2>
-      <hr />
         <div className="row elec_devices" >
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>-</span>
