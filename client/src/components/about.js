@@ -10,33 +10,39 @@ class About extends Component {
         this.team = [
             {
                 name: 'Bao',
-                img: './people/bao.png',
+                img: './people/bao.jpg',
                 github: 'baotrong',
                 linkedin: 'bao-truong-8752a015b'
             },
             {
                 name: 'Claudia',
-                img: './people/claudia.png',
+                img: './people/claudia.jpg',
                 github: 'TheClawMonster',
                 linkedin: 'claudia-negrila-86b956b7'
             },
             {
                 name: 'Jodi',
-                img: './people/jodi.png',
+                img: './people/jodi.jpg',
                 github: 'jodiDL',
                 linkedin: 'jodideloof'
             },
             {
                 name: 'John',
-                img: './people/john.png',
+                img: './people/john.jpg',
                 github: 'jdewasseige',
                 linkedin: 'jdewasseige'
             },
             {
                 name: 'Thomas',
-                img: './people/thomas.png',
+                img: './people/thomas.jpg',
                 github: 'thduvivier',
                 linkedin: 'duvivier-thomas'
+            },
+            {
+                name: 'Wouter',
+                img: './people/wouter.jpg',
+                github: 'WouterWouters',
+                linkedin: 'wouterswouter'
             }
         ]
 
@@ -49,15 +55,11 @@ class About extends Component {
             let github = element.github;
             let linkedin = element.linkedin;
 
-            let tmpClass = "col-md-2";
-            if (name === 'Bao') {
-                tmpClass = "col-md-2 offset-md-1";
-            }
             return (
-                <div key="person1" className={tmpClass}>
+                <div key={name} className="col-md-2">
                     <div className="card card-people">
                         <div className="card-body text-center">
-                            <img src={img} className="img-fluid" alt="bao"/>
+                            <img src={img} className="img-fluid" alt={name + " picture"}/>
                             <h5 className="card-title-people">{name}</h5>           
                         </div>
                         <div className="row">
@@ -108,7 +110,7 @@ class About extends Component {
                 <hr />
                 <div className="row">
                     <div className="col-md-6 offset-md-3">
-                            <img src="group_photo_barchart.png" className="img-fluid" alt="group funny barchart"/>
+                            <img src="group_photo_barchart.jpg" className="img-fluid" alt="group funny barchart"/>
                     </div>
                 </div>
             </div>
