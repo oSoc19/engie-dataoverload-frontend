@@ -2,6 +2,12 @@
   margin-top: 20px;
 }
 
+@media screen and (max-width: 600px) {
+  .github-corner {
+    display: none;
+  }
+}
+
 /*navigation*/
 .navbar{
   background-color: white!important;
