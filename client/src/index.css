@@ -19,22 +19,10 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
   padding: 20px;
 }
 
-/* Info */
-.card{
-  padding: 10px;
-  margin-bottom: 20px;
+/* About */
+.about_ref {
+  color: black;
 }
-
-.img-fluid-logo {
-    max-width: 70%;
-    height: auto;
-    margin-top: 10px;
-}
-
-.card-title{
-  margin-top: 15px;
-}
-
 .card-people {
     padding: 7px;
     margin-bottom: 30px;
@@ -45,10 +33,25 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
     background-color: #50AB39;
 }
 
-
 .card-title-people{
   margin-top: 23px;
   font-size: 1.1em;
+}
+
+.img-fluid-logo {
+    max-width: 70%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Info */
+.card{
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.card-title{
+  margin-top: 15px;
 }
 
 .filter .btn-primary{
