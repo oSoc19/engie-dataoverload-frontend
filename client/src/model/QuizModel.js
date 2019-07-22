@@ -9,7 +9,7 @@ export default class QuizModel {
         pool: "false",
         naturalGasConnection: 1,
         nbCookingPerWeek: "",
-        typeCooking: "gas", //gas, electric, induction
+        typeCooking: "Gas", //gas, electric, induction
         nbShowersPerWeek: "",
         nbBathsPerWeek: ""
     }
