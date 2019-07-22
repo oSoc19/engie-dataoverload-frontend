@@ -63,6 +63,20 @@ class QuizElectricity extends Component {
     return (
       <div className="container">
         <div className="row elec_devices" >
+        <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="computer" 
+                value={this.state.nbFridge}
+                min="0"
+                max="10"
+            />
+            <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Fridges</p>
+            </div>
+
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>-</span>
             <input 
@@ -76,19 +90,35 @@ class QuizElectricity extends Component {
             <span className="plus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>+</span>
             <p className="device_name">Dishwashers</p>
             </div>
-    
+
             <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>-</span>
+            <span className="minus bg-dark" id="nbTv" onClick={this.handlePlusMinus}>-</span>
             <input 
                 type="number" readOnly 
                 className="count" 
-                name="computer" 
-                value={this.state.nbFridge}
+                name="tv" 
+                value={this.state.nbTv}
                 min="0"
                 max="10"
+                onChange={this.handleChange}
             />
-            <span className="plus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Fridges</p>
+            <span className="plus bg-dark" id="nbTv" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">TVs</p>
+            </div>
+
+            <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbCoffeeMaker" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="coffee" 
+                value={this.state.nbCoffeeMaker}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbCoffeeMaker" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Coffee Makers</p>
             </div>
 
             <div className="qty col-md-4">
@@ -105,67 +135,7 @@ class QuizElectricity extends Component {
             <span className="plus bg-dark" id="nbWashingMachine" onClick={this.handlePlusMinus}>+</span>
             <p className="device_name">Washing Machine</p>
             </div>
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbCoffeeMaker" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="coffee" 
-                value={this.state.nbCoffeeMaker}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbCoffeeMaker" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Coffee Makers</p>
-            </div>
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="microwave" 
-                value={this.state.nbMicroWaveOven}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Microwave Ovens</p>
-            </div>
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="oven" 
-                value={this.state.nbElectricOven}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Electric Oven</p>
-            </div>
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbTv" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="tv" 
-                value={this.state.nbTv}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbTv" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">TVs</p>
-            </div>
-    
+
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbGamingConsole" onClick={this.handlePlusMinus}>-</span>
             <input 
@@ -180,50 +150,20 @@ class QuizElectricity extends Component {
             <span className="plus bg-dark" id="nbGamingConsole" onClick={this.handlePlusMinus}>+</span>
             <p className="device_name">Gaming Consoles</p>
             </div>
-    
+
             <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbDeskPC" onClick={this.handlePlusMinus}>-</span>
+            <span className="minus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>-</span>
             <input 
                 type="number" readOnly 
                 className="count" 
-                name="deskpc" 
-                value={this.state.nbDeskPC}
+                name="microwave" 
+                value={this.state.nbMicroWaveOven}
                 min="0"
                 max="10"
                 onChange={this.handleChange}
             />
-            <span className="plus bg-dark" id="nbDeskPC" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Desktop PCs</p>
-            </div> 
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbLaptops" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="laptops" 
-                value={this.state.nbLaptops}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbLaptops" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Laptops</p>
-            </div>
-    
-            <div className="qty col-md-4">
-            <span className="minus bg-dark" id="nbTumbleDryer" onClick={this.handlePlusMinus}>-</span>
-            <input 
-                type="number" readOnly 
-                className="count" 
-                name="tumbledryers" 
-                value={this.state.nbTumbleDryer}
-                min="0"
-                max="10"
-                onChange={this.handleChange}
-            />
-            <span className="plus bg-dark" id="nbTumbleDryer" onClick={this.handlePlusMinus}>+</span>
-            <p className="device_name">Tumble Dryers</p>
+            <span className="plus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Microwave Ovens</p>
             </div>
 
             <div className="qty col-md-4">
@@ -241,6 +181,66 @@ class QuizElectricity extends Component {
             <p className="device_name">Vacuum Cleaners</p>
             </div>
 
+            <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbLaptops" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="laptops" 
+                value={this.state.nbLaptops}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbLaptops" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Laptops</p>
+            </div>
+
+            <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="oven" 
+                value={this.state.nbElectricOven}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Electric Oven</p>
+            </div>
+
+            <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbTumbleDryer" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="tumbledryers" 
+                value={this.state.nbTumbleDryer}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbTumbleDryer" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Tumble Dryers</p>
+            </div>
+  
+            <div className="qty col-md-4">
+            <span className="minus bg-dark" id="nbDeskPC" onClick={this.handlePlusMinus}>-</span>
+            <input 
+                type="number" readOnly 
+                className="count" 
+                name="deskpc" 
+                value={this.state.nbDeskPC}
+                min="0"
+                max="10"
+                onChange={this.handleChange}
+            />
+            <span className="plus bg-dark" id="nbDeskPC" onClick={this.handlePlusMinus}>+</span>
+            <p className="device_name">Desktop PCs</p>
+            </div> 
+    
         </div>
       </div>
     )}
