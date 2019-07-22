@@ -110,7 +110,9 @@ class About extends Component {
                 <hr />
                 <div className="row">
                     <div className="col-md-6 offset-md-3">
-                            <img src="group_photo_barchart.jpg" className="img-fluid" alt="group funny barchart"/>
+                        <a href="https://2019.summerofcode.be/2019/insight-the-boxx" target="_blank">
+                        <img src="group_photo_barchart.jpg" className="img-fluid" alt="group funny barchart"/>
+                        </a>
                     </div>
                 </div>
             </div>
