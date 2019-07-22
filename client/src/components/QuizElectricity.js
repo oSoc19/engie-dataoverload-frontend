@@ -25,20 +25,14 @@ class QuizElectricity extends Component {
 
   handlePlusMinus(event) {
     event.preventDefault();
-    var incr = 1;
+
     if (event.target.className === 'minus bg-dark') {
-        incr = -1;
+        var id = event.target.id;
+        this.setState({ [id]: --this.state[id] });
+    }else{
+        var id = event.target.id;
+        this.setState({ [id]: ++this.state[id] });
     }
-    var id = event.target.id;
-
-    //localStorage.setItem('item before', this.state[id]);
-    this.setState({ [id]: ++this.state[id] });
-
-    //FOR DEBUGGING TO BE DELETED AFTERWARDS, NOT FIXED YET THO
-    // localStorage.setItem('tmp', tmp);
-    // localStorage.setItem('id', id);
-    
-    // localStorage.setItem('item now', this.state[id]);
 
     localStorage.setItem('elecData', JSON.stringify(this.state));
   }
@@ -68,8 +62,6 @@ class QuizElectricity extends Component {
   render() {
     return (
       <div className="container">
-      <h2 className="text-center">Devices consuming electricity</h2>
-      <hr />
         <div className="row elec_devices" >
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>-</span>
