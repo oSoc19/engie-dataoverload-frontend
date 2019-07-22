@@ -59,39 +59,14 @@ class QuizGas extends Component {
 
               <div className="form-group">
                 <label htmlFor="peopleInHouse">How many times per week do you cook?</label>
-                  <div className="form-check">
-                     <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="blockRadioCook" 
-                        id="nbCookingPerWeek" 
-                        value={1}
-                        onChange={this.handleChange}
-                      />
-                     <label className="form-check-label" htmlFor="cookPerWeek">0 - 2</label>
-                  </div>
-                  <div className="form-check">
-                     <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="blockRadioCook" 
-                        id="nbCookingPerWeek" 
-                        value={4}
-                        onChange={this.handleChange} 
-                      />
-                     <label className="form-check-label" htmlFor="cookPerWeek">3 - 5</label>
-                  </div>
-                  <div className="form-check">
-                     <input 
-                        className="form-check-input" 
-                        type="radio" 
-                        name="blockRadioCook"
-                        id="nbCookingPerWeek" 
-                        value={6}
-                        onChange={this.handleChange} 
-                      />
-                     <label className="form-check-label" htmlFor="cookPerWeek">more than 5</label>
-                  </div>
+                  <input 
+                    type="number" 
+                    id="nbCookingPerWeek" 
+                    className="form-control" 
+                    placeholder="4" 
+                    onChange={this.handleChange}
+                    value={this.state.quizValues.nbCookingPerWeek}
+                  />
               </div>
 
               <div className="form-group">

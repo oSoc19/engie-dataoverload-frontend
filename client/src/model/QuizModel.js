@@ -1,13 +1,13 @@
 export default class QuizModel {
     values = {
         familySize: "",
-        nbRooms: "",
+        nbRooms:"",
         zipCode: "",
         prefRoomTemp: "",
-        houseInsulation: "", //1 is poor, 2 is average, 3 is good
+        houseInsulation: 2, //1 is poor, 2 is average, 3 is good
         gardenWatering: "false",
         pool: "false",
-        naturalGasConnection: "",
+        naturalGasConnection: 1,
         nbCookingPerWeek: "",
         typeCooking: "gas", //gas, electric, induction
         nbShowersPerWeek: "",

@@ -66,7 +66,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbDishwasher" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly
+                type="number" readOnly
                 className="count" 
                 name="qty" 
                 value={this.state.nbDishwasher}
@@ -80,7 +80,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbFridge" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="computer" 
                 value={this.state.nbFridge}
@@ -109,7 +109,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbCoffeeMaker" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="coffee" 
                 value={this.state.nbCoffeeMaker}
@@ -124,7 +124,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbMicroWaveOven" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="microwave" 
                 value={this.state.nbMicroWaveOven}
@@ -139,7 +139,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="oven" 
                 value={this.state.nbElectricOven}
@@ -154,7 +154,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbTv" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="tv" 
                 value={this.state.nbTv}
@@ -169,7 +169,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbGamingConsole" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="gaming" 
                 value={this.state.nbGamingConsole}
@@ -184,7 +184,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbDeskPC" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="deskpc" 
                 value={this.state.nbDeskPC}
@@ -199,7 +199,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbLaptops" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="laptops" 
                 value={this.state.nbLaptops}
@@ -214,7 +214,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbTumbleDryer" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="tumbledryers" 
                 value={this.state.nbTumbleDryer}
@@ -229,7 +229,7 @@ class QuizElectricity extends Component {
             <div className="qty col-md-4">
             <span className="minus bg-dark" id="nbVacuumCleaner" onClick={this.handlePlusMinus}>-</span>
             <input 
-                type="number" readonly 
+                type="number" readOnly 
                 className="count" 
                 name="vacuum" 
                 value={this.state.nbVacuumCleaner}
