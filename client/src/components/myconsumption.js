@@ -41,12 +41,12 @@ class MyConsumption extends Component {
                 <hr />
                 <div className="row">
 
-                <div key="elecCons" className="col-md-4 center">
+                <div className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-bolt fa-5x" style={{ color: "#FFD700" }}></i>
                             <h5 className="card-title">Electricity</h5> <hr />
-                            <div class="input-group mb-2 mr-sm-2">
+                            <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
@@ -56,20 +56,20 @@ class MyConsumption extends Component {
                                 value={this.state.consValues.elecConsYearly}
                                 min="100"
                                 />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">kWh</div>
+                                <div className="input-group-append">
+                                    <div className="input-group-text">kWh</div>
                                 </div>                             
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div key="waterCons" className="col-md-4 center">
+                <div className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-tint fa-5x" style={{ color: "#005fe3" }}></i>
                             <h5 className="card-title">Water</h5> <hr />
-                            <div class="input-group mb-2 mr-sm-2">
+                            <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
@@ -78,20 +78,20 @@ class MyConsumption extends Component {
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.waterConsYearly}
                                 />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">m³</div>
+                                <div className="input-group-append">
+                                    <div className="input-group-text">m³</div>
                                 </div>                             
                             </div>                        
                         </div>
                     </div>
                 </div>
 
-                <div key="gasCons" className="col-md-4 center">
+                <div className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-burn fa-5x" style={{ color: "#B22222" }}></i>
                             <h5 className="card-title">Gas</h5> <hr />
-                            <div class="input-group mb-2 mr-sm-2">
+                            <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
@@ -100,8 +100,8 @@ class MyConsumption extends Component {
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.gasConsYearly}
                                 />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">m³</div>
+                                <div className="input-group-append">
+                                    <div className="input-group-text">m³</div>
                                 </div>                             
                             </div>
                         </div>
