@@ -109,7 +109,7 @@ class SolarImpact extends Component {
                             <ClipLoader
                                 sizeUnit={"px"}
                                 size={80}
-                                color={'#009fe3'}
+                                color={'#8AB83E'}
                                 loading={this.state.loading}
                             />
                         </div>}

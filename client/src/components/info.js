@@ -29,7 +29,7 @@ class Info extends Component {
                         <div key={name} className="col-md-4 center">
                             <div className="card">
                                 <div className="card-body text-center">
-                                    <i className={icon + " fa-5x"} style={{ color: "#009fe3" }}></i>
+                                    <i className={icon + " fa-5x"} style={{ color: "#8AB83E" }}></i>
                                     <h5 className="card-title">{name}</h5>
                                     <p className="card-text">{value + " " + unit}</p>
                                 </div>
@@ -55,7 +55,7 @@ class Info extends Component {
                     <ClipLoader
                         sizeUnit={"px"}
                         size={80}
-                        color={'#009fe3'}
+                        color={'#8AB83E'}
                         loading={this.state.loading}
                     />
                 </div>

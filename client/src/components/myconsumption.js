@@ -159,14 +159,13 @@ class MyConsumption extends Component {
                 </div>
 
                 <div className="results_button row justify-content-center">
-                    <div className="col-3">
                         <button 
                         type="button" 
-                        className="btn btn-success" 
+                        className="btn btn-primary" 
                         onClick={this.goToResults}>
                         Get my Results
                         </button>
-                    </div>
+                    
                 </div>
             </div>
         );
