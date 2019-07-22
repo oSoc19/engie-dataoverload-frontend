@@ -26,22 +26,10 @@ class QuizElectricity extends Component {
 
   handlePlusMinus(event) {
     event.preventDefault();
-    var incr = 1;
-    if (event.target.className === 'minus bg-dark') {
-        incr = -1;
-    }
+    
     var id = event.target.id;
 
-    var tmp = Math.min(10, Math.max(0, incr + parseInt(this.state[id])));
-
-    //localStorage.setItem('item before', this.state[id]);
-    this.setState({ [id]: tmp });
-
-    //FOR DEBUGGING TO BE DELETED AFTERWARDS, NOT FIXED YET THO
-    // localStorage.setItem('tmp', tmp);
-    // localStorage.setItem('id', id);
-    
-    // localStorage.setItem('item now', this.state[id]);
+    this.setState({ [id]: ++this.state[id] });
 
     localStorage.setItem('elecData', JSON.stringify(this.state));
   }
@@ -131,9 +119,9 @@ class QuizElectricity extends Component {
                 name="microwave" 
                 value={this.state.nbMicroWaveOven}
                 min="0"
-                max="10"1
-                onChange={this.handleChange}1
-            />1
+                max="10"
+                onChange={this.handleChange}
+            />
             <span className="plus bg-dark" id="nbMicroWaveOven" o1nClick={this.handlePlusMinus}>+</span>
             <span className="device_name">Microwave Ovens</span>
             </div>
