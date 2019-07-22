@@ -90,15 +90,15 @@ class QuizBasicInfo extends Component {
                             <div className="form-group">
                                 <label htmlFor="houseInsulation">How well is your house insulated?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="1"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 1} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="1"/>
                                   <label className="form-check-label" htmlFor="insulation_low">Poorly</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="2"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 2} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="2"/>
                                   <label className="form-check-label" htmlFor="insulation_avg">Average</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="3"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 3} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="3"/>
                                   <label className="form-check-label" htmlFor="insulation_well">Well</label>
                                 </div>
                             </div>

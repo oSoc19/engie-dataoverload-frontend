@@ -41,6 +41,7 @@ class QuizGas extends Component {
                         id="naturalGasConnection"
                         value={1}
                         onChange={this.handleChange}
+                        checked={this.state.quizValues.naturalGasConnection == 1}
                       />
                       <label className="form-check-label" htmlFor="naturalGasConnection">Yes</label>
                   </div>
@@ -52,6 +53,7 @@ class QuizGas extends Component {
                         id="naturalGasConnection"
                         value={0}
                         onChange={this.handleChange}
+                        checked={this.state.quizValues.naturalGasConnection == 0}
                       />
                       <label className="form-check-label" htmlFor="naturalGasConnection">No</label>
                   </div>
@@ -78,7 +80,8 @@ class QuizGas extends Component {
                         name="blockRadioTypeCooking" 
                         id="typeCooking" 
                         value="Gas"
-                        onChange={this.handleChange}  
+                        onChange={this.handleChange}
+                        checked={this.state.quizValues.typeCooking == "Gas"}
                       />
                      <label className="form-check-label" htmlFor="naturalGasConnection">Gas</label>
                   </div>
@@ -89,7 +92,8 @@ class QuizGas extends Component {
                         name="blockRadioTypeCooking" 
                         id="typeCooking" 
                         value="Electric"
-                        onChange={this.handleChange}  
+                        onChange={this.handleChange}
+                        checked={this.state.quizValues.typeCooking == "Electric"}
                       />
                      <label className="form-check-label" htmlFor="naturalGasConnection">Electric</label>
                   </div>
@@ -100,7 +104,8 @@ class QuizGas extends Component {
                         name="blockRadioTypeCooking" 
                         id="typeCooking" 
                         value="Induction"
-                        onChange={this.handleChange}  
+                        onChange={this.handleChange}
+                        checked={this.state.quizValues.typeCooking == "Induction"}
                       />
                      <label className="form-check-label" htmlFor="naturalGasConnection">Induction</label>
                   </div>

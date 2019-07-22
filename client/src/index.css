@@ -269,3 +269,8 @@ input:disabled{
 .MuiSlider-root.Mui-disabled{
   color: #8AB83E!important;
 }
+
+.form-check-input{
+  transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+}

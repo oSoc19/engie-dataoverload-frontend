@@ -86,11 +86,11 @@ class QuizWater extends Component {
                             <div className="form-group">
                                 <label htmlFor="additional-water">Do you have any of the following?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleGarden} type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="true"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.gardenWatering == "true"} onChange={this.handleGarden} type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="true"/>
                                   <label className="form-check-label" htmlFor="gardenWatering">Garden that needs watering</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handlePool} type="checkbox" name="inlineCheckboxOptions" id="pool" value="true"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.pool == "true"} onChange={this.handlePool} type="checkbox" name="inlineCheckboxOptions" id="pool" value="true"/>
                                   <label className="form-check-label" htmlFor="pool">Pool</label>
                                 </div>
                             </div>
