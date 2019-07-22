@@ -20,19 +20,22 @@ class QuizBasicInfo extends Component {
         if(storageData != null){
             this.setState({quizValues:JSON.parse(storageData)});
         }
-        
+        window.$('[data-toggle="tooltip"]').tooltip();
+
     }
 
     handleChange(event) {
         this.setState({basicData: this.state.quizValues[event.target.id] = event.target.value})
         localStorage.setItem('basicData', JSON.stringify(this.state.quizValues));
     }
+    
+    componentDidUpdate() {
+        window.$('[data-toggle="tooltip"]').tooltip();
+    }
 
     render() {
         return (
             <div className="container">
-                <h2 className="text-center">Let's begin with some basic information</h2>
-                <hr />
                 <div className="row text-center">
                     <div className="col-md-6 offset-md-3">
                         <form>
@@ -49,7 +52,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="roomsInHouse">How many rooms are in your house?</label>
+                                <label htmlFor="roomsInHouse">How many rooms are in your house? <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="Including bathroom, kitchen, ..."></i></label>
                                 <input 
                                     type="number" 
                                     id="nbRooms" 
@@ -73,7 +76,7 @@ class QuizBasicInfo extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="preferredRoomTemp">What is your preferred house temperature? (°C)</label>
+                                <label htmlFor="preferredRoomTemp">What is your preferred house temperature? (°C in winter)</label>
                                 <input 
                                     type="number" 
                                     id="prefRoomTemp" 
@@ -87,15 +90,15 @@ class QuizBasicInfo extends Component {
                             <div className="form-group">
                                 <label htmlFor="houseInsulation">How well is your house insulated?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="1"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 1} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="1"/>
                                   <label className="form-check-label" htmlFor="insulation_low">Poorly</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="2"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 2} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="2"/>
                                   <label className="form-check-label" htmlFor="insulation_avg">Average</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="3"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.houseInsulation == 3} onChange={this.handleChange} type="radio" name="inlineRadioOptions" id="houseInsulation" value="3"/>
                                   <label className="form-check-label" htmlFor="insulation_well">Well</label>
                                 </div>
                             </div>

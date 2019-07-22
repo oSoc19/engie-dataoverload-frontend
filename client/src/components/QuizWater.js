@@ -56,13 +56,11 @@ class QuizWater extends Component {
     render() {
         return (
             <div className="container">
-                <h2 className="text-center">Some questions about your water habits</h2>
-                <hr />
                 <div className="row text-center">
                     <div className="col-md-6 offset-md-3">
                         <form>
                             <div className="form-group">
-                                <label htmlFor="showersPerWeek">How many showers per person in one week?</label>
+                                <label htmlFor="showersPerWeek">How many showers are taken a week (per person)?</label>
                                 <input 
                                     type="number"
                                     id="nbShowersPerWeek" 
@@ -74,7 +72,7 @@ class QuizWater extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="bathsPerWeek">And how many baths in one week?</label>
+                                <label htmlFor="bathsPerWeek">And how many baths are taken a week?</label>
                                 <input 
                                     type="number" 
                                     id="nbBathsPerWeek" 
@@ -88,11 +86,11 @@ class QuizWater extends Component {
                             <div className="form-group">
                                 <label htmlFor="additional-water">Do you have any of the following?</label>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handleGarden} type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="true"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.gardenWatering == "true"} onChange={this.handleGarden} type="checkbox" name="inlineCheckboxOptions" id="gardenWatering" value="true"/>
                                   <label className="form-check-label" htmlFor="gardenWatering">Garden that needs watering</label>
                                 </div>
                                 <div className="form-check">
-                                  <input className="form-check-input" onChange={this.handlePool} type="checkbox" name="inlineCheckboxOptions" id="pool" value="true"/>
+                                  <input className="form-check-input" checked={this.state.quizValues.pool == "true"} onChange={this.handlePool} type="checkbox" name="inlineCheckboxOptions" id="pool" value="true"/>
                                   <label className="form-check-label" htmlFor="pool">Pool</label>
                                 </div>
                             </div>

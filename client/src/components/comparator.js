@@ -50,19 +50,19 @@ class Comparator extends Component {
       elecValues: JSON.parse(elecData),
       elec_marks: [
         { value: 0, label: '0 kWh', },
-        { value: 8874, label: '9000 kWh', },
+        { value: 15000, label: '15000 kWh', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ],
       water_marks: [
         { value: 0, label: '0 m³', },
-        { value: 144, label: '145 m³', },
+        { value: 160, label: '160 m³', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ],
       gas_marks: [
         { value: 0, label: '0 m³', },
-        { value: 2620, label: '2650 m³', },
+        { value: 2700, label: '2700 m³', },
         { value: 0, label: '', },
         { value: 0, label: 'YOU', },
       ]
@@ -73,18 +73,11 @@ class Comparator extends Component {
     this.funfacts = new FunFactsAPI();
   }
 
-  componentWillMount() {
-    this.api.getSolarProdLocation(this.state.zip_code).then(
-      data => {
-        this.setState({ solar_prod_location: data[0].avg });
-        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
-      }
-    );
+  componentWillMount() {  
 
     let basicData = localStorage.getItem('basicData');
     let consData = localStorage.getItem('consData');
     let elecData = localStorage.getItem('elecData');
-
     //If the user inputs his values directly (use of a clone to set the state)
     if (consData == null) {
       //localStorage.setItem('consData', new ConsModel().values);
@@ -95,16 +88,25 @@ class Comparator extends Component {
       this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
       this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
       this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
+      this.state.consValues.zipCode = this.state.basicValues.zipCode;
+
+      console.log("zip is: ", this.state.consValues.zipCode);
 
       localStorage.setItem('consData', JSON.stringify(this.state.consValues));
-
+      
     } else {
       let consData = localStorage.getItem('consData');
       let consValues = JSON.parse(consData);
-      
+
+      let basicData = localStorage.getItem('basicData');
+      let basicValues = JSON.parse(basicData);
+
       this.state.consValues.elecConsYearly = consValues.elecConsYearly;
       this.state.consValues.waterConsYearly = consValues.waterConsYearly;
       this.state.consValues.gasConsYearly = consValues.gasConsYearly;
+      this.state.consValues.zipCode = basicValues.zipCode;
+      console.log("zip is: ", this.state.consValues.zipCode);
+
     }
     
     //Put the value in the state (using a clone)
@@ -147,6 +149,14 @@ class Comparator extends Component {
         //, () => console.log("value :" + this.state.elec_marks[3].value + " clone : "+ elec_marks_clone[3].label));
       }
     );
+
+      
+    this.api.getSolarProdLocation(this.state.consValues.zipCode).then(
+      data => {
+        this.setState({ solar_prod_location: data[0].avg });
+        console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
+      }
+    );
   }
 
   componentDidMount() {
@@ -164,8 +174,8 @@ class Comparator extends Component {
       <div className="container content">
         <h2 className="text-center">Yearly consumption results</h2>
         <hr />
-        <div class="row" id="results-row">
-          <div class="col">
+        <div key="1" className="row" id="results-row">
+          <div className="col">
             <Typography id="range-slider" gutterBottom>
               Electricity
             </Typography>
@@ -182,8 +192,8 @@ class Comparator extends Component {
             />
           </div>
         </div>
-        <div class="row" id="results-row">
-          <div class="col">
+        <div key="2" className="row" id="results-row">
+          <div className="col">
             <Typography id="discrete-slider-always" gutterBottom>
               Water
             </Typography>
@@ -200,8 +210,8 @@ class Comparator extends Component {
             />
           </div>
         </div>
-        <div class="row" id="results-row">
-          <div class="col">
+        <div key="3" className="row" id="results-row">
+          <div className="col">
             <Typography id="discrete-slider-always" gutterBottom>
               Gas
             </Typography>
@@ -218,9 +228,9 @@ class Comparator extends Component {
             />
           </div>
         </div>
-        <div class="row" id="results-row">
+        <div key="4" className="row" id="results-row">
           <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
-          <div class="col">
+          <div className="col">
             You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code <b>{this.state.consValues.zipCode}</b>) !
           </div>
         </div>
