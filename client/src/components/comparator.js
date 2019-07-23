@@ -4,6 +4,7 @@ import QuizAPI from '../api/quizAPI';
 import FunFactsAPI from '../api/funFactsAPI';
 import round from '../util';
 import ConsModel from '../model/ConsModel';
+import { Prompt } from 'react-router'
 
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -85,10 +86,18 @@ class Comparator extends Component {
       this.setState({ elecValues: JSON.parse(elecData) });
       let basicElecValues = extend(this.state.basicValues, this.state.elecValues);
 
-      this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
-      this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
-      this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
-      this.state.consValues.zipCode = this.state.basicValues.zipCode;
+      try{
+        this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
+        this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
+        this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
+        this.state.consValues.zipCode = this.state.basicValues.zipCode;
+      }catch{
+        this.state.consValues.elecConsYearly = 0;
+        this.state.consValues.waterConsYearly = 0;
+        this.state.consValues.gasConsYearly = 0;
+        this.state.consValues.zipCode = 1000;
+      }
+      
 
       console.log("zip is: ", this.state.consValues.zipCode);
 
@@ -99,7 +108,6 @@ class Comparator extends Component {
       let consValues = JSON.parse(consData);
 
       let basicData = localStorage.getItem('basicData');
-      let basicValues = JSON.parse(basicData);
 
       this.state.consValues.elecConsYearly = consValues.elecConsYearly;
       this.state.consValues.waterConsYearly = consValues.waterConsYearly;
@@ -109,7 +117,8 @@ class Comparator extends Component {
       consValues_clone.zipCode = consValues.zipCode;
       this.setState({basicValues: consValues_clone});
       
-      localStorage.setItem('basicData', JSON.stringify(this.state.basicValues));
+      if(this.state.basicValues)
+        localStorage.setItem('basicData', JSON.stringify(this.state.basicValues));
 
     }
     
@@ -171,6 +180,10 @@ class Comparator extends Component {
         console.log("solarprod state : " + this.state.solar_prod_location + " prod from query : " + data[0].avg);
       }
     );
+  }
+
+  componentWillUnmount(){
+    localStorage.clear();
   }
 
   render() {
