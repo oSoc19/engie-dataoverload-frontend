@@ -84,7 +84,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="elecConsYearly" 
-                                placeholder="3000"
+                                placeholder="4400"
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.elecConsYearly}
                                 min="100"
@@ -107,7 +107,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="waterConsYearly" 
-                                placeholder={123}
+                                placeholder={80}
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.waterConsYearly}
                                 />
@@ -129,7 +129,7 @@ class MyConsumption extends Component {
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="gasConsYearly"
-                                placeholder={750}
+                                placeholder={1300}
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.gasConsYearly}
                                 />
@@ -151,7 +151,7 @@ class MyConsumption extends Component {
                             type="number" 
                             className="center_placeholder form-control" 
                             id="zipCode" 
-                            placeholder="4321"
+                            placeholder="1000"
                             onChange={this.handleChange}
                             value={this.state.consValues.zipCode}
                         />
