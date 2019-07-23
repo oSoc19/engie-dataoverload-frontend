@@ -133,7 +133,7 @@ class QuizElectricity extends Component {
                             onChange={this.handleChange}
                         />
                         <span className="plus bg-dark" id="nbWashingMachine" onClick={this.handlePlusMinus}>+</span>
-                        <p className="device_name">Washing Machine</p>
+                        <p className="device_name">Washing Machines</p>
                     </div>
 
                     <div className="qty col-md-4">
@@ -208,7 +208,7 @@ class QuizElectricity extends Component {
                             onChange={this.handleChange}
                         />
                         <span className="plus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>+</span>
-                        <p className="device_name">Electric Oven</p>
+                        <p className="device_name">Electric Ovens</p>
                     </div>
 
                     <div className="qty col-md-4">
