@@ -93,6 +93,16 @@ class Quiz extends Component {
             this.setState({quizNr: --this.state.quizNr})
     }        
 
+    componentWillMount(){
+        console.log(localStorage.getItem("basicData"));
+        
+        if(localStorage.getItem("basicData") == "null")
+            localStorage.removeItem("basicData");
+
+        if(localStorage.getItem("elecData") == "null")
+            localStorage.removeItem("basicData");
+    }
+
     render() {
 
         const TagName = this.components[this.state.quizNr];

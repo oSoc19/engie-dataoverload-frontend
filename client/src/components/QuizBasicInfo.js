@@ -16,14 +16,12 @@ class QuizBasicInfo extends Component {
     
     componentDidMount(){
         let storageData = localStorage.getItem('basicData');
-
+        
         if(storageData != null){
             this.setState({quizValues:JSON.parse(storageData)});
-        }else{
-            localStorage.clear();
         }
-        window.$('[data-toggle="tooltip"]').tooltip();
 
+        window.$('[data-toggle="tooltip"]').tooltip();
     }
 
     handleChange(event) {
