@@ -91,13 +91,13 @@ class SolarImpact extends Component {
 
                 <div className="time-filters row text-center">
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary" id="daily" onClick={this.handleFilter}>Daily</a>
+                        <a className="btn btn-secondary" id="daily" onClick={this.handleFilter}>Daily</a>
                     </div>
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary" id="weekly" onClick={this.handleFilter}>Weekly</a>
+                        <a className="btn btn-secondary" id="weekly" onClick={this.handleFilter}>Weekly</a>
                     </div>
                     <div className="filter col-md-4">
-                        <a className="btn btn-primary" id="monthly" onClick={this.handleFilter}>Monthly</a>
+                        <a className="btn btn-secondary" id="monthly" onClick={this.handleFilter}>Monthly</a>
                     </div>
                 </div>
 
@@ -122,12 +122,13 @@ class SolarImpact extends Component {
                                 startup: true,
                             },
                             title: 'Comparison of electricity consumption of users with and without solar panels',
+                            colors: ['#50AB39', '#4C4C4C'],
                             hAxis: { 
                                 title: 'Date', 
                                 titleTextStyle: { color: '#333' } 
                             },
                             vAxis: { 
-                                title: 'Averge energy consuption [kWh]', 
+                                title: 'Average energy consuption [kWh]', 
                                 titleTextStyle: { color: '#333' }, minValue: 0 
                             },
                             // For the legend to fit, we make the chart area smaller
