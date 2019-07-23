@@ -52,19 +52,19 @@ class Comparator extends Component {
         { value: 0, label: '0 kWh', },
         { value: 15000, label: '15000 kWh', },
         { value: 0, label: '', },
-        { value: 0, label: 'YOU', },
+        { value: 0, label: '', },
       ],
       water_marks: [
         { value: 0, label: '0 m³', },
         { value: 160, label: '160 m³', },
         { value: 0, label: '', },
-        { value: 0, label: 'YOU', },
+        { value: 0, label: '', },
       ],
       gas_marks: [
         { value: 0, label: '0 m³', },
         { value: 2700, label: '2700 m³', },
         { value: 0, label: '', },
-        { value: 0, label: 'YOU', },
+        { value: 0, label: '', },
       ]
     }
 

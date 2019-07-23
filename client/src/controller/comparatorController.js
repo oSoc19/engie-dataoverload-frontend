@@ -52,28 +52,22 @@ class ComparatorController {
   };
 
   getGasConsEstimation(param) {
+    let kWhtoMeterCubed = 10.55;
 
     //Variables declaration
     let results = 0;
-    let bigGasConsumer = 20000 / 10.95; //kWh divided by 10.95 to get m³
-    let avgGasConsumer = 12000 / 10.95;
-    let smallGasConsumer = 5000 / 10.95;
-    let noGasConsumer = 4265 / 10.95;
+    let foodGasConsumer = 5000 / kWhtoMeterCubed;
+    let basicConsumer = 4265 / kWhtoMeterCubed;
 
     if (param.naturalGasConnection == 1) {
-      if (param.typeCooking === "Gas") {
-        if (param.nbCookingPerWeek > 5) {
-          results += bigGasConsumer;
-        } else {
-          results += avgGasConsumer;
-        }
-      } else {
-        results += smallGasConsumer;
-      }
-    } else {
-      results += noGasConsumer;
-    }
+      results += basicConsumer;
 
+      if (param.typeCooking === "Gas") {
+        results += foodGasConsumer;
+
+        results += 52*2*param.nbCookingPerWeek;
+      }
+    }
     return Math.round(results, 0);
   };
 
