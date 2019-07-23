@@ -46,7 +46,7 @@ class MyConsumption extends Component {
             if(consData != null){
                 for (var key in json) {
                     console.log(json[key]);
-                    if(json[key] == ""){
+                    if(json[key] === ""){
                         hasEmptyValues = true;
                         this.setState({errorMessage:"hasEmpty"})
                         break;
@@ -77,14 +77,14 @@ class MyConsumption extends Component {
                 <div key="elecCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
-                            <i className="fas fa-bolt fa-5x" style={{ color: "#FFD700" }}></i>
+                            <i className="fas fa-bolt fa-5x" style={{ color: "#8AB83D" }}></i>
                             <h5 className="card-title">Electricity</h5> <hr />
                             <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="elecConsYearly" 
-                                placeholder="3000"
+                                placeholder="4400"
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.elecConsYearly}
                                 min="100"
@@ -100,14 +100,14 @@ class MyConsumption extends Component {
                 <div key="waterCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
-                            <i className="fas fa-tint fa-5x" style={{ color: "#005fe3" }}></i>
+                            <i className="fas fa-tint fa-5x" style={{ color: "#8AB83D" }}></i>
                             <h5 className="card-title">Water</h5> <hr />
                             <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="waterConsYearly" 
-                                placeholder={123}
+                                placeholder={80}
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.waterConsYearly}
                                 />
@@ -122,14 +122,14 @@ class MyConsumption extends Component {
                 <div key="gasCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
-                            <i className="fas fa-burn fa-5x" style={{ color: "#B22222" }}></i>
+                            <i className="fas fa-burn fa-5x" style={{ color: "#8AB83D" }}></i>
                             <h5 className="card-title">Gas</h5> <hr />
                             <div className="input-group mb-2 mr-sm-2">
                                 <input 
                                 type="number" 
                                 className="center_placeholder form-control" 
                                 id="gasConsYearly"
-                                placeholder={750}
+                                placeholder={1300}
                                 onChange={this.handleChange} 
                                 value={this.state.consValues.gasConsYearly}
                                 />
@@ -151,7 +151,7 @@ class MyConsumption extends Component {
                             type="number" 
                             className="center_placeholder form-control" 
                             id="zipCode" 
-                            placeholder="4321"
+                            placeholder="1000"
                             onChange={this.handleChange}
                             value={this.state.consValues.zipCode}
                         />

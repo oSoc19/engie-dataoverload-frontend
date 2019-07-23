@@ -4,6 +4,7 @@ import QuizAPI from '../api/quizAPI';
 import FunFactsAPI from '../api/funFactsAPI';
 import round from '../util';
 import ConsModel from '../model/ConsModel';
+import { Prompt } from 'react-router'
 
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
@@ -85,10 +86,18 @@ class Comparator extends Component {
       this.setState({ elecValues: JSON.parse(elecData) });
       let basicElecValues = extend(this.state.basicValues, this.state.elecValues);
 
-      this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
-      this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
-      this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
-      this.state.consValues.zipCode = this.state.basicValues.zipCode;
+      try{
+        this.state.consValues.elecConsYearly = this.controller.getValues(basicElecValues, "electricity");
+        this.state.consValues.waterConsYearly = this.controller.getValues(this.state.basicValues, "water");
+        this.state.consValues.gasConsYearly = this.controller.getValues(this.state.basicValues, "gas");
+        this.state.consValues.zipCode = this.state.basicValues.zipCode;
+      }catch{
+        this.state.consValues.elecConsYearly = 0;
+        this.state.consValues.waterConsYearly = 0;
+        this.state.consValues.gasConsYearly = 0;
+        this.state.consValues.zipCode = 1000;
+      }
+      
 
       console.log("zip is: ", this.state.consValues.zipCode);
 
@@ -99,7 +108,6 @@ class Comparator extends Component {
       let consValues = JSON.parse(consData);
 
       let basicData = localStorage.getItem('basicData');
-      let basicValues = JSON.parse(basicData);
 
       this.state.consValues.elecConsYearly = consValues.elecConsYearly;
       this.state.consValues.waterConsYearly = consValues.waterConsYearly;
@@ -109,7 +117,8 @@ class Comparator extends Component {
       consValues_clone.zipCode = consValues.zipCode;
       this.setState({basicValues: consValues_clone});
       
-      localStorage.setItem('basicData', JSON.stringify(this.state.basicValues));
+      if(this.state.basicValues)
+        localStorage.setItem('basicData', JSON.stringify(this.state.basicValues));
 
     }
     
@@ -173,10 +182,14 @@ class Comparator extends Component {
     );
   }
 
+  componentWillUnmount(){
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div className="container content">
-        <h2 className="text-center">Yearly consumption results</h2>
+        <h2 className="text-center pt-2">Yearly consumption results</h2>
         <hr />
         <div key="1" className="row" id="results-row">
           <div className="col">
@@ -232,10 +245,12 @@ class Comparator extends Component {
             />
           </div>
         </div>
-        <div key="4" className="row" id="results-row">
-          <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
-          <div className="col">
+        <div key="4" className="row pt-4">
+          <div className="col-md-12">
             You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code <b>{this.state.consValues.zipCode}</b>) !
+          </div>
+          <div className="col-md-12 pt-2 pb-5">
+            <img src="solar_icon.png" className="img-fluid center-block" alt="solar panels" height="100" />
           </div>
         </div>
       </div>

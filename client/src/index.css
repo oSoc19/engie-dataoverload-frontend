@@ -286,9 +286,23 @@ input:disabled{
   color: white!important;
 }
 
+
+@media screen and (max-width: 766px) {
+  .home-div .btn-primary{
+    width: 95%!important;
+    margin: 15px;
+  }
+
+  .home-div .btn-secondary{
+    width: 95%!important;
+    margin: 15px;
+  }
+}
+
 .MuiSlider-root.Mui-disabled{
   color: #8AB83E!important;
 }
+
 
 /* Checkboxes and radio buttons size*/
 .form-check-input{
