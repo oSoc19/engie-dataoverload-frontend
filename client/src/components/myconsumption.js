@@ -46,7 +46,7 @@ class MyConsumption extends Component {
             if(consData != null){
                 for (var key in json) {
                     console.log(json[key]);
-                    if(json[key] == ""){
+                    if(json[key] === ""){
                         hasEmptyValues = true;
                         this.setState({errorMessage:"hasEmpty"})
                         break;
