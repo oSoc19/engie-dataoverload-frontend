@@ -9,7 +9,8 @@ class MyConsumption extends Component {
         super();
         let model = new ConsModel();
         this.state = {
-            consValues: model.values
+            consValues: model.values,
+            errorMessage: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.goToResults = this.goToResults.bind(this);
@@ -21,6 +22,9 @@ class MyConsumption extends Component {
         if(storageData != null){
             this.setState({consValues:JSON.parse(storageData)});
         }
+
+        console.log(this.state.consValues);
+        
     }
 
     handleChange(event) {
@@ -30,18 +34,47 @@ class MyConsumption extends Component {
     }
 
     goToResults() {
-        let path = `comparator`;
-        this.props.history.push(path);
+        let consData = localStorage.getItem('consData');
+
+        if(consData == null){
+            this.setState({errorMessage:"all"})
+        }else{
+            let json = JSON.parse(consData);
+
+            let hasEmptyValues = false;
+
+            if(consData != null){
+                for (var key in json) {
+                    console.log(json[key]);
+                    if(json[key] == ""){
+                        hasEmptyValues = true;
+                        this.setState({errorMessage:"hasEmpty"})
+                        break;
+                    }
+                }
+            }
+
+            if(!hasEmptyValues){
+                let path = `comparator`;
+                this.props.history.push(path);
+            }
+        }
+
+        
     }
 
     render() {
+
+        const alertClasses="alert alert-warning";
+
         return (
             <div className="container content">
                 <h2 className="text-center">My Consumption per year</h2>
                 <hr />
-                <div className="row">
+                <div className={this.state.errorMessage == "" ? "hidden" : alertClasses} role="alert">Please enter a value for every question</div>
 
-                <div className="col-md-4 center">
+                <div className="row">
+                <div key="elecCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-bolt fa-5x" style={{ color: "#FFD700" }}></i>
@@ -64,7 +97,7 @@ class MyConsumption extends Component {
                     </div>
                 </div>
 
-                <div className="col-md-4 center">
+                <div key="waterCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-tint fa-5x" style={{ color: "#005fe3" }}></i>
@@ -86,7 +119,7 @@ class MyConsumption extends Component {
                     </div>
                 </div>
 
-                <div className="col-md-4 center">
+                <div key="gasCons" className="col-md-4 center">
                     <div className="card">
                         <div className="card-body text-center">
                             <i className="fas fa-burn fa-5x" style={{ color: "#B22222" }}></i>
@@ -113,7 +146,7 @@ class MyConsumption extends Component {
 
                 <div className="results_button row justify-content-center">
                     <div className="col-3">
-                        <label for="zipCode" className="col-col-form-label">Your Zip Code</label>
+                        <label htmlFor="zipCode" className="col-col-form-label">Your Zip Code</label>
                         <input 
                             type="number" 
                             className="center_placeholder form-control" 
@@ -126,14 +159,13 @@ class MyConsumption extends Component {
                 </div>
 
                 <div className="results_button row justify-content-center">
-                    <div className="col-3">
                         <button 
                         type="button" 
-                        className="btn btn-success" 
+                        className="btn btn-primary" 
                         onClick={this.goToResults}>
                         Get my Results
                         </button>
-                    </div>
+                    
                 </div>
             </div>
         );

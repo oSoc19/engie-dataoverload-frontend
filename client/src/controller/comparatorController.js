@@ -6,9 +6,6 @@ class ComparatorController {
 
   getValues(values, type) {
 
-    //Reading values from the quiz
-    //values.get("family_size");
-
     let toReturn;
 
     if (type === "water") {
@@ -28,14 +25,21 @@ class ComparatorController {
 
     //Variables declaration
     let results = 0;
-    let avgToiletCons = 0.003 * 5 * 365; // 0.03 in m³ per day, average is 6 times a day
+    let commonCons = 0.015*365; //Average per person for cooking, drinking and cleaning
+    let avgToiletCons = 0.0075 * 5 * 365; // 0.06 in m³ per day, average is 5 times a day
     let avgShowerCons = 0.065; //in m³ for one shower
     let avgBathCons = 0.130; //in m³ for one bath
     //let dishWasherCons = 220 * 0.012; //220 washings (0.012 m³ per washing) per year
     let gardenWateringCons = 261 * 0.015; //261 m² (average garden surface belgium), 15 liters per m² (cons per year)
     let poolCons = 15; //m³ per year for a standard (8*4*1.5 pool)
+    if (param.nbDishwasher > 0){
+      results += 0.012 * param.nbDishwasher;
+    }
+    if (param.nbWashingMachine > 0){
+      results += 0.05 * param.nbWashingMachine;
+    }
 
-    results += avgToiletCons * param.familySize + (avgShowerCons * param.nbShowersPerWeek * 52) + (avgBathCons * param.nbBathsPerWeek * 52);
+    results += (commonCons * param.familySize) + (avgToiletCons * param.familySize)+ (avgShowerCons * param.nbShowersPerWeek * 52) + (avgBathCons * param.nbBathsPerWeek * 52);
 
     if (param.gardenWatering === "true") {
       results += gardenWateringCons
@@ -58,7 +62,7 @@ class ComparatorController {
 
     if (param.naturalGasConnection == 1) {
       if (param.typeCooking === "Gas") {
-        if (param.nbCookingPerWeek > 4) {
+        if (param.nbCookingPerWeek > 5) {
           results += bigGasConsumer;
         } else {
           results += avgGasConsumer;
@@ -96,11 +100,18 @@ class ComparatorController {
     let washingMachineCons = param.nbWashingMachine * 220;
     let tumbleDryerCons = param.nbTumbleDryer * 300;
     let vacuumCleanerCons = param.nbVacuumCleaner * 80;
+    if (param.typeCooking != "Gas"){
+      if (param.typeCooking === "Electric"){
+        results  += 260;
+      } else {
+        results += 210;
+      }
+    }
     // let electricToothbrushCons = param.nbElectricToothbrush * 0.3;
     // let hairDryerCons = param.nbHairDryer * 11;
     // let kettleCons = param.nbKettle * 30;
 
-    results = avgConsPerRoom + roomTempCons + fridgeCons + dishwasherCons + coffeeMakerCons + microWaveOvenCons + electricOvenCons + tvCons
+    results += avgConsPerRoom + roomTempCons + fridgeCons + dishwasherCons + coffeeMakerCons + microWaveOvenCons + electricOvenCons + tvCons
       + gamingConsoleCons + laptopsCons + desktopCons + washingMachineCons + tumbleDryerCons + vacuumCleanerCons;
 
     return Math.round(results);
