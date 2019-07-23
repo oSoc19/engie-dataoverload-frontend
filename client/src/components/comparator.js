@@ -104,8 +104,12 @@ class Comparator extends Component {
       this.state.consValues.elecConsYearly = consValues.elecConsYearly;
       this.state.consValues.waterConsYearly = consValues.waterConsYearly;
       this.state.consValues.gasConsYearly = consValues.gasConsYearly;
-      this.state.consValues.zipCode = basicValues.zipCode;
-      console.log("zip is: ", this.state.consValues.zipCode);
+
+      let consValues_clone = this.state.consValues;
+      consValues_clone.zipCode = consValues.zipCode;
+      this.setState({basicValues: consValues_clone});
+      
+      localStorage.setItem('basicData', JSON.stringify(this.state.basicValues));
 
     }
     
