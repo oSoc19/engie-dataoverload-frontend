@@ -189,7 +189,7 @@ class Comparator extends Component {
   render() {
     return (
       <div className="container content">
-        <h2 className="text-center pt-4">Yearly consumption results</h2>
+        <h2 className="text-center pt-2">Yearly consumption results</h2>
         <hr />
         <div key="1" className="row" id="results-row">
           <div className="col">
