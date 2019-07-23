@@ -49,6 +49,13 @@
     crossorigin="anonymous"></script>
   <script src='https://api.mapbox.com/mapbox-assembly/mbx/v0.18.0/assembly.js'></script>
 
+  <script>
+  $(document).on('click','.navbar-collapse',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
 </body>
 
 </html>
