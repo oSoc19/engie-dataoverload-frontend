@@ -17,11 +17,11 @@ The home page that gives you the choice to either input your precise consumption
 
 **About**
 
-A brief description about our project and displays the profile of each team member.
+A brief description of the project and displays the profile of each team member.
 
 **Quiz**
 
-The quiz of our application that gives you your actual consumption (gas, water, electricity) and your position relative to the average.
+The quiz of the application that gives the actual consumption (gas, water, electricity) and your position relative to the average.
 
 **Fun facts**
 
