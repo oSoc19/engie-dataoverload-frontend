@@ -19,6 +19,8 @@ class QuizBasicInfo extends Component {
 
         if(storageData != null){
             this.setState({quizValues:JSON.parse(storageData)});
+        }else{
+            localStorage.clear();
         }
         window.$('[data-toggle="tooltip"]').tooltip();
 
