@@ -71,7 +71,7 @@ class SolarImpact extends Component {
             data => {
                 var elem_label;
 
-                var arrayData = [[current_filter, 'Solar panel', 'No solar panels']];
+                var arrayData = [[current_filter, 'Solar panels', 'No solar panels']];
 
                 data.forEach(element => {
                     elem_label = getAxisLabel(current_filter, element.datepart);
@@ -123,10 +123,10 @@ class SolarImpact extends Component {
                             },
                             title: 'Comparison of electricity consumption of users with and without solar panels',
                             colors: ['#50AB39', '#4C4C4C'],
-                            hAxis: { 
-                                title: 'Date', 
-                                titleTextStyle: { color: '#333' } 
-                            },
+                            // hAxis: { 
+                            //     title: 'Date', 
+                            //     titleTextStyle: { color: '#333' } 
+                            // },
                             vAxis: { 
                                 title: 'Average energy consuption [kWh]', 
                                 titleTextStyle: { color: '#333' }, minValue: 0 

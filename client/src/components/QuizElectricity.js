@@ -29,6 +29,10 @@ class QuizElectricity extends Component {
         if (event.target.className === 'minus bg-dark') {
             var id = event.target.id;
             this.setState({ [id]: --this.state[id] });
+            // prevent negative values
+            if (this.state[id] < 0) {
+                this.setState({ [id]: ++this.state[id] });
+            }
         } else {
             var id = event.target.id;
             this.setState({ [id]: ++this.state[id] });
