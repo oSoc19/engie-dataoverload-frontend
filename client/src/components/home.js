@@ -7,10 +7,6 @@ class Home extends Component {
         super();
     }
 
-    componentDidMount() {
-        
-    }
-
     render() {
         return (
             <div className="main-background">
