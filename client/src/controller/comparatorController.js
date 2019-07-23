@@ -74,8 +74,9 @@ class ComparatorController {
   getElecConsEstimation(param) {
 
     let results = 0;
-    let insulationLevel = param.houseInsulation / 2; //1
-    let avgConsPerRoom = (param.nbRooms * 300) / insulationLevel; //400 kWh per room in average per month
+    let roomCons = 100 + (300/param.houseInsulation);
+    console.log("roomcons", roomCons);
+    let avgConsPerRoom = param.nbRooms * roomCons; //400 kWh per room in average per month
     let roomTempCons;
     if (param.prefRoomTemp < 24) {
       roomTempCons = 100; // 400 kWh per month
