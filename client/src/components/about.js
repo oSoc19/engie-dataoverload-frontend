@@ -110,10 +110,8 @@ class About extends Component {
                     {this.state.team_members}                
                 </div>
 
-                <h4 className="text-center">Our fancy bar chart group picture</h4>
-                <hr />
                 <div className="row">
-                    <div className="col-md-6 offset-md-3">
+                    <div id="funGroupPic" className="col-md-6 offset-md-3">
                         <a href="https://2019.summerofcode.be/2019/insight-the-boxx" target="_blank">
                         <img src="group_photo_barchart.jpg" className="img-fluid" alt="group funny barchart"/>
                         </a>

@@ -56,6 +56,10 @@ box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.1);
     margin-top: 10px;
 }
 
+#funGroupPic{
+  padding-bottom: 20px;
+}
+
 /* Info */
 .card{
   padding: 10px;
@@ -286,12 +290,11 @@ input:disabled{
   color: #8AB83E!important;
 }
 
+/* Checkboxes and radio buttons size*/
 .form-check-input{
   transform: scale(1.3);
     -webkit-transform: scale(1.3);
 }
-
-
 
 .btn-primary{
   background-color: #8AB83E!important;
