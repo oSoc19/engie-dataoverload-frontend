@@ -189,7 +189,7 @@ class Comparator extends Component {
   render() {
     return (
       <div className="container content">
-        <h2 className="text-center">Yearly consumption results</h2>
+        <h2 className="text-center pt-4">Yearly consumption results</h2>
         <hr />
         <div key="1" className="row" id="results-row">
           <div className="col">
@@ -245,10 +245,12 @@ class Comparator extends Component {
             />
           </div>
         </div>
-        <div key="4" className="row" id="results-row">
-          <img src="solar_icon.png" className="img-fluid" alt="solar panels" height="100" />
-          <div className="col">
+        <div key="4" className="row pt-4">
+          <div className="col-md-12">
             You could produce <b>{round(this.state.solar_prod_location, 4)} kWh</b> per day with solar panels (based on your zip code <b>{this.state.consValues.zipCode}</b>) !
+          </div>
+          <div className="col-md-12 pt-2 pb-5">
+            <img src="solar_icon.png" className="img-fluid center-block" alt="solar panels" height="100" />
           </div>
         </div>
       </div>
