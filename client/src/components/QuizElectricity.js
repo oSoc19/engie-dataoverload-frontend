@@ -29,6 +29,10 @@ class QuizElectricity extends Component {
         if (event.target.className === 'minus bg-dark') {
             var id = event.target.id;
             this.setState({ [id]: --this.state[id] });
+            // prevent negative values
+            if (this.state[id] < 0) {
+                this.setState({ [id]: ++this.state[id] });
+            }
         } else {
             var id = event.target.id;
             this.setState({ [id]: ++this.state[id] });
@@ -133,7 +137,7 @@ class QuizElectricity extends Component {
                             onChange={this.handleChange}
                         />
                         <span className="plus bg-dark" id="nbWashingMachine" onClick={this.handlePlusMinus}>+</span>
-                        <p className="device_name">Washing Machine</p>
+                        <p className="device_name">Washing Machines</p>
                     </div>
 
                     <div className="qty col-md-4">
@@ -208,7 +212,7 @@ class QuizElectricity extends Component {
                             onChange={this.handleChange}
                         />
                         <span className="plus bg-dark" id="nbElectricOven" onClick={this.handlePlusMinus}>+</span>
-                        <p className="device_name">Electric Oven</p>
+                        <p className="device_name">Electric Ovens</p>
                     </div>
 
                     <div className="qty col-md-4">
