@@ -6,6 +6,11 @@ import QuizElectricity from './QuizElectricity';
 import QuizWater from './QuizWater';
 import QuizGas from './QuizGas';
 
+/**
+ * Quiz class
+ * Handles the quiz pages and state
+ */
+
 class Quiz extends Component {
 
     components = [QuizBasicInfo, QuizElectricity, QuizWater, QuizGas];

@@ -1,5 +1,7 @@
 import API from "./API";
 
+/* FUN FACTS ENDPOINT */
+
 class FunFactsAPI extends API{
 
     constructor(){

@@ -9,10 +9,18 @@ import { Prompt } from 'react-router'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
+/* Variable declaration */
 let min_index = 0;
 let max_index = 1;
 
 let defaultElec, defaultWater, defaultGas;
+
+/**
+ * Returns a concatenation of two objects
+ * 
+ * @param {object to be returned} obj 
+ * @param {source object to be iterated} src 
+ */
 
 function extend(obj, src) {
   for (var key in src) {
@@ -20,6 +28,12 @@ function extend(obj, src) {
   }
   return obj;
 }
+
+/**
+ * Returns the formatted string value
+ * 
+ * @param {value} value 
+ */
 
 function valuetext(value) {
   return `${value}kWh`;
@@ -32,6 +46,12 @@ function valuetext(value) {
 // function gasValuetext(value) {
 //   return `${value}` + `m`.sup();
 // }
+
+/**
+ * Comparator class
+ * Processes all values received from the quiz and/or my consumption page
+ * Displays the values in the result page
+ */
 
 class Comparator extends Component {
 

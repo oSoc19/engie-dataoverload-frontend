@@ -1,5 +1,7 @@
 import API from "./API";
 
+/* SOLAR ENDPOINT */
+
 class SolarAPI extends API{
 
     constructor(){

@@ -1,3 +1,6 @@
+/**
+ * Model for quiz used in local storage
+ */
 export default class QuizModel {
     values = {
         familySize: "",

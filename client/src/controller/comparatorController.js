@@ -1,4 +1,7 @@
-
+/**
+ * ComparatorController class
+ * Computes all the calculations for each consumption and send them back to the comparator
+ */
 class ComparatorController {
 
   constructor() {
