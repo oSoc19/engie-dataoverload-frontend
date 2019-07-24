@@ -11,6 +11,8 @@ Run the frontend:
 
 ## About the application
 
+The application contains the 5 following pages (accessible from the navigation menu):
+
 **Home**
 
 The home page that gives you the choice to either input your precise consumption numbers or take the quiz.
