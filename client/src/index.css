@@ -2,6 +2,10 @@
   margin-top: 20px;
 }
 
+::placeholder {
+  color: lightgray!important;
+}
+
 @media screen and (max-width: 600px) {
   .github-corner {
     display: none;
