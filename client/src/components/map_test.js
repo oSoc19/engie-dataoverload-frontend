@@ -4,6 +4,9 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWRlbG9vZiIsImEiOiJjamplYjRqbGY0bW5qM2tsZmpocHNiZmxyIn0.nGxW_OofuTFsGJNDUSm50A';
 
+/**
+ * (UNUSED) Old home page displaying a fun map
+ */
 
 class Home extends Component {
 

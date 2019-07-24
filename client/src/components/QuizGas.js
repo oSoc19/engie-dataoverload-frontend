@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import QuizModel from '../model/QuizModel';
+
+/**
+ * QuizGas class
+ * Last page of the quiz
+ * Stores values in the local storage
+ */
 class QuizGas extends Component {
     constructor() {
         super();

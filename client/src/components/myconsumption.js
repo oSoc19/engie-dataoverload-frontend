@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ConsModel from '../model/ConsModel';
 
+/**
+ * My consumption class
+ * Allows the user to input his values for water, gas and electricity consumption
+ */
 
 class MyConsumption extends Component {
 

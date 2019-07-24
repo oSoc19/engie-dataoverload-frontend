@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import ElecDeviceModel from '../model/ElecDeviceModel';
 
+/**
+ * QuizElectricity class
+ * Second page of the quiz
+ * Stores numbers of electric devices in local storage
+ */
+
 class QuizElectricity extends Component {
 
     constructor() {

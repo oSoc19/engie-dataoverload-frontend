@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/* 
+* Display of the about page 
+*/
+
 class About extends Component {
 
     constructor() {

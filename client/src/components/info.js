@@ -3,6 +3,11 @@ import FunFactsAPI from '../api/funFactsAPI';
 import { ClipLoader } from 'react-spinners';
 import round from '../util';
 
+/**
+ * Fun facts page
+ * Displays average of gas, water, electricity, room temperature, solar production, electric injection
+ */
+
 class Info extends Component {
 
     constructor() {

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import QuizModel from '../model/QuizModel';
+
+/**
+ * QuizWater class
+ * Third page of the quiz
+ * Stores answers values in local storage
+ */
+
 class QuizWater extends Component {
     constructor() {
         super();

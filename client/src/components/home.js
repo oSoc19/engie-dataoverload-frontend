@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Home page
+ * Gives the choice to either take the quiz or go to the my consumption page
+ */
+
 class Home extends Component {
 
     constructor() {

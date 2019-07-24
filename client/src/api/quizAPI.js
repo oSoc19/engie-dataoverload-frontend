@@ -1,5 +1,7 @@
 import API from "./API";
 
+/* QUIZ ENDPOINT */
+
 class QuizAPI extends API{
 
     constructor(){

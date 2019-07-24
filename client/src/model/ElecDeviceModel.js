@@ -1,3 +1,6 @@
+/**
+ * Model for electric devices used in local storage
+ */
 export default class QuizModel {
     values = {
         nbFridge: "",

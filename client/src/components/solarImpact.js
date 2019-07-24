@@ -3,6 +3,8 @@ import Chart from 'react-google-charts';
 import SolarAPI from '../api/solarAPI';
 import { ClipLoader } from 'react-spinners';
 
+/* Variable declarations */
+
 let days_nb2str = {
     0: "Sunday",
     1: "Monday",
@@ -39,6 +41,11 @@ let getAxisLabel = function(filter_type, elem_value) {
         return elem_value;
     }
 }
+
+/**
+ * SolarImpact class
+ * Displays bar chart comparing electricity consumption between users with and without solar panels
+ */
 
 class SolarImpact extends Component {
 
