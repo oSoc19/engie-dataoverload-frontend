@@ -128,7 +128,7 @@ class SolarImpact extends Component {
                             //     titleTextStyle: { color: '#333' } 
                             // },
                             vAxis: { 
-                                title: 'Average energy consuption [kWh]', 
+                                title: 'Average electricity consumption [kWh]', 
                                 titleTextStyle: { color: '#333' }, minValue: 0 
                             },
                             // For the legend to fit, we make the chart area smaller
